@@ -139,7 +139,7 @@ described above.</p>
 every row of the original dataset that was used to fit a model. There
 are 1313 observations in the titanic dataset. Therefore, if we just
 execute the code in the previous section, we will obtain 1313 estimates
-of the difference between the probabiliyt of survival in 3rd and 1st
+of the difference between the probability of survival in 3rd and 1st
 class:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>,</span>
@@ -254,7 +254,7 @@ Moving from 1st to 3rd has a much larger negative effect on the
 probability of survival for a 50 year old woman than for a 50 year old
 man. This difference is statistically significant.</p>
 <p>We can do a similar comparison, but instead of fixing a conditional
-grid, we can average over subgruops of the empirical distribution, using
+grid, we can average over subgroups of the empirical distribution, using
 the <code>by</code> argument:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>,</span>
