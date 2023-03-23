@@ -54,17 +54,35 @@ get_contrasts <- function(model,
         attr(pred_hi, "posterior_draws") <- draws_hi
 
     } else {
-        pred_lo <- myTryCatch(get_predict(
-            model,
-            type = type,
-            newdata = lo,
-            ...))[["value"]]
+        # TODO: sanity checks
+        # interactions & transformations
+        # known analytics
+        # all continuous regressor
+        # fun_list() changes for elasticity
+        fun_dydx <- attr(model, "marginaleffects_fun_dydx")
+        if (is.function(fun_dydx)) {
+            analytic_slope <- TRUE
+            b <- get_coef(model)
+            X <- attr(original, "marginaleffects_model_matrix")
+            Xb <- drop(X %*% b)
+            fXb <- fun_dydx(Xb)
+            dydx <- fXb * b[original$term]
+            pred_lo <- pred_hi <- lo
+            pred_lo$estimate <- pred_hi$estimate <- dydx
+        } else {
+            analytic_slope <- FALSE
+            pred_lo <- myTryCatch(get_predict(
+                model,
+                type = type,
+                newdata = lo,
+                ...))[["value"]]
 
-        pred_hi <- myTryCatch(get_predict(
-            model,
-            type = type,
-            newdata = hi,
-            ...))[["value"]]
+            pred_hi <- myTryCatch(get_predict(
+                model,
+                type = type,
+                newdata = hi,
+                ...))[["value"]]
+        }
     }
 
     # predict() takes up 2/3 of the wall time. This call is only useful when we
@@ -138,7 +156,6 @@ get_contrasts <- function(model,
     if (!"term" %in% colnames(out)) {
         out[, "term" := "cross"]
     }
-
 
     # by
     if (isTRUE(checkmate::check_data_frame(by))) {
@@ -264,13 +281,18 @@ get_contrasts <- function(model,
     # singleton vs vector
     # different terms use different functions
     safefun <- function(hi, lo, y, n, term, cross, wts, tmp_idx) {
+        analytic_slope <- isTRUE(attr(lo, "marginaleffects_dydx_analytic"))
         tn <- term[1]
         eps <- variables[[tn]]$eps
         # when cross=TRUE, sanitize_comparison enforces a single function
         if (isTRUE(cross)) {
             fun <- fun_list[[1]]
         } else {
-            fun <- fun_list[[tn]]
+            if (analytic_slope) {
+                fun <- function(hi, ...) hi
+            } else {
+                fun <- fun_list[[tn]]
+            }
         }
         args <- list(
             "hi" = hi,
