@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.0.9019</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.0.9020</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -235,26 +235,26 @@ to estimate the standard error.</li>
 <span><span class="va">mod</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/predictions.html">predictions</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/inferences.html">inferences</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"simulation"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Estimate Std. Error    2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  7.84e-01      0.184 2.88e-01  0.970</span></span>
-<span><span class="co">#&gt;  7.84e-01      0.159 3.76e-01  0.954</span></span>
-<span><span class="co">#&gt;  8.98e-01      0.133 4.88e-01  0.989</span></span>
-<span><span class="co">#&gt;  8.74e-01      0.223 1.70e-01  0.996</span></span>
-<span><span class="co">#&gt;  1.31e-02      0.176 5.15e-05  0.696</span></span>
+<span><span class="co">#&gt;  7.84e-01      0.193 2.56e-01  0.973</span></span>
+<span><span class="co">#&gt;  7.84e-01      0.159 3.82e-01  0.960</span></span>
+<span><span class="co">#&gt;  8.98e-01      0.145 4.36e-01  0.989</span></span>
+<span><span class="co">#&gt;  8.74e-01      0.232 1.79e-01  0.996</span></span>
+<span><span class="co">#&gt;  1.31e-02      0.195 7.38e-05  0.765</span></span>
 <span><span class="co">#&gt; --- 22 rows omitted. See ?avg_predictions and ?print.marginaleffects --- </span></span>
-<span><span class="co">#&gt;  3.83e-01      0.294 1.82e-02  0.961</span></span>
-<span><span class="co">#&gt;  1.21e-06      0.119 3.96e-12  0.315</span></span>
-<span><span class="co">#&gt;  6.89e-03      0.147 2.09e-05  0.586</span></span>
-<span><span class="co">#&gt;  8.07e-11      0.156 2.22e-16  0.691</span></span>
-<span><span class="co">#&gt;  7.95e-01      0.160 3.79e-01  0.960</span></span>
+<span><span class="co">#&gt;  3.83e-01      0.298 2.20e-02  0.957</span></span>
+<span><span class="co">#&gt;  1.21e-06      0.165 1.19e-12  0.789</span></span>
+<span><span class="co">#&gt;  6.89e-03      0.183 3.60e-05  0.785</span></span>
+<span><span class="co">#&gt;  8.07e-11      0.187 2.22e-16  0.964</span></span>
+<span><span class="co">#&gt;  7.95e-01      0.162 3.68e-01  0.965</span></span>
 <span><span class="co">#&gt; Columns: rowid, estimate, std.error, conf.low, conf.high, vs, hp, wt, gear</span></span>
 <span></span>
 <span><span class="va">mod</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span>vcov <span class="op">=</span> <span class="op">~</span><span class="va">gear</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/inferences.html">inferences</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"simulation"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate Std. Error   2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;  gear    4 - 3  -0.0411    0.05328 -0.0898 0.12561</span></span>
-<span><span class="co">#&gt;  gear    5 - 3  -0.1937    0.26904 -0.4874 0.33160</span></span>
-<span><span class="co">#&gt;  hp      dY/dX  -0.0048    0.00452 -0.0115 0.00481</span></span>
-<span><span class="co">#&gt;  wt      dY/dX   0.0117    0.31805 -0.6600 0.67883</span></span>
+<span><span class="co">#&gt;  gear    4 - 3 -0.04243    0.05676 -0.0904 0.13022</span></span>
+<span><span class="co">#&gt;  gear    5 - 3 -0.18870    0.27535 -0.4886 0.33503</span></span>
+<span><span class="co">#&gt;  hp      dY/dX -0.00489    0.00453 -0.0112 0.00494</span></span>
+<span><span class="co">#&gt;  wt      dY/dX  0.02181    0.32213 -0.6438 0.72960</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, conf.low, conf.high</span></span></code></pre></div>
 <p>Since simulation based inference generates <code>iter</code>
