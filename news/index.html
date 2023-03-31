@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,35 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.11.0" id="marginaleffects-0110">marginaleffects 0.11.0<a class="anchor" aria-label="anchor" href="#marginaleffects-0110"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.11.1" id="marginaleffects-0111">marginaleffects 0.11.1<a class="anchor" aria-label="anchor" href="#marginaleffects-0111"></a></h2>
+<p>Breaking change:</p>
+<ul><li>Row orders are now more consistent, but may have changed from previous version. This could affect results from <code>hypothesis</code> with <code>b1</code>, <code>b2</code>, … indexing.</li>
+</ul><p>Support new models:</p>
+<ul><li><code><a href="https://rdrr.io/pkg/nlme/man/lme.html" class="external-link">nlme::lme()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/phylolm/man/phylolm.html" class="external-link">phylolm::phylolm()</a></code></li>
+<li><code><a href="https://rdrr.io/pkg/phylolm/man/phyloglm.html" class="external-link">phylolm::phyloglm()</a></code></li>
+</ul><p>New:</p>
+<ul><li>Vignette on 2x2 experimental designs. Thanks to Demetri Pananos.</li>
+<li>
+<code><a href="../reference/comparisons.html">comparisons()</a></code> accepts data frames with two numeric columns (“low” and “high”) to specify fully customizable contrasts.</li>
+<li>
+<code><a href="../reference/datagrid.html">datagrid()</a></code> gets a new <code>by</code> argument to create apply grid-making functions within groups.</li>
+<li>
+<code>plot_*()</code> gain a <code>newdata</code> argument for use with <code>by</code>.</li>
+</ul><p>Bug:</p>
+<ul><li>
+<code>comparisons(comparison = "lnratioavg")</code> ignored <code>wts</code> argument. Thanks to Demetri Pananos for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/737" class="external-link">#737</a>.</li>
+<li>
+<code><a href="https://rdrr.io/pkg/ordinal/man/clm.html" class="external-link">ordinal::clm()</a></code>: incorrect standard errors when location and scale parameters are the same. Thanks to MrJerryTAO for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/718" class="external-link">#718</a>.</li>
+<li>Incorrect label for “2sd” comparisons. Thanks to Andy Milne for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/720" class="external-link">#720</a>.</li>
+<li>Invalid factor levels in <code><a href="../reference/datagrid.html">datagrid()</a></code> means <code>newdata</code> argument gets ignored. Thanks to Josh Errickson for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/721" class="external-link">#721</a>.</li>
+<li>Error in models with only categorical predictors and the <code>by</code> argument. Thanks to Sam Brilleman for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/723" class="external-link">#723</a>.</li>
+<li>Elasticities are now supported for <code><a href="https://rdrr.io/pkg/ordinal/man/clm.html" class="external-link">ordinal::clm()</a></code> models. Thanks to MrJerryTAO for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/729" class="external-link">#729</a>.</li>
+<li>
+<code>glmmTMB</code> models with zero-inflated components are supported. Thanks to <a href="https://github.com/Helsinki-Ronan" class="external-link">@Helsinki-Ronan</a> and <a href="https://github.com/strengejacke" class="external-link">@strengejacke</a> for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/734" class="external-link">#734</a>.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.11.0" id="marginaleffects-0110">marginaleffects 0.11.0<a class="anchor" aria-label="anchor" href="#marginaleffects-0110"></a></h2><p class="text-muted">CRAN release: 2023-03-10</p>
 <p>Breaking changes:</p>
 <ul><li>
 <code>type</code> column is replaced by <code>type</code> attribute.</li>
