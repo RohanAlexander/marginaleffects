@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
 
 
 
-<script src="multiple_imputation_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="multiple_imputation_files/kePrint-0.0.1/kePrint.js"></script><link href="multiple_imputation_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="multiple_imputation_files/kePrint-0.0.1/kePrint.js"></script><link href="multiple_imputation_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Multiple Imputation and Missing Data</h1>
@@ -81,20 +81,30 @@
 
     
     
-<p>The <code>marginaleffects</code> package offers convenience functions to compute and display predictions, contrasts, and marginal effects from models with multiple imputation from the <code>mice</code> package. The workflow follows Rubin’s rules (Rubin, 1987, p. 76), via the following steps:</p>
+<p>The <code>marginaleffects</code> package offers convenience functions
+to compute and display predictions, contrasts, and marginal effects from
+models with multiple imputation from the <code>mice</code> package. The
+workflow follows Rubin’s rules (Rubin, 1987, p. 76), via the following
+steps:</p>
 <ol style="list-style-type: decimal">
 <li>Impute <span class="math inline">\(M\)</span> data sets.</li>
-<li>Fit in each of the <span class="math inline">\(M\)</span> imputed data sets.</li>
+<li>Fit in each of the <span class="math inline">\(M\)</span> imputed
+data sets.</li>
 <li>Compute marginal effects in each of the <span class="math inline">\(M\)</span> data sets.</li>
 <li>Pool results.</li>
 </ol>
-<p>To highlight the workflow, we consider a simple linear regression model, although the same workflow should work with any model type which is fit using a formula interface and a <code>data</code> argument.</p>
-<p><code>marginaleffects</code> support the <code>mice</code> imputation package, and any other package which can return a list of imputed data frames.</p>
+<p>To highlight the workflow, we consider a simple linear regression
+model, although the same workflow should work with any model type which
+is fit using a formula interface and a <code>data</code> argument.</p>
+<p><code>marginaleffects</code> support the <code>mice</code> imputation
+package, and any other package which can return a list of imputed data
+frames.</p>
 <div class="section level2">
 <h2 id="mice">
 <code>mice</code><a class="anchor" aria-label="anchor" href="#mice"></a>
 </h2>
-<p>First, we insert missing observations randomly in a dataset and we impute the dataset using the <code>mice</code> package:</p>
+<p>First, we insert missing observations randomly in a dataset and we
+impute the dataset using the <code>mice</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/marginaleffects/">marginaleffects</a></span><span class="op">)</span></span>
@@ -106,10 +116,12 @@
 <span><span class="va">dat</span><span class="op">$</span><span class="va">Species</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span>, <span class="fl">40</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
 <span></span>
 <span><span class="va">dat_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://amices.org/mice/reference/mice.html" class="external-link">mice</a></span><span class="op">(</span><span class="va">dat</span>, m <span class="op">=</span> <span class="fl">20</span>, printFlag <span class="op">=</span> <span class="cn">FALSE</span>, .Random.seed <span class="op">=</span> <span class="fl">1024</span><span class="op">)</span></span></code></pre></div>
-<p>Then, we use the standard <code>mice</code> syntax to produce an object of class <code>mira</code> with all the models:</p>
+<p>Then, we use the standard <code>mice</code> syntax to produce an
+object of class <code>mira</code> with all the models:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mod_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">dat_mice</span>, <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Petal.Width</span> <span class="op">~</span> <span class="va">Sepal.Length</span> <span class="op">*</span> <span class="va">Sepal.Width</span> <span class="op">+</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Finally, we feed the <code>mira</code> object to a <code>marginaleffects</code> function:</p>
+<p>Finally, we feed the <code>mira</code> object to a
+<code>marginaleffects</code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mfx_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_mice</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
 <span><span class="va">mfx_mice</span></span>
@@ -131,16 +143,27 @@
 <span><span class="co">#&gt; Columns: term, contrast, Species, estimate, std.error, predicted, predicted_hi, predicted_lo, df, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="other-imputation-packages-amelia-missranger-or-lists-of-imputed-data-frames-">Other imputation packages: <code>Amelia</code>, <code>missRanger</code>, or lists of imputed data frames.<a class="anchor" aria-label="anchor" href="#other-imputation-packages-amelia-missranger-or-lists-of-imputed-data-frames-"></a>
+<h2 id="other-imputation-packages-amelia-missranger-or-lists-of-imputed-data-frames-">Other imputation packages: <code>Amelia</code>,
+<code>missRanger</code>, or lists of imputed data frames.<a class="anchor" aria-label="anchor" href="#other-imputation-packages-amelia-missranger-or-lists-of-imputed-data-frames-"></a>
 </h2>
-<p>Several <code>R</code> packages can impute missing data. Indeed, <a href="https://cran.r-project.org/web/views/MissingData.html" class="external-link">the <code>Missing Data CRAN View</code></a> lists at least a dozen alternatives. Since user interface changes a lot from package to package, <code>marginaleffects</code> supports a single workflow which can be used, with some adaptation, to with all imputation packages:</p>
+<p>Several <code>R</code> packages can impute missing data. Indeed, <a href="https://cran.r-project.org/web/views/MissingData.html" class="external-link">the
+<code>Missing Data CRAN View</code></a> lists at least a dozen
+alternatives. Since user interface changes a lot from package to
+package, <code>marginaleffects</code> supports a single workflow which
+can be used, with some adaptation, to with all imputation packages:</p>
 <ol style="list-style-type: decimal">
-<li>Use an external package to create a list of imputed data frames.</li>
-<li>Apply the <code><a href="https://rdrr.io/pkg/miceadds/man/datalist2mids.html" class="external-link">datalist2mids()</a></code> function from the <code>miceadds</code> package to convert the list of imputed data frames to a <code>mids</code> object.</li>
-<li>Use the <code><a href="https://rdrr.io/r/base/with.html" class="external-link">with()</a></code> function to fit models, as illustrated in the <code>mice</code> section above.</li>
-<li>Pass the <code>mids</code> object to a <code>marginaleffects</code> function.</li>
+<li>Use an external package to create a list of imputed data
+frames.</li>
+<li>Apply the <code><a href="https://rdrr.io/pkg/miceadds/man/datalist2mids.html" class="external-link">datalist2mids()</a></code> function from the
+<code>miceadds</code> package to convert the list of imputed data frames
+to a <code>mids</code> object.</li>
+<li>Use the <code><a href="https://rdrr.io/r/base/with.html" class="external-link">with()</a></code> function to fit models, as illustrated
+in the <code>mice</code> section above.</li>
+<li>Pass the <code>mids</code> object to a <code>marginaleffects</code>
+function.</li>
 </ol>
-<p>Consider two imputation packages, which can both generate lists of imputed datasets: <code>Amelia</code> and <code>missRanger</code>.</p>
+<p>Consider two imputation packages, which can both generate lists of
+imputed datasets: <code>Amelia</code> and <code>missRanger</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gking.harvard.edu/amelia" class="external-link">Amelia</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/alexanderrobitzsch/miceadds" class="external-link">miceadds</a></span><span class="op">)</span></span>
@@ -201,7 +224,9 @@
 <div class="section level2">
 <h2 id="comparing-results-with-different-imputation-software">Comparing results with different imputation software<a class="anchor" aria-label="anchor" href="#comparing-results-with-different-imputation-software"></a>
 </h2>
-<p>We can use the <code>modelsummary</code> package to compare the results with listwise deletion to the results using different imputations software:</p>
+<p>We can use the <code>modelsummary</code> package to compare the
+results with listwise deletion to the results using different
+imputations software:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/modelsummary/" class="external-link">modelsummary</a></span><span class="op">)</span></span>
 <span></span>
@@ -679,21 +704,21 @@ virginica
 </td>
 </tr>
 <tr>
-<td style="text-align:left;box-shadow: 0px 1.5px">
+<td style="text-align:left;box-shadow: 0px 1px">
 </td>
-<td style="text-align:left;box-shadow: 0px 1.5px">
+<td style="text-align:left;box-shadow: 0px 1px">
 virginica
 </td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
+<td style="text-align:center;box-shadow: 0px 1px">
 (0.123)
 </td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
+<td style="text-align:center;box-shadow: 0px 1px">
 (0.111)
 </td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
+<td style="text-align:center;box-shadow: 0px 1px">
 (0.217)
 </td>
-<td style="text-align:center;box-shadow: 0px 1.5px">
+<td style="text-align:center;box-shadow: 0px 1px">
 (0.082)
 </td>
 </tr>
@@ -718,6 +743,24 @@ Num.Obs.
 </tr>
 <tr>
 <td style="text-align:left;">
+Num.Imp.
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+20
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 R2
 </td>
 <td style="text-align:left;">
@@ -726,10 +769,10 @@ R2
 0.953
 </td>
 <td style="text-align:center;">
-0.944
+0.930
 </td>
 <td style="text-align:center;">
-0.845
+0.873
 </td>
 <td style="text-align:center;">
 0.947
@@ -745,13 +788,13 @@ R2 Adj.
 0.949
 </td>
 <td style="text-align:center;">
-0.942
+0.928
 </td>
 <td style="text-align:center;">
-0.839
+0.869
 </td>
 <td style="text-align:center;">
-0.946
+0.945
 </td>
 </tr>
 <tr>
@@ -764,13 +807,10 @@ AIC
 −34.0
 </td>
 <td style="text-align:center;">
-−76.0
 </td>
 <td style="text-align:center;">
-77.7
 </td>
 <td style="text-align:center;">
-−84.5
 </td>
 </tr>
 <tr>
@@ -783,13 +823,10 @@ BIC
 −19.3
 </td>
 <td style="text-align:center;">
-−55.0
 </td>
 <td style="text-align:center;">
-98.8
 </td>
 <td style="text-align:center;">
-−63.4
 </td>
 </tr>
 <tr>
@@ -802,13 +839,10 @@ Log.Lik.
 23.997
 </td>
 <td style="text-align:center;">
-45.018
 </td>
 <td style="text-align:center;">
-−31.845
 </td>
 <td style="text-align:center;">
-49.238
 </td>
 </tr>
 <tr>
@@ -821,13 +855,10 @@ F
 220.780
 </td>
 <td style="text-align:center;">
-488.599
 </td>
 <td style="text-align:center;">
-156.870
 </td>
 <td style="text-align:center;">
-518.543
 </td>
 </tr>
 <tr>
@@ -840,23 +871,38 @@ RMSE
 0.16
 </td>
 <td style="text-align:center;">
-0.18
 </td>
 <td style="text-align:center;">
-0.30
 </td>
 <td style="text-align:center;">
-0.17
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section level2">
-<h2 id="weights-and-by-accessing-variables-from-the-original-dataset">Weights and <code>by</code>: Accessing variables from the original dataset<a class="anchor" aria-label="anchor" href="#weights-and-by-accessing-variables-from-the-original-dataset"></a>
+<h2 id="passing-new-data-arguments-newdata-wts-by-etc-">Passing new data arguments: <code>newdata</code>, <code>wts</code>,
+<code>by</code>, etc.<a class="anchor" aria-label="anchor" href="#passing-new-data-arguments-newdata-wts-by-etc-"></a>
 </h2>
-<p>Sometimes, we want to access variables from the original dataset to use as weights in the <code>wts</code> argument or as averaging category in the <code>by</code> argument. For some models, it can be challenging to preserve the full original data including all its columns, throughout the pipeline, from <code>mice</code>, to <code>lapply</code>, to <code>marginaleffects</code>. For example, some modeling packages do not store the original data in the model object, so <code>marginaleffects</code> has to try to retrieve it by name from the global environment, which may be impossible when estimating models in a loop or using <code>lapply</code>-style functional programming.</p>
-<p>In those cases, it can be useful to revert to a more manual (but still very easy) approach. Here is an example using the <code>wts</code> argument and <code>fixest</code> models:</p>
+<p>Sometimes we want to pass arguments changing or specifying the data
+on which we will do our analysis using <code>marginaleffects</code>.
+This can be for reasons such as wanting to specify the values or weights
+at which we evaluate e.g. <code>avg_slopes</code>, or due to the
+underlying models not robustly preserving all the original data columns
+(such as <code>fixest</code> objects not saving their data in the fit
+object making it potentially challenging to retrieve, and even if
+retrievable it will not include the weights used during fitting as a
+column as <code>wts</code> expects when given a string).</p>
+<p>If we are not using multiple imputation, or if we want to just pass a
+single dataset to the several fitted models after multiple imputation,
+we can pass a single dataset to the <code>newdata</code> argument.
+However, if we wish to supply each model in our list resulting after
+multiple imputation with a /different/ dataset on which to calculate
+results, we cannot use <code>newdata</code>. Instead, in this case it
+can be useful to revert to a more manual (but still very easy) approach.
+Here is an example calculating <code>avg_slopes</code> using a different
+set of weights for each of the <code>fixest</code> models which we fit
+after multiple imputation.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1024</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/amices/mice" class="external-link">mice</a></span><span class="op">)</span></span>
@@ -887,9 +933,9 @@ RMSE
 <span>    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/pool.html" class="external-link">pool</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Class: mipo    m = 5 </span></span>
 <span><span class="co">#&gt;   term m     estimate         ubar            b            t dfcom       df      riv    lambda       fmi</span></span>
-<span><span class="co">#&gt; 1  cyl 5 -0.134279397 7.095734e-04 2.347149e-03 3.526152e-03    32 3.084391 3.969397 0.7987683 0.8649152</span></span>
-<span><span class="co">#&gt; 2   hp 5  0.001649797 5.709125e-07 1.375524e-06 2.221542e-06    32 3.745510 2.891212 0.7430107 0.8192064</span></span>
-<span><span class="co">#&gt; 3  mpg 5  0.006083006 1.080596e-04 2.722367e-04 4.347437e-04    32 3.642855 3.023185 0.7514407 0.8262758</span></span>
+<span><span class="co">#&gt; 1  cyl 5 -0.134279397 7.095810e-04 2.347149e-03 3.526159e-03    32 3.084411 3.969355 0.7987666 0.8649138</span></span>
+<span><span class="co">#&gt; 2   hp 5  0.001649797 5.709181e-07 1.375524e-06 2.221547e-06    32 3.745533 2.891184 0.7430088 0.8192048</span></span>
+<span><span class="co">#&gt; 3  mpg 5  0.006083006 1.080596e-04 2.722367e-04 4.347437e-04    32 3.642855 3.023184 0.7514407 0.8262758</span></span>
 <span></span>
 <span><span class="co"># slopes with weights</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span>, \<span class="op">(</span><span class="va">i</span><span class="op">)</span> </span>
@@ -897,9 +943,9 @@ RMSE
 <span>    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/pool.html" class="external-link">pool</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Class: mipo    m = 5 </span></span>
 <span><span class="co">#&gt;   term m     estimate         ubar            b            t dfcom       df      riv    lambda       fmi</span></span>
-<span><span class="co">#&gt; 1  cyl 5 -0.135839559 7.279525e-04 2.480980e-03 3.705129e-03    32 3.029290 4.089794 0.8035284 0.8687008</span></span>
-<span><span class="co">#&gt; 2   hp 5  0.001671181 5.697579e-07 1.424665e-06 2.279356e-06    32 3.659881 3.000569 0.7500356 0.8251013</span></span>
-<span><span class="co">#&gt; 3  mpg 5  0.006251264 1.056050e-04 2.705362e-04 4.302484e-04    32 3.605310 3.074130 0.7545488 0.8288682</span></span></code></pre></div>
+<span><span class="co">#&gt; 1  cyl 5 -0.135839559 7.279608e-04 2.480980e-03 3.705137e-03    32 3.029311 4.089748 0.8035266 0.8686994</span></span>
+<span><span class="co">#&gt; 2   hp 5  0.001671181 5.697634e-07 1.424665e-06 2.279361e-06    32 3.659903 3.000540 0.7500337 0.8250998</span></span>
+<span><span class="co">#&gt; 3  mpg 5  0.006251264 1.056051e-04 2.705362e-04 4.302485e-04    32 3.605312 3.074127 0.7545486 0.8288680</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
