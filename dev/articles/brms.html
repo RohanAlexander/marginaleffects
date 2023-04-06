@@ -643,8 +643,8 @@ arguments to the <code><a href="https://mc-stan.org/rstantools/reference/posteri
 <span>    by <span class="op">=</span> <span class="st">"x"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  x Estimate 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  0    0.453 0.339  0.565</span></span>
-<span><span class="co">#&gt;  1    0.552 0.435  0.661</span></span>
+<span><span class="co">#&gt;  0    0.454 0.337  0.567</span></span>
+<span><span class="co">#&gt;  1    0.552 0.437  0.664</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: x, estimate, conf.low, conf.high</span></span></code></pre></div>
 <p>We can “integrate out” random effects in the other
@@ -657,7 +657,7 @@ arguments to the <code><a href="https://mc-stan.org/rstantools/reference/posteri
 <span>    sample_new_levels <span class="op">=</span> <span class="st">"gaussian"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;     x    1 - 0   0.0965 0.0484  0.163</span></span>
+<span><span class="co">#&gt;     x    1 - 0   0.0958 0.0458  0.164</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, conf.low, conf.high</span></span></code></pre></div>
 <p>This is nearly equivalent the <code>brmsmargins</code> command output
@@ -674,7 +674,7 @@ arguments to the <code><a href="https://mc-stan.org/rstantools/reference/posteri
 <span>  effects <span class="op">=</span> <span class="st">"integrateoutRE"</span><span class="op">)</span></span>
 <span><span class="va">bm</span><span class="op">$</span><span class="va">ContrastSummary</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            M        Mdn         LL        UL PercentROPE PercentMID   CI CIType ROPE  MID Label</span></span>
-<span><span class="co">#&gt; 1 0.09868111 0.09719162 0.04786873 0.1591689          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 0.09894562 0.09744905 0.04664259 0.1621969          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span></code></pre></div>
 <p>See the <a href="https://vincentarelbundock.github.io/marginaleffects/articles/alternative_software.html">alternative
 software vignette</a> for more information on
 <code>brmsmargins</code>.</p>
