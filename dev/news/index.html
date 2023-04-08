@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9007</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +53,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.11.1.9000" id="marginaleffects-01119000">marginaleffects 0.11.1.9000<a class="anchor" aria-label="anchor" href="#marginaleffects-01119000"></a></h2>
 <ul><li>
+<code><a href="../reference/predictions.html">predictions()</a></code> and <code><a href="../reference/predictions.html">avg_predictions()</a></code> no longer use an automatic backtransformation for GLM models unless <code>hypothesis</code> is <code>NULL</code>.</li>
+<li>
 <code><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov()</a></code> can be used to retrieve a full variance-covariance matrix from objects produced by <code><a href="../reference/comparisons.html">comparisons()</a></code>, <code><a href="../reference/slopes.html">slopes()</a></code>, <code><a href="../reference/predictions.html">predictions()</a></code>, or <code><a href="../reference/marginal_means.html">marginal_means()</a></code> objects.</li>
 <li>When processing objects obtained using <code>mice</code> multiple imputation, the pooled model using <code><a href="https://amices.org/mice/reference/pool.html" class="external-link">mice::pool</a></code> is attached to the <code>model</code> attribute of the output. This means that functions like <code><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelsummary.html" class="external-link">modelsummary::modelsummary()</a></code> will not erroneously report goodness-of-fit statistics from just a single model and will instead appropriately report the statistics for the pooled model. Thanks to <a href="https://github.com/Tristan-Siegfried" class="external-link">@Tristan-Siegfried</a> for PR <a href="https://github.com/vincentarelbundock/marginaleffects/issues/740" class="external-link">#740</a>.</li>
 </ul></div>

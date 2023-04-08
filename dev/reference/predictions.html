@@ -30,7 +30,7 @@ https://vincentarelbundock.github.io/marginaleffects/
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9007</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -275,7 +275,7 @@ arguments.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>For <code><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm()</a></code> or <code><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam::gam()</a></code> models with <code>type=NULL</code> (the default), <code>predictions()</code> first predicts on the link scale, and then backtransforms the estimates and confidence intervals. This implies that the <code>estimate</code> produced by <code>avg_predictions()</code> will not be exactly equal to the average of the <code>estimate</code> column produced by <code>predictions()</code>. Users can circumvent this behavior and average predictions directly on the response scale by setting <code>type="response"</code> explicitly. With <code>type="response"</code>, the intervals are symmetric and may have undesirable properties (e.g., stretching beyond the <code>[0,1]</code> bounds for a binary outcome regression).</p>
+    <p>For <code><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm()</a></code>, <code><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html" class="external-link">MASS::glm.nb</a></code>, <code><a href="https://rdrr.io/pkg/gam/man/gam.html" class="external-link">gam::gam()</a></code>, and <code>feols::feglm</code> models with <code>type</code>, <code>transform</code> and <code>hypothesis</code> all equal to <code>NULL</code> (the default), <code>predictions()</code> first predicts on the link scale, and then backtransforms the estimates and confidence intervals. This implies that the <code>estimate</code> produced by <code>avg_predictions()</code> will not be exactly equal to the average of the <code>estimate</code> column produced by <code>predictions()</code>. Users can circumvent this behavior and average predictions directly on the response scale by setting <code>type="response"</code> explicitly. With <code>type="response"</code>, the intervals are symmetric and may have undesirable properties (e.g., stretching beyond the <code>[0,1]</code> bounds for a binary outcome regression).</p>
     </div>
     <div class="section level2">
     <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a></h2>
