@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9012</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,6 +62,8 @@
 </ul><p>Bugs:</p>
 <ul><li>
 <code>brms</code> models with <code>nl=TRUE</code> and a single predictor generated an error. Thanks to <a href="https://github.com/Tristan-Siegried" class="external-link">@Tristan-Siegried</a> for Report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/759" class="external-link">#759</a>.</li>
+<li>
+<code><a href="../reference/predictions.html">avg_predictions()</a></code>: Incorrect group-wise averaging when all predictors are categorical, the <code>variables</code> variable is used, and we are averaging with <code>avg_</code> or the <code>by</code> argument. Thanks to BorgeJorge for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/766" class="external-link">#766</a>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.11.1" id="marginaleffects-0111">marginaleffects 0.11.1<a class="anchor" aria-label="anchor" href="#marginaleffects-0111"></a></h2><p class="text-muted">CRAN release: 2023-03-31</p>
