@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -411,11 +411,11 @@ new collapsed subgroups:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>, by <span class="op">=</span> <span class="va">by</span>, variables <span class="op">=</span> <span class="st">"cyl"</span>, hypothesis <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;           Term Mean Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  (4 &amp; 6) - (8) 1.07    0.848 0.515   2.24</span></span>
+<span><span class="co">#&gt;           Term  Mean Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  (4 &amp; 6) - (8) 0.271       1.39 0.195    0.845 -2.45      3</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Results averaged over levels of: vs, am, cyl </span></span>
-<span><span class="co">#&gt; Columns: term, estimate, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="custom-contrasts-and-linear-combinations">Custom Contrasts and Linear Combinations<a class="anchor" aria-label="anchor" href="#custom-contrasts-and-linear-combinations"></a>

@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -471,38 +471,21 @@ functions.</p>
 <h3 id="numeric-predictors">Numeric predictors<a class="anchor" aria-label="anchor" href="#numeric-predictors"></a>
 </h3>
 <p>We can also compute contrasts for differences in numeric variables.
-For example, we can see what happens to the adjusted predictions when we
-increment the <code>hp</code> variable by 1 unit (default) or by 5
-units:</p>
+For example, we can compare adjusted predictions for across a change in
+the regressor between two arbitrary values:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;    hp       +1  -0.0682     0.0101 -6.74   &lt;0.001 -0.0881 -0.0484</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    hp       +5   -0.341     0.0506 -6.74   &lt;0.001 -0.44 -0.242</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
-<p>Compare adjusted predictions for a change in the regressor between
-two arbitrary values:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">110</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">110</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
 <span><span class="co">#&gt;    hp 110 - 90    -1.36      0.202 -6.74   &lt;0.001 -1.76 -0.968</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
-<p>Compare adjusted predictions when the regressor changes across the
-interquartile range, across one or two standard deviations about its
-mean, or from across its full range:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<p>We can also easily compare adjusted predictions when the regressor
+changes across its interquartile range, across one or two standard
+deviations about its mean, or from across its full range:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="st">"iqr"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
@@ -530,6 +513,37 @@ mean, or from across its full range:</p>
 <span><span class="co">#&gt;    hp Max - Min    -19.3       2.86 -6.74   &lt;0.001 -24.9  -13.7</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<p>While we provided two values for the <code>hp</code> variable in each
+the previous numeric predictor examples, we can also specify a single
+value. While passing two values produces a comparison of adjusted
+predictions assuming all unit-level rows take on one of the two values,
+the function’s default behavior when passed a single value is to compare
+the adjusted predictions for when the regressor changes by the
+specified, constant number of units. For example, we can compare
+adjusted predictions when we increment the <code>hp</code> variable by 1
+unit (default) or by 5 units:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 %</span></span>
+<span><span class="co">#&gt;    hp       +1  -0.0682     0.0101 -6.74   &lt;0.001 -0.0881 -0.0484</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    hp       +5   -0.341     0.0506 -6.74   &lt;0.001 -0.44 -0.242</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<p>Because the <code><a href="../reference/comparisons.html">comparisons()</a></code> function computes a “centered”
+difference by default, the above actually computes the effect of
+incrementation from <code>hp - 0.5</code> to <code>hp + 0.5</code> and
+<code>hp - 2.5</code> to <code>hp + 2.5</code> rather than
+<code>hp</code> to <code>hp + 1</code> and <code>hp</code> to
+<code>hp + 5</code>. For more discussion of default and alternative
+centering, see the section of this vignette on “Forward, Backward,
+Centered, and Custom Differences.”</p>
 </div>
 </div>
 <div class="section level2">
@@ -859,7 +873,7 @@ call without <code>transform</code>.</p>
 <div class="section level2">
 <h2 id="differences">Differences<a class="anchor" aria-label="anchor" href="#differences"></a>
 </h2>
-<p>The default contrast calculate by the <code><a href="../reference/comparisons.html">comparisons()</a></code>
+<p>The default contrast calculated by the <code><a href="../reference/comparisons.html">comparisons()</a></code>
 function is a (untransformed) difference between two adjusted
 predictions. For instance, to estimate the effect of a change of 1 unit,
 we do:</p>

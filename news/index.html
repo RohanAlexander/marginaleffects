@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,25 @@
       <small>Source: <a href="https://github.com/vincentarelbundock/marginaleffects/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.11.2" id="marginaleffects-0112">marginaleffects 0.11.2<a class="anchor" aria-label="anchor" href="#marginaleffects-0112"></a></h2>
+<ul><li>Strings in <code>wts</code> are accepted with the <code>by</code> argument.</li>
+<li>
+<code><a href="../reference/predictions.html">predictions()</a></code> and <code><a href="../reference/predictions.html">avg_predictions()</a></code> no longer use an automatic backtransformation for GLM models unless <code>hypothesis</code> is <code>NULL</code>.</li>
+<li>
+<code><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov()</a></code> can be used to retrieve a full variance-covariance matrix from objects produced by <code><a href="../reference/comparisons.html">comparisons()</a></code>, <code><a href="../reference/slopes.html">slopes()</a></code>, <code><a href="../reference/predictions.html">predictions()</a></code>, or <code><a href="../reference/marginal_means.html">marginal_means()</a></code> objects.</li>
+<li>When processing objects obtained using <code>mice</code> multiple imputation, the pooled model using <code><a href="https://amices.org/mice/reference/pool.html" class="external-link">mice::pool</a></code> is attached to the <code>model</code> attribute of the output. This means that functions like <code><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelsummary.html" class="external-link">modelsummary::modelsummary()</a></code> will not erroneously report goodness-of-fit statistics from just a single model and will instead appropriately report the statistics for the pooled model. Thanks to <a href="https://github.com/Tristan-Siegfried" class="external-link">@Tristan-Siegfried</a> for PR <a href="https://github.com/vincentarelbundock/marginaleffects/issues/740" class="external-link">#740</a>.</li>
+<li>More informative error messages on some prediction problems. Thanks to <a href="https://github.com/andymilne" class="external-link">@andymilne</a> for Report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/751" class="external-link">#751</a>.</li>
+</ul><p>Performance:</p>
+<ul><li>
+<code><a href="../reference/inferences.html">inferences()</a></code> is now up to 17x faster and much more memory-efficient when <code>method</code> is <code>"boot"</code> or <code>"rsample"</code> (<a href="https://github.com/vincentarelbundock/marginaleffects/issues/770" class="external-link">#770</a>, <a href="https://github.com/vincentarelbundock/marginaleffects/issues/771" class="external-link">#771</a>, <a href="https://github.com/etiennebacher" class="external-link">@etiennebacher</a>).</li>
+</ul><p>Bugs:</p>
+<ul><li>
+<code>brms</code> models with <code>nl=TRUE</code> and a single predictor generated an error. Thanks to <a href="https://github.com/Tristan-Siegried" class="external-link">@Tristan-Siegried</a> for Report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/759" class="external-link">#759</a>.</li>
+<li>
+<code><a href="../reference/predictions.html">avg_predictions()</a></code>: Incorrect group-wise averaging when all predictors are categorical, the <code>variables</code> variable is used, and we are averaging with <code>avg_</code> or the <code>by</code> argument. Thanks to BorgeJorge for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/766" class="external-link">#766</a>.</li>
+<li>Bug when <code><a href="../reference/datagrid.html">datagrid()</a></code> when called inside a user-written function. Thanks to <a href="https://github.com/NickCH-K" class="external-link">@NickCH-K</a> for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/769" class="external-link">#769</a> and to <a href="https://github.com/capnrefsmmat" class="external-link">@capnrefsmmat</a> for the diagnostics.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.11.1" id="marginaleffects-0111">marginaleffects 0.11.1<a class="anchor" aria-label="anchor" href="#marginaleffects-0111"></a></h2><p class="text-muted">CRAN release: 2023-03-31</p>
 <p>Breaking change:</p>
@@ -490,7 +509,7 @@
 <p>New supported models:</p>
 <ul><li><code><a href="https://rdrr.io/pkg/mclogit/man/mclogit.html" class="external-link">mclogit::mclogit</a></code></li>
 <li><code><a href="https://rdrr.io/pkg/robust/man/lmRob.html" class="external-link">robust::lmRob</a></code></li>
-<li><code><a href="https://rdrr.io/pkg/robustlmm/man/rlmer.html" class="external-link">robustlmm::rlmer</a></code></li>
+<li><code>robustlmm::rlmer</code></li>
 <li>
 <code>fixest</code> confidence intervals in <code>predictions</code>
 </li>
