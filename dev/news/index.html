@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.1.9015</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,8 +51,15 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.11.1.9003" id="marginaleffects-01119003">marginaleffects 0.11.1.9003<a class="anchor" aria-label="anchor" href="#marginaleffects-01119003"></a></h2>
-<ul><li>Strings in <code>wts</code> are accepted with the <code>by</code> argument.</li>
+<h2 class="pkg-version" data-toc-text="0.11.2.9000" id="marginaleffects-01129000">marginaleffects 0.11.2.9000<a class="anchor" aria-label="anchor" href="#marginaleffects-01129000"></a></h2>
+<p>Breaking change:</p>
+<ul><li>Row order of output has changed for a few calls such as <code>avg_comparisons(by=...)</code>. This may break hypothesis tests conducted by indexing <code>b1</code>, <code>b2</code>, etc. This was necessary to fix Issue <a href="https://github.com/vincentarelbundock/marginaleffects/issues/776" class="external-link">#776</a>. Thanks to <a href="https://github.com/marcora" class="external-link">@marcora</a> for the report.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.11.2" id="marginaleffects-0112">marginaleffects 0.11.2<a class="anchor" aria-label="anchor" href="#marginaleffects-0112"></a></h2><p class="text-muted">CRAN release: 2023-05-13</p>
+<ul><li>
+<code><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov()</a></code> and <code><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef()</a></code> methods for <code>marginaleffects</code> objects.</li>
+<li>Strings in <code>wts</code> are accepted with the <code>by</code> argument.</li>
 <li>
 <code><a href="../reference/predictions.html">predictions()</a></code> and <code><a href="../reference/predictions.html">avg_predictions()</a></code> no longer use an automatic backtransformation for GLM models unless <code>hypothesis</code> is <code>NULL</code>.</li>
 <li>
