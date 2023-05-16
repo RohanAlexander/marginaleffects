@@ -7,7 +7,7 @@ https://vincentarelbundock.github.io/marginaleffects/
 
 
 Warning #1: Tests are conducted directly on the scale defined by the type argument. For some models, it can make sense to conduct hypothesis or equivalence tests on the "link" scale instead of the "response" scale which is often the default.
-Warning #2: For hypothesis tests on objects produced by the marginaleffects package, it is safer to use the hypothesis argument of the original function.  Using hypotheses() may not work in certain environments, in lists, or when working programmatically with *apply style functions.'><title>(Non-)Linear Tests for Null Hypotheses, Equivalence, Non Superiority, and Non Inferiority — hypotheses • marginaleffects</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="(Non-)Linear Tests for Null Hypotheses, Equivalence, Non Superiority, and Non Inferiority — hypotheses"><meta property="og:description" content='Uncertainty estimates are calculated as first-order approximate standard errors for linear or non-linear functions of a vector of random variables with known or estimated covariance matrix. In that sense, hypotheses emulates the behavior of the excellent and well-established car::deltaMethod and car::linearHypothesis functions, but it supports more models; requires fewer dependencies; expands the range of tests to equivalence and superiority/inferiority; and offers convenience features like robust standard errors.
+Warning #2: For hypothesis tests on objects produced by the marginaleffects package, it is safer to use the hypothesis argument of the original function.  Using hypotheses() may not work in certain environments, in lists, or when working programmatically with *apply style functions.'><title>(Non-)Linear Tests for Null Hypotheses, Joint Hypotheses, Equivalence, Non Superiority, and Non Inferiority — hypotheses • marginaleffects</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="(Non-)Linear Tests for Null Hypotheses, Joint Hypotheses, Equivalence, Non Superiority, and Non Inferiority — hypotheses"><meta property="og:description" content='Uncertainty estimates are calculated as first-order approximate standard errors for linear or non-linear functions of a vector of random variables with known or estimated covariance matrix. In that sense, hypotheses emulates the behavior of the excellent and well-established car::deltaMethod and car::linearHypothesis functions, but it supports more models; requires fewer dependencies; expands the range of tests to equivalence and superiority/inferiority; and offers convenience features like robust standard errors.
 To learn more, read the hypothesis tests vignette, visit the
 package website, or scroll down this page for a full list of vignettes:
 https://vincentarelbundock.github.io/marginaleffects/articles/hypothesis.html
@@ -62,7 +62,7 @@ Warning #2: For hypothesis tests on objects produced by the marginaleffects pack
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>(Non-)Linear Tests for Null Hypotheses, Equivalence, Non Superiority, and Non Inferiority</h1>
+      <img src="" class="logo" alt=""><h1>(Non-)Linear Tests for Null Hypotheses, Joint Hypotheses, Equivalence, Non Superiority, and Non Inferiority</h1>
       <small class="dont-index">Source: <a href="https://github.com/vincentarelbundock/marginaleffects/blob/HEAD/R/hypotheses.R" class="external-link"><code>R/hypotheses.R</code></a></small>
       <div class="d-none name"><code>hypotheses.Rd</code></div>
     </div>
@@ -85,6 +85,8 @@ package website, or scroll down this page for a full list of vignettes:</p><ul><
 <span>  conf_level <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  df <span class="op">=</span> <span class="cn">Inf</span>,</span>
 <span>  equivalence <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  joint <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  joint_test <span class="op">=</span> <span class="st">"f"</span>,</span>
 <span>  FUN <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -140,6 +142,19 @@ package website, or scroll down this page for a full list of vignettes:</p><ul><
 <dd><p>Numeric vector of length 2: bounds used for the two-one-sided test (TOST) of equivalence, and for the non-inferiority and non-superiority tests. See Details section below.</p></dd>
 
 
+<dt>joint</dt>
+<dd><p>Joint test of statistical significance. The null hypothesis value can be set using the <code>hypothesis</code> argument.</p><ul><li><p>FALSE: Hypotheses are not tested jointly.</p></li>
+<li><p>TRUE: All parameters are tested jointly.</p></li>
+<li><p>String: A regular expression to match parameters to be tested jointly. <code>grep(joint, perl = TRUE)</code></p></li>
+<li><p>Character vector of parameter names to be tested. Characters refer to the names of the vector returned by <code>coef(object)</code>.</p></li>
+<li><p>Integer vector of indices. Which parameters positions to test jointly.</p></li>
+</ul></dd>
+
+
+<dt>joint_test</dt>
+<dd><p>A character string specifying the type of test, either "f" or "chisq". The null hypothesis is set by the <code>hypothesis</code> argument, with default null equal to 0 for all parameters.</p></dd>
+
+
 <dt>FUN</dt>
 <dd><p><code>NULL</code> or function.</p><ul><li><p><code>NULL</code> (default): hypothesis test on a model's coefficients, or on the quantities estimated by one of the <code>marginaleffects</code> package functions.</p></li>
 <li><p>Function which accepts a model object and returns a numeric vector or a data.frame with two columns called <code>term</code> and <code>estimate</code>. This argument can be useful when users want to conduct a hypothesis test on an arbitrary function of quantities held in a model object.</p></li>
@@ -157,6 +172,17 @@ package. See the "Model-Specific Arguments" section of the
 arguments.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="joint-hypothesis-tests">Joint hypothesis tests<a class="anchor" aria-label="anchor" href="#joint-hypothesis-tests"></a></h2>
+    
+
+<p>The test statistic for the joint Wald test is calculated as (R * theta_hat - r)' * inv(R * V_hat * R') * (R * theta_hat - r) / Q,
+where theta_hat is the vector of estimated parameters, V_hat is the estimated covariance matrix, R is a Q x P matrix for testing Q hypotheses on P parameters,
+r is a Q x 1 vector for the null hypothesis, and Q is the number of rows in R. If the test is a Chi-squared test, the test statistic is not normalized.</p>
+<p>The p-value is then calculated based on either the F-distribution (for F-test) or the Chi-squared distribution (for Chi-squared test).
+For the F-test, the degrees of freedom are Q and (n - P), where n is the sample size and P is the number of parameters.
+For the Chi-squared test, the degrees of freedom are Q.</p>
+    </div>
     <div class="section level2">
     <h2 id="equivalence-inferiority-superiority">Equivalence, Inferiority, Superiority<a class="anchor" aria-label="anchor" href="#equivalence-inferiority-superiority"></a></h2>
     
@@ -345,6 +371,92 @@ arguments.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;0.001     0.973</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># joint hypotheses: character vector</span></span></span>
+<span class="r-in"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">*</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"as.factor(cyl)6:hp"</span>, <span class="st">"as.factor(cyl)8:hp"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Joint hypothesis test:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> as.factor(cyl)6:hp = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> as.factor(cyl)8:hp = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     F Pr(&gt;|F|) Df 1 Df 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.11    0.142    2   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: statistic, p.value, df1, df2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># joint hypotheses: regular expression</span></span></span>
+<span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Joint hypothesis test:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)6 = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)8 = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)6:hp = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)8:hp = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    F Pr(&gt;|F|) Df 1 Df 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5.7  0.00197    4   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: statistic, p.value, df1, df2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># joint hypotheses: integer indices</span></span></span>
+<span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Joint hypothesis test:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)6 = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)8 = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     F Pr(&gt;|F|) Df 1 Df 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6.12  0.00665    2   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: statistic, p.value, df1, df2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># joint hypotheses: different null hypotheses</span></span></span>
+<span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, hypothesis <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Joint hypothesis test:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)6 = 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)8 = 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     F Pr(&gt;|F|) Df 1 Df 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6.84  0.00411    2   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: statistic, p.value, df1, df2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, hypothesis <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Joint hypothesis test:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)6 = 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  as.factor(cyl)8 = 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     F Pr(&gt;|F|) Df 1 Df 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7.47  0.00273    2   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: statistic, p.value, df1, df2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># joint hypotheses: marginaleffects object</span></span></span>
+<span class="r-in"><span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">cmp</span>, joint <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Joint hypothesis test:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  cyl 6 - 4 = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  cyl 8 - 4 = 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    F Pr(&gt;|F|) Df 1 Df 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.6    0.219    2   29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: statistic, p.value, df1, df2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

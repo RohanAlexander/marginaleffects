@@ -755,13 +755,13 @@ periods:</p>
 <span>    variable.name <span class="op">=</span> <span class="st">"time"</span>,</span>
 <span>    id.vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"trt"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">did</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    id trt time           y</span></span>
-<span><span class="co">#&gt; 1:  1   0  pre  0.08364539</span></span>
-<span><span class="co">#&gt; 2:  2   1  pre  0.62628164</span></span>
-<span><span class="co">#&gt; 3:  3   1  pre  0.40097186</span></span>
-<span><span class="co">#&gt; 4:  4   0  pre -1.80241260</span></span>
-<span><span class="co">#&gt; 5:  5   1  pre  0.22135883</span></span>
-<span><span class="co">#&gt; 6:  6   1  pre -0.48857562</span></span></code></pre></div>
+<span><span class="co">#&gt;    id trt time          y</span></span>
+<span><span class="co">#&gt; 1:  1   1  pre  0.1393035</span></span>
+<span><span class="co">#&gt; 2:  2   0  pre -1.5124686</span></span>
+<span><span class="co">#&gt; 3:  3   1  pre -0.8258599</span></span>
+<span><span class="co">#&gt; 4:  4   1  pre -2.2307653</span></span>
+<span><span class="co">#&gt; 5:  5   1  pre  2.2250860</span></span>
+<span><span class="co">#&gt; 6:  6   0  pre  0.2293243</span></span></code></pre></div>
 <p>Then, we estimate a linear model with a multiple interaction between
 the time and the treatment indicators. We also compute contrasts at the
 mean for each treatment level:</p>
@@ -773,9 +773,9 @@ mean for each treatment level:</p>
 <span>    newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>trt <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>    variables <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term   Contrast Estimate Std. Error       z Pr(&gt;|z|)  2.5 % 97.5 % trt</span></span>
-<span><span class="co">#&gt;  time post - pre -0.00113     0.0738 -0.0153    0.988 -0.146  0.143   0</span></span>
-<span><span class="co">#&gt;  time post - pre  0.30672     0.0766  4.0032   &lt;0.001  0.157  0.457   1</span></span>
+<span><span class="co">#&gt;  Term   Contrast Estimate Std. Error     z Pr(&gt;|z|)  2.5 % 97.5 % trt</span></span>
+<span><span class="co">#&gt;  time post - pre    0.013     0.0805 0.161    0.872 -0.145  0.171   0</span></span>
+<span><span class="co">#&gt;  time post - pre    0.314     0.0766 4.105   &lt;0.001  0.164  0.464   1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, y, time, trt</span></span></code></pre></div>
 <p>Finally, we compute pairwise differences between contrasts. This is
@@ -788,9 +788,107 @@ the Diff-in-Diff estimate:</p>
 <span>    hypothesis <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;           Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;  Row 1 - Row 2   -0.308      0.106 -2.89   0.0038 -0.516 -0.0994</span></span>
+<span><span class="co">#&gt;  Row 1 - Row 2   -0.301      0.111 -2.71  0.00667 -0.519 -0.0836</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="joint-hyotheses-tests">Joint hyotheses tests<a class="anchor" aria-label="anchor" href="#joint-hyotheses-tests"></a>
+</h2>
+<p>The <code><a href="../reference/hypotheses.html">hypotheses()</a></code> function can also test multiple
+hypotheses jointly. For example, consider this model:</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">*</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        (Intercept)    as.factor(cyl)6    as.factor(cyl)8                 hp as.factor(cyl)6:hp as.factor(cyl)8:hp </span></span>
+<span><span class="co">#&gt;        35.98302564       -15.30917451       -17.90295193        -0.11277589         0.10516262         0.09853177</span></span></code></pre></div>
+<p>We may want to test the null hypothesis that two of the coefficients
+are jointly (both) equal to zero.</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"as.factor(cyl)6:hp"</span>, <span class="st">"as.factor(cyl)8:hp"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Joint hypothesis test:</span></span>
+<span><span class="co">#&gt; as.factor(cyl)6:hp = 0</span></span>
+<span><span class="co">#&gt; as.factor(cyl)8:hp = 0</span></span>
+<span><span class="co">#&gt;  </span></span>
+<span><span class="co">#&gt;     F Pr(&gt;|F|) Df 1 Df 2</span></span>
+<span><span class="co">#&gt;  2.11    0.142    2   26</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: statistic, p.value, df1, df2</span></span></code></pre></div>
+<p>The <code>joint</code> argument allows users to flexibly specify the
+parameters to be tested, using character vectors, integer indices, or
+Perl-compatible regular expressions. We can also specificy the null
+hypothesis for each parameter individually using the
+<code>hypothesis</code> argument.</p>
+<p>Naturally, the <code>hypotheses</code> function also works with
+<code>marginaleffects</code> objects.</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># joint hypotheses: regular expression</span></span>
+<span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Joint hypothesis test:</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)6 = 0</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)8 = 0</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)6:hp = 0</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)8:hp = 0</span></span>
+<span><span class="co">#&gt;  </span></span>
+<span><span class="co">#&gt;    F Pr(&gt;|F|) Df 1 Df 2</span></span>
+<span><span class="co">#&gt;  5.7  0.00197    4   26</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: statistic, p.value, df1, df2</span></span>
+<span></span>
+<span><span class="co"># joint hypotheses: integer indices</span></span>
+<span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Joint hypothesis test:</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)6 = 0</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)8 = 0</span></span>
+<span><span class="co">#&gt;  </span></span>
+<span><span class="co">#&gt;     F Pr(&gt;|F|) Df 1 Df 2</span></span>
+<span><span class="co">#&gt;  6.12  0.00665    2   26</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: statistic, p.value, df1, df2</span></span>
+<span></span>
+<span><span class="co"># joint hypotheses: different null hypotheses</span></span>
+<span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, hypothesis <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Joint hypothesis test:</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)6 = 1</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)8 = 1</span></span>
+<span><span class="co">#&gt;  </span></span>
+<span><span class="co">#&gt;     F Pr(&gt;|F|) Df 1 Df 2</span></span>
+<span><span class="co">#&gt;  6.84  0.00411    2   26</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: statistic, p.value, df1, df2</span></span>
+<span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, hypothesis <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Joint hypothesis test:</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)6 = 1</span></span>
+<span><span class="co">#&gt;  as.factor(cyl)8 = 2</span></span>
+<span><span class="co">#&gt;  </span></span>
+<span><span class="co">#&gt;     F Pr(&gt;|F|) Df 1 Df 2</span></span>
+<span><span class="co">#&gt;  7.47  0.00273    2   26</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: statistic, p.value, df1, df2</span></span>
+<span></span>
+<span><span class="co"># joint hypotheses: marginaleffects object</span></span>
+<span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">cmp</span>, joint <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Joint hypothesis test:</span></span>
+<span><span class="co">#&gt;  cyl 6 - 4 = 0</span></span>
+<span><span class="co">#&gt;  cyl 8 - 4 = 0</span></span>
+<span><span class="co">#&gt;  </span></span>
+<span><span class="co">#&gt;    F Pr(&gt;|F|) Df 1 Df 2</span></span>
+<span><span class="co">#&gt;  1.6    0.219    2   29</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Columns: statistic, p.value, df1, df2</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="equivalence-non-inferiority-and-non-superiority-tests">Equivalence, non-inferiority, and non-superiority tests<a class="anchor" aria-label="anchor" href="#equivalence-non-inferiority-and-non-superiority-tests"></a>
@@ -818,7 +916,7 @@ Science. 2018;1(2):259-269. <a href="doi:10.1177/2515245918770963" class="uri">d
 tests to any of the quantities generated by the package, as well as to
 arbitrary functions of a model’s parameters. To illustrate, we begin by
 estimating a simple linear regression model:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 <p>The rest of this section considers several quantities estimated by
 <code>marginaleffects</code>.</p>
@@ -827,7 +925,7 @@ estimating a simple linear regression model:</p>
 </h5>
 <p>Consider a single prediction, where all predictors are held at their
 median or mode:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/predictions.html">predictions</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span></span>
 <span><span class="va">p</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -837,7 +935,7 @@ median or mode:</p>
 <span><span class="co">#&gt; Columns: rowid, estimate, std.error, statistic, p.value, conf.low, conf.high, mpg, hp, gear</span></span></code></pre></div>
 <p>Now we specify an equivalence interval (or “region”) for predictions
 between 17 and 18:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">p</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">18</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %  hp gear p (NonInf) p (NonSup) p (Equiv)</span></span>
@@ -864,13 +962,13 @@ outside the equivalence interval.</li>
 equivalence, non-inferiority, and non-superiority tests for model
 coefficients, and for arbitrary functions of model coefficients.</p>
 <p>Our estimate of the 4th coefficient in the model is:</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span></span>
 <span><span class="co">#&gt; factor(gear)5 </span></span>
 <span><span class="co">#&gt;      6.574763</span></span></code></pre></div>
 <p>We can test if this parameter is likely to fall in the [5,7] interval
 by:</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Estimate Std. Error z Pr(&gt;|z|) 2.5 % 97.5 % p (NonInf) p (NonSup) p (Equiv)</span></span>
@@ -888,7 +986,7 @@ produced by the <code>marginaleffects</code> package. For example,
 imagine that, for substantive or theoretical reasons, an average slope
 between -0.1 and 0.1 is uninteresting. We can conduct an equivalence
 test to check if this is the case:</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"hp"</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.1</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 % p (NonInf) p (NonSup) p (Equiv)</span></span>
@@ -903,11 +1001,11 @@ equivalence” that we have defined by the interval.</p>
 <h5 id="example-4-difference-between-comparisons-contrasts">Example 4: Difference between comparisons (contrasts)<a class="anchor" aria-label="anchor" href="#example-4-difference-between-comparisons-contrasts"></a>
 </h5>
 <p>Consider a model with a multiplicative interaction:</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 <p>The average contrast for a change of 1 unit in <code>hp</code>
 differs based on the value of <code>gear</code>:</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">int</span>, variables <span class="op">=</span> <span class="st">"hp"</span>, by <span class="op">=</span> <span class="st">"gear"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast gear Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 %</span></span>
@@ -918,7 +1016,7 @@ differs based on the value of <code>gear</code>:</p>
 <span><span class="co">#&gt; Columns: term, contrast, gear, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p>Are these contrasts different from one another? Let’s look at the
 pairwise differences between them:</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">int</span>, variables <span class="op">=</span> <span class="st">"hp"</span>, by <span class="op">=</span> <span class="st">"gear"</span>,</span>
 <span>    hypothesis <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -930,7 +1028,7 @@ pairwise differences between them:</p>
 <span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
 <p>We consider that these pairwise comparisons are “equivalent to zero”
 when they fall in the [-.1, .1] interval:</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">int</span>, variables <span class="op">=</span> <span class="st">"hp"</span>, by <span class="op">=</span> <span class="st">"gear"</span>,</span>
 <span>    hypothesis <span class="op">=</span> <span class="st">"pairwise"</span>,</span>
 <span>    equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.1</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span>
@@ -953,7 +1051,7 @@ may fall outside the interval.</p>
 <p>This example shows the equivalence between results produced by the
 <code>emmeans</code> package and the <code><a href="../reference/marginal_means.html">marginal_means()</a></code>
 function:</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rvlenth/emmeans" class="external-link">emmeans</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">conc</span><span class="op">)</span> <span class="op">~</span> <span class="va">source</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">percent</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">pigs</span><span class="op">)</span></span>
@@ -998,7 +1096,7 @@ function:</p>
 <p>Now we show that the results produced by <code><a href="../reference/hypotheses.html">hypotheses()</a></code>
 are identical to the results produced by the <code>equivalence</code>
 package in the case of a simple t-test:</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">equivalence</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1024</span><span class="op">)</span></span>
@@ -1036,8 +1134,8 @@ package in the case of a simple t-test:</p>
 <span><span class="co"># test with {marginaleffects} package</span></span>
 <span><span class="fu"><a href="../reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span>, df <span class="op">=</span> <span class="va">e</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Estimate Std. Error     t Pr(&gt;|t|) 2.5 % 97.5 % p (NonInf) p (NonSup) p (Equiv)</span></span>
-<span><span class="co">#&gt;    b2    0.106      0.548 0.194    0.848 -1.05   1.26     &lt;0.001     &lt;0.001    &lt;0.001</span></span>
+<span><span class="co">#&gt;  Term Estimate Std. Error     t Pr(&gt;|t|) 2.5 % 97.5 %   Df p (NonInf) p (NonSup) p (Equiv)</span></span>
+<span><span class="co">#&gt;    b2    0.106      0.548 0.194    0.848 -1.05   1.26 17.6     &lt;0.001     &lt;0.001    &lt;0.001</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, df, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv</span></span></code></pre></div>
 </div>
