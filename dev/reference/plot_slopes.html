@@ -26,7 +26,7 @@ https://vincentarelbundock.github.io/marginaleffects
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.2.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.2.9007</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,18 +127,7 @@ See the "Plots" vignette and website for tutorials and information on how to cus
 
 
 <dt>newdata</dt>
-<dd><p>Grid of predictor values at which we evaluate the slopes.</p><ul><li><p><code>NULL</code> (default): Unit-level slopes for each observed value in the original dataset. See <code><a href="https://easystats.github.io/insight/reference/get_data.html" class="external-link">insight::get_data()</a></code></p></li>
-<li><p>data frame: Unit-level slopes for each row of the <code>newdata</code> data frame.</p></li>
-<li><p><code><a href="datagrid.html">datagrid()</a></code> call to specify a custom grid of regressors. For example:</p><ul><li><p><code>newdata = datagrid(cyl = c(4, 6))</code>: <code>cyl</code> variable equal to 4 and 6 and other regressors fixed at their means or modes.</p></li>
-<li><p>See the Examples section and the <code><a href="datagrid.html">datagrid()</a></code> documentation.</p></li>
-</ul></li>
-<li><p>string:</p><ul><li><p>"mean": Marginal Effects at the Mean. Slopes when each predictor is held at its mean or mode.</p></li>
-<li><p>"median": Marginal Effects at the Median. Slopes when each predictor is held at its median or mode.</p></li>
-<li><p>"marginalmeans": Marginal Effects at Marginal Means. See Details section below.</p></li>
-<li><p>"tukey": Marginal Effects at Tukey's 5 numbers.</p></li>
-<li><p>"grid": Marginal Effects on a grid of representative numbers (Tukey's 5 numbers and unique values of categorical predictors).</p></li>
-</ul></li>
-</ul></dd>
+<dd><p>When <code>newdata</code> is <code>NULL</code>, the grid is determined by the <code>condition</code> argument. When <code>newdata</code> is not <code>NULL</code>, the argument behaves in the same way as in the <code><a href="slopes.html">slopes()</a></code> function.</p></dd>
 
 
 <dt>type</dt>
