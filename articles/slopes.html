@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.12.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -265,8 +265,8 @@ marginal effects of Bill Length for each Species, we do:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;            Term    Contrast   species Estimate Std. Error    z Pr(&gt;|z|)   2.5 %  97.5 %</span></span>
 <span><span class="co">#&gt;  bill_length_mm mean(dY/dX) Adelie     0.04354    0.00879 4.95   &lt;0.001  0.0263 0.06077</span></span>
-<span><span class="co">#&gt;  bill_length_mm mean(dY/dX) Chinstrap  0.03680    0.00976 3.77   &lt;0.001  0.0177 0.05594</span></span>
 <span><span class="co">#&gt;  bill_length_mm mean(dY/dX) Gentoo     0.00287    0.00284 1.01    0.312 -0.0027 0.00844</span></span>
+<span><span class="co">#&gt;  bill_length_mm mean(dY/dX) Chinstrap  0.03680    0.00976 3.77   &lt;0.001  0.0177 0.05594</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, species, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p>This is equivalent to manually taking the mean of the
@@ -323,8 +323,8 @@ individuals:</p>
 <span><span class="co">#&gt;  flipper_length_mm dY/dX                0.0233    0.00550  4.232   &lt;0.001  0.01250  0.03408           43.9               180  Adelie</span></span>
 <span><span class="co">#&gt;  flipper_length_mm dY/dX                0.0325    0.00851  3.817   &lt;0.001  0.01581  0.04918           43.9               180  Gentoo</span></span>
 <span><span class="co">#&gt;  species           Chinstrap - Adelie  -0.2111    0.10618 -1.988   0.0468 -0.41916 -0.00294           43.9               180  Adelie</span></span>
-<span><span class="co">#&gt;  species           Gentoo - Adelie      0.1591    0.30242  0.526   0.5988 -0.43361  0.75185           43.9               180  Adelie</span></span>
 <span><span class="co">#&gt;  species           Chinstrap - Adelie  -0.2111    0.10618 -1.988   0.0468 -0.41916 -0.00294           43.9               180  Gentoo</span></span>
+<span><span class="co">#&gt;  species           Gentoo - Adelie      0.1591    0.30242  0.526   0.5988 -0.43361  0.75185           43.9               180  Adelie</span></span>
 <span><span class="co">#&gt;  species           Gentoo - Adelie      0.1591    0.30242  0.526   0.5988 -0.43361  0.75185           43.9               180  Gentoo</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, large_penguin, bill_length_mm, flipper_length_mm, species</span></span></code></pre></div>
@@ -459,11 +459,11 @@ simulated data:</p>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">estimate</span>, <span class="va">truth</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Estimate</span></span>
-<span><span class="co">#&gt;    -7.006</span></span>
-<span><span class="co">#&gt;    -3.007</span></span>
-<span><span class="co">#&gt;     0.991</span></span>
-<span><span class="co">#&gt;     4.990</span></span>
-<span><span class="co">#&gt;     8.988</span></span>
+<span><span class="co">#&gt;    -7.007</span></span>
+<span><span class="co">#&gt;    -3.004</span></span>
+<span><span class="co">#&gt;     0.999</span></span>
+<span><span class="co">#&gt;     5.002</span></span>
+<span><span class="co">#&gt;     9.005</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: estimate, truth</span></span></code></pre></div>
 <p>We can plot conditional adjusted predictions with

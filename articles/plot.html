@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.12.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -183,8 +183,8 @@ predictors. For example:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;    species Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
 <span><span class="co">#&gt;  Adelie        3701       27.2 136.1   &lt;0.001  3647   3754</span></span>
-<span><span class="co">#&gt;  Chinstrap     3733       40.5  92.2   &lt;0.001  3654   3812</span></span>
 <span><span class="co">#&gt;  Gentoo        5076       30.1 168.5   &lt;0.001  5017   5135</span></span>
+<span><span class="co">#&gt;  Chinstrap     3733       40.5  92.2   &lt;0.001  3654   3812</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: species, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
 <p>We can plot those predictions by using the analogous command:</p>
@@ -197,11 +197,11 @@ variables:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/predictions.html">predictions</a></span><span class="op">(</span><span class="va">mod</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"species"</span>, <span class="st">"island"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;    species    island Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  Adelie    Torgersen     3706       46.8  79.2   &lt;0.001  3615   3798</span></span>
 <span><span class="co">#&gt;  Adelie    Biscoe        3710       50.4  73.7   &lt;0.001  3611   3808</span></span>
 <span><span class="co">#&gt;  Adelie    Dream         3688       44.6  82.6   &lt;0.001  3601   3776</span></span>
-<span><span class="co">#&gt;  Adelie    Torgersen     3706       46.8  79.2   &lt;0.001  3615   3798</span></span>
-<span><span class="co">#&gt;  Chinstrap Dream         3733       40.5  92.2   &lt;0.001  3654   3812</span></span>
 <span><span class="co">#&gt;  Gentoo    Biscoe        5076       30.1 168.5   &lt;0.001  5017   5135</span></span>
+<span><span class="co">#&gt;  Chinstrap Dream         3733       40.5  92.2   &lt;0.001  3654   3812</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: species, island, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Note that certain species only live on certain islands. Visually:</p>
@@ -462,15 +462,15 @@ For example,</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group Estimate Std. Error    z Pr(&gt;|z|)   2.5 % 97.5 %</span></span>
 <span><span class="co">#&gt;      3   0.5316     0.1127 4.72   &lt;0.001  0.3107  0.753</span></span>
-<span><span class="co">#&gt;      4   0.4093     0.1058 3.87   &lt;0.001  0.2018  0.617</span></span>
-<span><span class="co">#&gt;      5   0.0591     0.0423 1.40   0.1623 -0.0238  0.142</span></span>
 <span><span class="co">#&gt;      3   0.5316     0.1127 4.72   &lt;0.001  0.3107  0.753</span></span>
-<span><span class="co">#&gt;      4   0.4093     0.1058 3.87   &lt;0.001  0.2018  0.617</span></span>
+<span><span class="co">#&gt;      3   0.4492     0.1200 3.74   &lt;0.001  0.2140  0.684</span></span>
+<span><span class="co">#&gt;      3   0.4944     0.1111 4.45   &lt;0.001  0.2765  0.712</span></span>
+<span><span class="co">#&gt;      3   0.4213     0.1142 3.69   &lt;0.001  0.1974  0.645</span></span>
 <span><span class="co">#&gt; --- 86 rows omitted. See ?avg_predictions and ?print.marginaleffects --- </span></span>
-<span><span class="co">#&gt;      4   0.5170     0.2148 2.41   0.0161  0.0959  0.938</span></span>
+<span><span class="co">#&gt;      5   0.6894     0.1956 3.52   &lt;0.001  0.3059  1.073</span></span>
+<span><span class="co">#&gt;      5   0.1650     0.1290 1.28   0.2010 -0.0879  0.418</span></span>
+<span><span class="co">#&gt;      5   0.1245     0.0698 1.78   0.0744 -0.0123  0.261</span></span>
 <span><span class="co">#&gt;      5   0.3779     0.3244 1.17   0.2440 -0.2579  1.014</span></span>
-<span><span class="co">#&gt;      3   0.4994     0.1119 4.46   &lt;0.001  0.2800  0.719</span></span>
-<span><span class="co">#&gt;      4   0.4339     0.1075 4.03   &lt;0.001  0.2231  0.645</span></span>
 <span><span class="co">#&gt;      5   0.0667     0.0458 1.46   0.1455 -0.0231  0.157</span></span>
 <span><span class="co">#&gt; Columns: rowid, group, estimate, std.error, statistic, p.value, conf.low, conf.high, gear, mpg, hp</span></span></code></pre></div>
 <p>We can plot those estimates in the same way as before, by specifying
@@ -514,20 +514,20 @@ are accessible via standard <code>R</code> operators. For example:</p>
 <span><span class="va">p</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  cyl Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    4     26.7      0.695 38.4   &lt;0.001  25.3   28.0</span></span>
 <span><span class="co">#&gt;    6     19.7      0.871 22.7   &lt;0.001  18.0   21.5</span></span>
+<span><span class="co">#&gt;    4     26.7      0.695 38.4   &lt;0.001  25.3   28.0</span></span>
 <span><span class="co">#&gt;    8     15.1      0.616 24.5   &lt;0.001  13.9   16.3</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: cyl, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="va">p</span><span class="op">$</span><span class="va">estimate</span></span>
-<span><span class="co">#&gt; [1] 26.66364 19.74286 15.10000</span></span>
+<span><span class="co">#&gt; [1] 19.74286 26.66364 15.10000</span></span>
 <span></span>
 <span><span class="va">p</span><span class="op">$</span><span class="va">std.error</span></span>
-<span><span class="co">#&gt; [1] 0.6951236 0.8713835 0.6161612</span></span>
+<span><span class="co">#&gt; [1] 0.8713835 0.6951236 0.6161612</span></span>
 <span></span>
 <span><span class="va">p</span><span class="op">$</span><span class="va">conf.low</span></span>
-<span><span class="co">#&gt; [1] 25.30122 18.03498 13.89235</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 18.03498 25.30122 13.89235</span></span></code></pre></div>
 <p>This allows us to plot all results very easily with standard plotting
 functions:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">

@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.12.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,20 @@
       <small>Source: <a href="https://github.com/vincentarelbundock/marginaleffects/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.12.0" id="marginaleffects-0120">marginaleffects 0.12.0<a class="anchor" aria-label="anchor" href="#marginaleffects-0120"></a></h2><p class="text-muted">CRAN release: 2023-05-20</p>
+<p>Breaking change:</p>
+<ul><li>Row order of output has changed for many calls, especially those using the <code>by</code> argument. This may break hypothesis tests conducted by indexing <code>b1</code>, <code>b2</code>, etc. This was necessary to fix Issue <a href="https://github.com/vincentarelbundock/marginaleffects/issues/776" class="external-link">#776</a>. Thanks to <a href="https://github.com/marcora" class="external-link">@marcora</a> for the report.</li>
+</ul><p>New:</p>
+<ul><li>
+<code><a href="../reference/hypotheses.html">hypotheses()</a></code>: Joint hypothesis tests (F and Chi-square) with the <code>joint</code> and <code>joint_test</code> arguments.</li>
+<li>
+<code>vcov.hypotheses</code> method.</li>
+<li>
+<code>wts</code> is now available in <code><a href="../reference/plot_predictions.html">plot_predictions()</a></code>, <code><a href="../reference/plot_comparisons.html">plot_comparisons()</a></code>, and <code><a href="../reference/plot_slopes.html">plot_slopes()</a></code>.</li>
+</ul><p>Bug:</p>
+<ul><li>Wrong order of rows in bayesian models with <code>by</code> argument. Thanks to <a href="https://github.com/shirdekel" class="external-link">@shirdekel</a> for report <a href="https://github.com/vincentarelbundock/marginaleffects/issues/782" class="external-link">#782</a>.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.11.2" id="marginaleffects-0112">marginaleffects 0.11.2<a class="anchor" aria-label="anchor" href="#marginaleffects-0112"></a></h2><p class="text-muted">CRAN release: 2023-05-13</p>
 <ul><li>

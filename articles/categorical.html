@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.11.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.12.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,12 +140,12 @@ and then report the average slope for each level of the outcome:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group Term Estimate Std. Error     z Pr(&gt;|z|)     2.5 %   97.5 %</span></span>
-<span><span class="co">#&gt;      3  hp  -0.00377   0.001514 -2.49  0.01283 -0.006735 -0.00080</span></span>
-<span><span class="co">#&gt;      4  hp   0.00201   0.000957  2.10  0.03545  0.000137  0.00389</span></span>
-<span><span class="co">#&gt;      5  hp   0.00175   0.000833  2.11  0.03522  0.000122  0.00339</span></span>
 <span><span class="co">#&gt;      3  mpg -0.07014   0.015480 -4.53  &lt; 0.001 -0.100479 -0.03980</span></span>
+<span><span class="co">#&gt;      3  hp  -0.00377   0.001514 -2.49  0.01283 -0.006735 -0.00080</span></span>
 <span><span class="co">#&gt;      4  mpg  0.03747   0.013857  2.70  0.00685  0.010311  0.06463</span></span>
+<span><span class="co">#&gt;      4  hp   0.00201   0.000957  2.10  0.03545  0.000137  0.00389</span></span>
 <span><span class="co">#&gt;      5  mpg  0.03267   0.009572  3.41  &lt; 0.001  0.013907  0.05143</span></span>
+<span><span class="co">#&gt;      5  hp   0.00175   0.000833  2.11  0.03522  0.000122  0.00339</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: group, term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
@@ -178,10 +178,10 @@ marginal effects as follows:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group Term  Estimate Std. Error       z Pr(&gt;|z|)    2.5 %    97.5 %</span></span>
 <span><span class="co">#&gt;      3  hp  -3.44e-05    0.00225 -0.0153  0.98780 -0.00444  0.004372</span></span>
-<span><span class="co">#&gt;      4  hp  -4.67e-03    0.00221 -2.1126  0.03464 -0.00900 -0.000337</span></span>
-<span><span class="co">#&gt;      5  hp   4.70e-03    0.00130  3.6167  &lt; 0.001  0.00215  0.007250</span></span>
 <span><span class="co">#&gt;      3  mpg -7.13e-02    0.02645 -2.6959  0.00702 -0.12316 -0.019466</span></span>
+<span><span class="co">#&gt;      4  hp  -4.67e-03    0.00221 -2.1126  0.03464 -0.00900 -0.000337</span></span>
 <span><span class="co">#&gt;      4  mpg  1.59e-02    0.02010  0.7916  0.42859 -0.02348  0.055293</span></span>
+<span><span class="co">#&gt;      5  hp   4.70e-03    0.00130  3.6167  &lt; 0.001  0.00215  0.007250</span></span>
 <span><span class="co">#&gt;      5  mpg  5.54e-02    0.01642  3.3735  &lt; 0.001  0.02322  0.087593</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: group, term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
