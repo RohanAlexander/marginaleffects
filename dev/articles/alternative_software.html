@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.11.2.9007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -256,9 +256,9 @@ argument would not be necessary.</p>
 <span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast  Estimate Std. Error         z Pr(&gt;|z|)     2.5 %   97.5 %</span></span>
+<span><span class="co">#&gt;   hp     +1    -1.56e-10   6.80e-07 -0.000229    1.000 -1.33e-06 1.33e-06</span></span>
 <span><span class="co">#&gt;   cyl    6 - 4 -2.22e-01   3.94e-01 -0.564207    0.573 -9.94e-01 5.50e-01</span></span>
 <span><span class="co">#&gt;   cyl    8 - 4 -5.95e-01   5.11e-01 -1.163438    0.245 -1.60e+00 4.07e-01</span></span>
-<span><span class="co">#&gt;   hp     +1    -1.56e-10   6.80e-07 -0.000229    1.000 -1.33e-06 1.33e-06</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, vs, hp, cyl</span></span></code></pre></div>
 </div>
@@ -287,7 +287,7 @@ estimate a model and compute pairwise contrasts by subgroup using
 <span><span class="co">#&gt; resp = no:</span></span>
 <span><span class="co">#&gt;  contrast      estimate     SE  df z.ratio p.value</span></span>
 <span><span class="co">#&gt;  scold - curse  -0.0152 0.1097 Inf  -0.139  0.8898</span></span>
-<span><span class="co">#&gt;  shout - curse  -0.2533 0.1022 Inf  -2.479  0.0132</span></span>
+<span><span class="co">#&gt;  shout - curse  -0.2533 0.1022 Inf  -2.478  0.0132</span></span>
 <span><span class="co">#&gt;  shout - scold  -0.2381 0.0886 Inf  -2.686  0.0072</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; resp = perhaps:</span></span>
@@ -377,13 +377,13 @@ argument:</p>
 <span>    type <span class="op">=</span> <span class="st">"link"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   Term                  Contrast    resp Estimate Std. Error      z Pr(&gt;|z|)  2.5 %   97.5 %</span></span>
-<span><span class="co">#&gt;  btype mean(scold) - mean(curse) no       -0.0152     0.1097 -0.139  0.88976 -0.230  0.19972</span></span>
-<span><span class="co">#&gt;  btype mean(scold) - mean(curse) perhaps  -0.2393     0.1178 -2.031  0.04221 -0.470 -0.00842</span></span>
-<span><span class="co">#&gt;  btype mean(scold) - mean(curse) yes       0.0391     0.1292  0.302  0.76239 -0.214  0.29234</span></span>
-<span><span class="co">#&gt;  btype mean(shout) - mean(curse) no       -0.2533     0.1022 -2.479  0.01319 -0.454 -0.05300</span></span>
-<span><span class="co">#&gt;  btype mean(shout) - mean(curse) perhaps  -0.0834     0.1330 -0.627  0.53090 -0.344  0.17737</span></span>
+<span><span class="co">#&gt;  btype mean(scold) - mean(curse) no       -0.0152     0.1097 -0.139  0.88977 -0.230  0.19975</span></span>
+<span><span class="co">#&gt;  btype mean(scold) - mean(curse) perhaps  -0.2393     0.1178 -2.031  0.04222 -0.470 -0.00841</span></span>
+<span><span class="co">#&gt;  btype mean(scold) - mean(curse) yes       0.0391     0.1292  0.302  0.76239 -0.214  0.29235</span></span>
+<span><span class="co">#&gt;  btype mean(shout) - mean(curse) no       -0.2533     0.1022 -2.478  0.01320 -0.454 -0.05297</span></span>
+<span><span class="co">#&gt;  btype mean(shout) - mean(curse) perhaps  -0.0834     0.1330 -0.627  0.53092 -0.344  0.17738</span></span>
 <span><span class="co">#&gt;  btype mean(shout) - mean(curse) yes       0.5802     0.1784  3.252  0.00115  0.230  0.92987</span></span>
-<span><span class="co">#&gt;  btype mean(shout) - mean(scold) no       -0.2381     0.0886 -2.686  0.00723 -0.412 -0.06436</span></span>
+<span><span class="co">#&gt;  btype mean(shout) - mean(scold) no       -0.2381     0.0886 -2.686  0.00723 -0.412 -0.06435</span></span>
 <span><span class="co">#&gt;  btype mean(shout) - mean(scold) perhaps   0.1559     0.1358  1.148  0.25103 -0.110  0.42215</span></span>
 <span><span class="co">#&gt;  btype mean(shout) - mean(scold) yes       0.5411     0.1888  2.866  0.00416  0.171  0.91116</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -410,9 +410,9 @@ large grids or for the full original dataset.</p>
 <span><span class="fu"><a href="../reference/slopes.html">slopes</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate Std. Error      z Pr(&gt;|z|)   2.5 % 97.5 %  hp cyl</span></span>
+<span><span class="co">#&gt;   hp     dY/dX -0.00785      0.011 -0.713    0.476 -0.0294 0.0137 147   4</span></span>
 <span><span class="co">#&gt;   cyl    6 - 4 -0.22219      0.394 -0.564    0.573 -0.9940 0.5496 147   4</span></span>
 <span><span class="co">#&gt;   cyl    8 - 4 -0.59469      0.511 -1.163    0.245 -1.5965 0.4071 147   4</span></span>
-<span><span class="co">#&gt;   hp     dY/dX -0.00785      0.011 -0.713    0.476 -0.0294 0.0137 147   4</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, vs, hp, cyl</span></span></code></pre></div>
 <p>Link scale, user-specified values:</p>
@@ -426,9 +426,9 @@ large grids or for the full original dataset.</p>
 <span><span class="fu"><a href="../reference/slopes.html">slopes</a></span><span class="op">(</span><span class="va">mod</span>, type <span class="op">=</span> <span class="st">"link"</span>, newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate Std. Error        z Pr(&gt;|z|)     2.5 %   97.5 %  hp cyl</span></span>
+<span><span class="co">#&gt;   hp     dY/dX  -0.0326   3.39e-02 -0.96144    0.336    -0.099 3.38e-02 147   4</span></span>
 <span><span class="co">#&gt;   cyl    6 - 4  -0.9049   1.63e+00 -0.55506    0.579    -4.100 2.29e+00 147   4</span></span>
 <span><span class="co">#&gt;   cyl    8 - 4 -19.5418   4.37e+03 -0.00447    0.996 -8579.030 8.54e+03 147   4</span></span>
-<span><span class="co">#&gt;   hp     dY/dX  -0.0326   3.39e-02 -0.96144    0.336    -0.099 3.38e-02 147   4</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, vs, hp, cyl</span></span></code></pre></div>
 </div>
@@ -555,12 +555,12 @@ benefits of <code>marginaleffects</code> over these packages are:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">mar</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    mpg cyl disp  hp drat    wt  qsec vs am gear carb   fitted se.fitted   dydx_cyl    dydx_hp   dydx_wt Var_dydx_cyl  Var_dydx_hp Var_dydx_wt X_weights X_at_number</span></span>
-<span><span class="co">#&gt; 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4 22.82043 0.6876212 -0.9416168 -0.0180381 -3.166973    0.3035123 0.0001410453   0.5484517        NA           1</span></span>
-<span><span class="co">#&gt; 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4 22.01285 0.6056817 -0.9416168 -0.0180381 -3.166973    0.3035123 0.0001410453   0.5484517        NA           1</span></span>
-<span><span class="co">#&gt; 3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1 25.96040 0.7349593 -0.9416168 -0.0180381 -3.166973    0.3035123 0.0001410453   0.5484517        NA           1</span></span>
-<span><span class="co">#&gt; 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1 20.93608 0.5800910 -0.9416168 -0.0180381 -3.166973    0.3035123 0.0001410453   0.5484517        NA           1</span></span>
-<span><span class="co">#&gt; 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2 17.16780 0.8322986 -0.9416168 -0.0180381 -3.166973    0.3035123 0.0001410453   0.5484517        NA           1</span></span>
-<span><span class="co">#&gt; 6 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1 20.25036 0.6638322 -0.9416168 -0.0180381 -3.166973    0.3035123 0.0001410453   0.5484517        NA           1</span></span>
+<span><span class="co">#&gt; 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4 22.82043 0.6876212 -0.9416168 -0.0180381 -3.166973    0.3035079 0.0001410453   0.5484518        NA           1</span></span>
+<span><span class="co">#&gt; 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4 22.01285 0.6056817 -0.9416168 -0.0180381 -3.166973    0.3035079 0.0001410453   0.5484518        NA           1</span></span>
+<span><span class="co">#&gt; 3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1 25.96040 0.7349593 -0.9416168 -0.0180381 -3.166973    0.3035079 0.0001410453   0.5484518        NA           1</span></span>
+<span><span class="co">#&gt; 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1 20.93608 0.5800910 -0.9416168 -0.0180381 -3.166973    0.3035079 0.0001410453   0.5484518        NA           1</span></span>
+<span><span class="co">#&gt; 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2 17.16780 0.8322986 -0.9416168 -0.0180381 -3.166973    0.3035079 0.0001410453   0.5484518        NA           1</span></span>
+<span><span class="co">#&gt; 6 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1 20.25036 0.6638322 -0.9416168 -0.0180381 -3.166973    0.3035079 0.0001410453   0.5484518        NA           1</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mfx</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -582,14 +582,14 @@ benefits of <code>marginaleffects</code> over these packages are:</p>
 <code class="sourceCode R"><span><span class="va">mar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/margins/man/margins.html" class="external-link">margins</a></span><span class="op">(</span><span class="va">mod</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu">prediction</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/prediction/man/mean_or_mode.html" class="external-link">mean_or_mode</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span>, unit_ses <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">mar</span><span class="op">)</span></span>
 <span><span class="co">#&gt;        mpg    cyl     disp       hp     drat      wt     qsec     vs      am   gear   carb   fitted se.fitted   dydx_cyl    dydx_hp   dydx_wt Var_dydx_cyl  Var_dydx_hp Var_dydx_wt SE_dydx_cyl SE_dydx_hp SE_dydx_wt X_weights X_at_number</span></span>
-<span><span class="co">#&gt; 1 20.09062 6.1875 230.7219 146.6875 3.596563 3.21725 17.84875 0.4375 0.40625 3.6875 2.8125 20.09062 0.4439832 -0.9416168 -0.0180381 -3.166973    0.3035082 0.0001410452   0.5484409   0.5509157 0.01187625  0.7405679        NA           1</span></span>
+<span><span class="co">#&gt; 1 20.09062 6.1875 230.7219 146.6875 3.596563 3.21725 17.84875 0.4375 0.40625 3.6875 2.8125 20.09062 0.4439832 -0.9416168 -0.0180381 -3.166973    0.3035082 0.0001410452     0.54846   0.5509157 0.01187624  0.7405808        NA           1</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/slopes.html">slopes</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 %   97.5 %</span></span>
-<span><span class="co">#&gt;   cyl   -0.942     0.5509 -1.71   0.0874 -2.0214  0.13815</span></span>
+<span><span class="co">#&gt;   cyl   -0.942     0.5509 -1.71   0.0874 -2.0214  0.13816</span></span>
 <span><span class="co">#&gt;   hp    -0.018     0.0119 -1.52   0.1288 -0.0413  0.00524</span></span>
-<span><span class="co">#&gt;   wt    -3.167     0.7406 -4.28   &lt;0.001 -4.6185 -1.71546</span></span>
+<span><span class="co">#&gt;   wt    -3.167     0.7406 -4.28   &lt;0.001 -4.6185 -1.71548</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: rowid, term, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, mpg, cyl, hp, wt</span></span></code></pre></div>
 </div>
@@ -611,14 +611,14 @@ compute 64 unit-level marginal effects estimates:</p>
 <span><span class="va">mar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/margins/man/margins.html" class="external-link">margins</a></span><span class="op">(</span><span class="va">mod</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mar</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  factor    cyl     AME     SE       z      p   lower   upper</span></span>
-<span><span class="co">#&gt;     cyl 4.0000  0.0381 0.5998  0.0636 0.9493 -1.1374  1.2137</span></span>
+<span><span class="co">#&gt;     cyl 4.0000  0.0381 0.5999  0.0636 0.9493 -1.1376  1.2139</span></span>
 <span><span class="co">#&gt;     cyl 6.0000  0.0381 0.5999  0.0636 0.9493 -1.1376  1.2139</span></span>
 <span><span class="co">#&gt;     cyl 8.0000  0.0381 0.5999  0.0636 0.9493 -1.1376  1.2139</span></span>
 <span><span class="co">#&gt;      hp 4.0000 -0.0878 0.0267 -3.2937 0.0010 -0.1400 -0.0355</span></span>
 <span><span class="co">#&gt;      hp 6.0000 -0.0499 0.0154 -3.2397 0.0012 -0.0800 -0.0197</span></span>
 <span><span class="co">#&gt;      hp 8.0000 -0.0120 0.0108 -1.1065 0.2685 -0.0332  0.0092</span></span>
 <span><span class="co">#&gt;      wt 4.0000 -3.1198 0.6613 -4.7175 0.0000 -4.4160 -1.8236</span></span>
-<span><span class="co">#&gt;      wt 6.0000 -3.1198 0.6613 -4.7176 0.0000 -4.4160 -1.8236</span></span>
+<span><span class="co">#&gt;      wt 6.0000 -3.1198 0.6613 -4.7175 0.0000 -4.4160 -1.8236</span></span>
 <span><span class="co">#&gt;      wt 8.0000 -3.1198 0.6613 -4.7175 0.0000 -4.4160 -1.8236</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span></span>
@@ -827,7 +827,7 @@ the mean:”</p>
 <span><span class="va">J_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html" class="external-link">aggregate</a></span><span class="op">(</span><span class="va">J</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mfx</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span>, FUN <span class="op">=</span> <span class="va">mean</span><span class="op">)</span></span>
 <span><span class="va">J_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">J_mean</span><span class="op">[</span>, <span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">J_mean</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">J_mean</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">J_mean</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.03486650 0.03882204 0.01251382</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.03486650 0.03882204 0.01251383</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -976,7 +976,7 @@ show highlight parallels and differences in syntax.</p>
 <span><span class="va">m</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">p2</span> <span class="op">-</span> <span class="va">p1</span><span class="op">)</span> <span class="op">/</span> <span class="va">h</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums.html" class="external-link">rowMeans</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.025</span>, <span class="fl">.975</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;        50%       2.5%      97.5% </span></span>
-<span><span class="co">#&gt; 0.07014014 0.05437810 0.09159280</span></span></code></pre></div>
+<span><span class="co">#&gt; 0.07001767 0.05469002 0.09241120</span></span></code></pre></div>
 <p>Compute AMEs with <code>brmsmargins</code>:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://joshuawiley.com/brmsmargins/reference/brmsmargins.html" class="external-link">brmsmargins</a></span><span class="op">(</span></span>
@@ -986,15 +986,15 @@ show highlight parallels and differences in syntax.</p>
 <span>  CI <span class="op">=</span> <span class="fl">0.95</span>,</span>
 <span>  CIType <span class="op">=</span> <span class="st">"ETI"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">bm</span><span class="op">$</span><span class="va">ContrastSummary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;            M        Mdn        LL        UL PercentROPE PercentMID   CI CIType ROPE  MID   Label</span></span>
-<span><span class="co">#&gt; 1 0.07118446 0.07014014 0.0543781 0.0915928          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME MPG</span></span></code></pre></div>
+<span><span class="co">#&gt;            M        Mdn         LL        UL PercentROPE PercentMID   CI CIType ROPE  MID   Label</span></span>
+<span><span class="co">#&gt; 1 0.07110289 0.07001767 0.05469002 0.0924112          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME MPG</span></span></code></pre></div>
 <p>Compute AMEs using <code>marginaleffects</code>:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">bayes.logistic</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate   2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;   am     1 - 0  -0.2660 -0.4206 -0.0739</span></span>
-<span><span class="co">#&gt;   mpg    dY/dX   0.0701  0.0544  0.0916</span></span>
+<span><span class="co">#&gt;   am     1 - 0   -0.267 -0.4188 -0.0763</span></span>
+<span><span class="co">#&gt;   mpg    dY/dX    0.070  0.0547  0.0924</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, conf.low, conf.high</span></span></code></pre></div>
 <p>The <code>mpg</code> element of the <code>Effect</code> column from
@@ -1041,16 +1041,13 @@ the output from <code>brmsmargins</code>.</p>
 <span>      silent <span class="op">=</span> <span class="fl">2</span>, refresh <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>      chains <span class="op">=</span> <span class="fl">4L</span>, cores <span class="op">=</span> <span class="fl">4L</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: There were 61 divergent transitions after warmup. See</span></span>
+<span><span class="co">#&gt; Warning: There were 9 divergent transitions after warmup. See</span></span>
 <span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
 <span><span class="co">#&gt; to find out why this is a problem and how to eliminate them.</span></span>
 <span><span class="co">#&gt; Warning: Examine the pairs() plot to diagnose sampling problems</span></span>
 <span><span class="co">#&gt; Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span></span>
 <span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#bulk-ess</span></span>
-<span><span class="co">#&gt; Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span></span>
-<span><span class="co">#&gt; Running the chains for more iterations may help. See</span></span>
-<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#tail-ess</span></span></code></pre></div>
+<span><span class="co">#&gt; https://mc-stan.org/misc/warnings.html#bulk-ess</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="ame-including-random-effects">AME: Including Random Effects<a class="anchor" aria-label="anchor" href="#ame-including-random-effects"></a>
 </h4>
@@ -1064,12 +1061,12 @@ the output from <code>brmsmargins</code>.</p>
 <span>  CIType <span class="op">=</span> <span class="st">"ETI"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">bm</span><span class="op">$</span><span class="va">ContrastSummary</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           M       Mdn         LL        UL PercentROPE PercentMID   CI CIType ROPE  MID Label</span></span>
-<span><span class="co">#&gt; 1 0.1113512 0.1114643 0.08037199 0.1419889          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
+<span><span class="co">#&gt; 1 0.1118585 0.1117003 0.08167159 0.1434978          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mlogit</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;     x    1 - 0    0.111 0.0796   0.14</span></span>
+<span><span class="co">#&gt;     x    1 - 0    0.111 0.0818  0.142</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, conf.low, conf.high</span></span></code></pre></div>
 </div>
@@ -1086,12 +1083,12 @@ the output from <code>brmsmargins</code>.</p>
 <span>  CIType <span class="op">=</span> <span class="st">"ETI"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">bm</span><span class="op">$</span><span class="va">ContrastSummary</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           M       Mdn         LL        UL PercentROPE PercentMID   CI CIType ROPE  MID Label</span></span>
-<span><span class="co">#&gt; 1 0.1038071 0.1032705 0.06328158 0.1485747          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
+<span><span class="co">#&gt; 1 0.1035957 0.1027827 0.06455371 0.1478527          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mlogit</span>, re_formula <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;     x    1 - 0    0.101 0.0626  0.143</span></span>
+<span><span class="co">#&gt;     x    1 - 0      0.1 0.0636  0.142</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, conf.low, conf.high</span></span></code></pre></div>
 </div>
@@ -1138,14 +1135,14 @@ the output from <code>brmsmargins</code>.</p>
 <span>  CI <span class="op">=</span> <span class="fl">0.95</span>, CIType <span class="op">=</span> <span class="st">"ETI"</span>,</span>
 <span>  effects <span class="op">=</span> <span class="st">"fixedonly"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">bm</span><span class="op">$</span><span class="va">ContrastSummary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          M     Mdn        LL       UL PercentROPE PercentMID   CI CIType ROPE  MID Label</span></span>
-<span><span class="co">#&gt; 1 1.625042 1.63264 0.7558805 2.497346          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
+<span><span class="co">#&gt;          M      Mdn        LL       UL PercentROPE PercentMID   CI CIType ROPE  MID Label</span></span>
+<span><span class="co">#&gt; 1 1.616692 1.616495 0.7227972 2.466072          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">ls.fe</span>, re_formula <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   grp    1 - 0     1.01 0.348   1.68</span></span>
-<span><span class="co">#&gt;   x      dY/dX     1.63 0.756   2.50</span></span>
+<span><span class="co">#&gt;   grp    1 - 0     1.02 0.342   1.69</span></span>
+<span><span class="co">#&gt;   x      dY/dX     1.62 0.723   2.47</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, conf.low, conf.high</span></span></code></pre></div>
 </div>
@@ -1165,7 +1162,7 @@ the output from <code>brmsmargins</code>.</p>
 <span>  effects <span class="op">=</span> <span class="st">"fixedonly"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">bm</span><span class="op">$</span><span class="va">ContrastSummary</span><span class="op">)</span></span>
 <span><span class="co">#&gt;          M      Mdn       LL       UL PercentROPE PercentMID   CI CIType ROPE  MID   Label</span></span>
-<span><span class="co">#&gt; 1 4.901384 4.895236 4.404996 5.417512          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME grp</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 4.897214 4.888706 4.412579 5.408414          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME grp</span></span></code></pre></div>
 <p>In <code>marginaleffects</code> we use the <code><a href="../reference/comparisons.html">comparisons()</a></code>
 function and the <code>variables</code> argument:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
@@ -1175,7 +1172,7 @@ function and the <code>variables</code> argument:</p>
 <span>  dpar <span class="op">=</span> <span class="st">"sigma"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   grp    1 - 0      4.9   4.4   5.42</span></span>
+<span><span class="co">#&gt;   grp    1 - 0     4.89  4.41   5.41</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, conf.low, conf.high</span></span></code></pre></div>
 </div>
@@ -1190,14 +1187,14 @@ function and the <code>variables</code> argument:</p>
 <span>  CI <span class="op">=</span> <span class="fl">0.95</span>, CIType <span class="op">=</span> <span class="st">"ETI"</span>, dpar <span class="op">=</span> <span class="st">"sigma"</span>,</span>
 <span>  effects <span class="op">=</span> <span class="st">"fixedonly"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">bm</span><span class="op">$</span><span class="va">ContrastSummary</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          M      Mdn       LL       UL PercentROPE PercentMID   CI CIType ROPE  MID Label</span></span>
-<span><span class="co">#&gt; 1 4.455297 4.443977 3.500513 5.449401          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
+<span><span class="co">#&gt;          M      Mdn      LL       UL PercentROPE PercentMID   CI CIType ROPE  MID Label</span></span>
+<span><span class="co">#&gt; 1 4.459865 4.452953 3.52165 5.463088          NA         NA 0.95    ETI &lt;NA&gt; &lt;NA&gt; AME x</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">ls.fe</span>, dpar <span class="op">=</span> <span class="st">"sigma"</span>, re_formula <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   grp    1 - 0     4.90   4.4   5.42</span></span>
-<span><span class="co">#&gt;   x      dY/dX     4.44   3.5   5.45</span></span>
+<span><span class="co">#&gt;   grp    1 - 0     4.89  4.41   5.41</span></span>
+<span><span class="co">#&gt;   x      dY/dX     4.45  3.52   5.46</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, conf.low, conf.high</span></span></code></pre></div>
 </div>
