@@ -235,26 +235,26 @@ to estimate the standard error.</li>
 <span><span class="va">mod</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/predictions.html">predictions</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/inferences.html">inferences</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"simulation"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Estimate Std. Error    2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  7.84e-01      0.192 2.73e-01  0.976</span></span>
-<span><span class="co">#&gt;  7.84e-01      0.165 3.38e-01  0.965</span></span>
-<span><span class="co">#&gt;  8.98e-01      0.137 4.78e-01  0.991</span></span>
-<span><span class="co">#&gt;  8.74e-01      0.228 1.77e-01  0.995</span></span>
-<span><span class="co">#&gt;  1.31e-02      0.178 5.67e-05  0.674</span></span>
+<span><span class="co">#&gt;  7.84e-01      0.191 2.41e-01  0.972</span></span>
+<span><span class="co">#&gt;  7.84e-01      0.162 3.59e-01  0.959</span></span>
+<span><span class="co">#&gt;  8.98e-01      0.143 4.43e-01  0.987</span></span>
+<span><span class="co">#&gt;  8.74e-01      0.223 2.06e-01  0.996</span></span>
+<span><span class="co">#&gt;  1.31e-02      0.191 1.22e-04  0.756</span></span>
 <span><span class="co">#&gt; --- 22 rows omitted. See ?avg_predictions and ?print.marginaleffects --- </span></span>
-<span><span class="co">#&gt;  3.83e-01      0.292 2.15e-02  0.958</span></span>
-<span><span class="co">#&gt;  1.21e-06      0.130 1.18e-12  0.403</span></span>
-<span><span class="co">#&gt;  6.89e-03      0.160 2.74e-05  0.625</span></span>
-<span><span class="co">#&gt;  8.07e-11      0.165 2.22e-16  0.851</span></span>
-<span><span class="co">#&gt;  7.95e-01      0.167 3.38e-01  0.969</span></span>
+<span><span class="co">#&gt;  3.83e-01      0.288 2.09e-02  0.949</span></span>
+<span><span class="co">#&gt;  1.21e-06      0.127 4.65e-12  0.288</span></span>
+<span><span class="co">#&gt;  6.89e-03      0.138 3.11e-05  0.544</span></span>
+<span><span class="co">#&gt;  8.07e-11      0.158 2.22e-16  0.668</span></span>
+<span><span class="co">#&gt;  7.95e-01      0.164 3.67e-01  0.962</span></span>
 <span><span class="co">#&gt; Columns: rowid, estimate, std.error, conf.low, conf.high, vs, hp, wt, gear</span></span>
 <span></span>
 <span><span class="va">mod</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/slopes.html">avg_slopes</a></span><span class="op">(</span>vcov <span class="op">=</span> <span class="op">~</span><span class="va">gear</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/inferences.html">inferences</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"simulation"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Term Contrast Estimate Std. Error   2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;  gear    4 - 3 -0.04200    0.05728 -0.0916 0.13524</span></span>
-<span><span class="co">#&gt;  gear    5 - 3 -0.19591    0.26971 -0.4887 0.33647</span></span>
-<span><span class="co">#&gt;  hp      dY/dX -0.00465    0.00442 -0.0115 0.00432</span></span>
-<span><span class="co">#&gt;  wt      dY/dX  0.01068    0.30764 -0.5669 0.72653</span></span>
+<span><span class="co">#&gt;  gear    4 - 3 -0.03849    0.05819 -0.0916 0.14045</span></span>
+<span><span class="co">#&gt;  gear    5 - 3 -0.18615    0.27649 -0.4878 0.33350</span></span>
+<span><span class="co">#&gt;  hp      dY/dX -0.00483    0.00456 -0.0114 0.00496</span></span>
+<span><span class="co">#&gt;  wt      dY/dX  0.02176    0.32190 -0.5738 0.69901</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, conf.low, conf.high</span></span></code></pre></div>
 <p>Since simulation based inference generates <code>iter</code>

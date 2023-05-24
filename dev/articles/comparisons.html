@@ -136,11 +136,11 @@ predictors in the model. Therefore, we need to decide <em>where</em> in
 the predictor space we want to evaluate the quantity of interest
 described above.</p>
 <p>By default, <code><a href="../reference/comparisons.html">comparisons()</a></code> will compute estimates for
-every row of the original dataset that was used to fit a model. There
-are 1313 observations in the titanic dataset. Therefore, if we just
-execute the code in the previous section, we will obtain 1313 estimates
-of the difference between the probability of survival in 3rd and 1st
-class:</p>
+every row of the original dataset that was used to fit a model. The
+estimation was made on 756 observations in the titanic dataset.
+Therefore, if we just execute the code in the previous section, we will
+obtain 756 estimates of the difference between the probability of
+survival in 3rd and 1st class:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># Step 1: Quantity</span></span>
@@ -733,8 +733,8 @@ were perfectly balanced?</p>
 <p>For example, imagine that one of the control variables in your model
 is a variable measuring educational attainment in 4 categories: No high
 school, High school, Some college, Completed college. The contrast
-between marginal is a weighted average of contrasts estimated in the 4
-cells, and each of those contrasts will be weighted equally in the
+between marginal means is a weighted average of contrasts estimated in
+the 4 cells, and each of those contrasts will be weighted equally in the
 overall estimate. If the population of interest is highly unbalanced in
 the educational categories, then the estimate computed in this way will
 not be most useful.</p>
