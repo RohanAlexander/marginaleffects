@@ -132,9 +132,7 @@ the <code>marginaleffects:::type_dictionary</code> dataframe.</p></dd>
 
 
 <dt>wts</dt>
-<dd><p>string or numeric: weights to use when computing average
-contrasts or slopes. These weights only affect the averaging in
-<code>avg_*()</code> or with the <code>by</code> argument, and not the unit-level estimates themselves.</p><ul><li><p>string: column name of the weights variable in <code>newdata</code>. When supplying a column name to <code>wts</code>, it is recommended to supply the original data (including the weights variable) explicitly to <code>newdata</code>.</p></li>
+<dd><p>string or numeric: weights to use when computing average contrasts or slopes. These weights only affect the averaging in <code>avg_*()</code> or with the <code>by</code> argument, and not the unit-level estimates themselves. Internally, estimates and weights are passed to the <code><a href="https://rdrr.io/r/stats/weighted.mean.html" class="external-link">weighted.mean()</a></code> function.</p><ul><li><p>string: column name of the weights variable in <code>newdata</code>. When supplying a column name to <code>wts</code>, it is recommended to supply the original data (including the weights variable) explicitly to <code>newdata</code>.</p></li>
 <li><p>numeric: vector of length equal to the number of rows in the original data or in <code>newdata</code> (if supplied).</p></li>
 </ul></dd>
 
