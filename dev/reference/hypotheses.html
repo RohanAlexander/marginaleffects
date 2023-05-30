@@ -26,7 +26,7 @@ Warning #2: For hypothesis tests on objects produced by the marginaleffects pack
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -209,51 +209,51 @@ For the Chi-squared test, the degrees of freedom are Q.</p>
 <span class="r-in"><span><span class="co"># When `FUN` and `hypotheses` are `NULL`, `hypotheses()` returns a data.frame of parameters</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 %    97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b1  35.8460      2.041 17.56   &lt;0.001 31.8457 39.846319</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b2  -0.0231      0.012 -1.93   0.0531 -0.0465  0.000306</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b3  -3.1814      0.720 -4.42   &lt;0.001 -4.5918 -1.771012</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b4  -3.3590      1.402 -2.40   0.0166 -6.1062 -0.611803</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b5  -3.1859      2.170 -1.47   0.1422 -7.4399  1.068169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 %    97.5 %     S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b1  35.8460      2.041 17.56   &lt;0.001 31.8457 39.846319 227.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b2  -0.0231      0.012 -1.93   0.0531 -0.0465  0.000306   4.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b3  -3.1814      0.720 -4.42   &lt;0.001 -4.5918 -1.771012  16.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b4  -3.3590      1.402 -2.40   0.0166 -6.1062 -0.611803   5.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b5  -3.1859      2.170 -1.47   0.1422 -7.4399  1.068169   2.8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Test of equality between coefficients</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"hp = wt"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  hp = wt     3.16       0.72 4.39   &lt;0.001  1.75   4.57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %    S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  hp = wt     3.16       0.72 4.39   &lt;0.001  1.75   4.57 16.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Non-linear function</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"exp(hp + wt) = 0.1"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  exp(hp + wt) = 0.1  -0.0594     0.0292 -2.04   0.0418 -0.117 -0.0022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 %   S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  exp(hp + wt) = 0.1  -0.0594     0.0292 -2.04   0.0418 -0.117 -0.0022 4.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Robust standard errors</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"hp = wt"</span>, vcov <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  hp = wt     3.16      0.805 3.92   &lt;0.001  1.58   4.74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %    S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  hp = wt     3.16      0.805 3.92   &lt;0.001  1.58   4.74 13.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># b1, b2, ... shortcuts can be used to identify the position of the</span></span></span>
 <span class="r-in"><span><span class="co"># parameters of interest in the output of FUN</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"b2 = b3"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  b2 = b3     3.16       0.72 4.39   &lt;0.001  1.75   4.57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %    S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  b2 = b3     3.16       0.72 4.39   &lt;0.001  1.75   4.57 16.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># term names with special characters have to be enclosed in backticks</span></span></span>
@@ -261,19 +261,19 @@ For the Chi-squared test, the degrees of freedom are Q.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                             Term Estimate Std. Error      z Pr(&gt;|z|) 2.5 %</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  `factor(cyl)6` = `factor(cyl)8`   -0.173       1.65 -0.105    0.917 -3.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3.07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  97.5 %   S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    3.07 0.1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">*</span> <span class="va">drat</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod2</span>, hypothesis <span class="op">=</span> <span class="st">"`hp:drat` = drat"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  `hp:drat` = drat    -6.08       2.89 -2.1   0.0357 -11.8 -0.405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %   S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  `hp:drat` = drat    -6.08       2.89 -2.1   0.0357 -11.8 -0.405 4.8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># predictions(), comparisons(), and slopes()</span></span></span>
@@ -281,28 +281,28 @@ For the Chi-squared test, the degrees of freedom are Q.</p>
 <span class="r-in"><span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">cmp</span>, hypothesis <span class="op">=</span> <span class="st">"b1 = b2"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  b1=b2   -0.288      0.125 -2.31   0.0209 -0.532 -0.0435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Term Estimate Std. Error     z Pr(&gt;|z|)   S  2.5 %  97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  b1=b2   -0.288      0.125 -2.31   0.0209 5.6 -0.532 -0.0435</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mfx</span> <span class="op">&lt;-</span> <span class="fu"><a href="slopes.html">slopes</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">cmp</span>, hypothesis <span class="op">=</span> <span class="st">"b2 = 0.2"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 % 97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  b2=0.2    0.101      0.131 0.774    0.439 -0.155  0.358</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Term Estimate Std. Error     z Pr(&gt;|z|)   S  2.5 % 97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  b2=0.2    0.101      0.131 0.774    0.439 1.2 -0.155  0.358</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">pre</span> <span class="op">&lt;-</span> <span class="fu"><a href="predictions.html">predictions</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="fu"><a href="datagrid.html">datagrid</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fl">110</span>, mpg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">35</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">pre</span>, hypothesis <span class="op">=</span> <span class="st">"b1 = b2"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Term  Estimate Std. Error      z Pr(&gt;|z|)     2.5 %   97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  b1=b2 -3.57e-05   0.000172 -0.207    0.836 -0.000373 0.000302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Term  Estimate Std. Error      z Pr(&gt;|z|)   S     2.5 %   97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  b1=b2 -3.57e-05   0.000172 -0.207    0.836 0.3 -0.000373 0.000302</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The `FUN` argument can be used to compute standard errors for fitted values</span></span></span>
@@ -312,30 +312,30 @@ For the Chi-squared test, the degrees of freedom are Q.</p>
 <span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod</span>, FUN <span class="op">=</span> <span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error      z Pr(&gt;|z|) 2.5 % 97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b1   -1.098      0.716 -1.534    0.125 -2.50  0.305</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b2   -1.098      0.716 -1.534    0.125 -2.50  0.305</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b3    0.233      0.781  0.299    0.765 -1.30  1.764</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b4   -0.595      0.647 -0.919    0.358 -1.86  0.674</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b5   -0.418      0.647 -0.645    0.519 -1.69  0.851</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b6   -5.026      2.195 -2.290    0.022 -9.33 -0.725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error      z Pr(&gt;|z|) 2.5 % 97.5 %   S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b1   -1.098      0.716 -1.534    0.125 -2.50  0.305 3.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b2   -1.098      0.716 -1.534    0.125 -2.50  0.305 3.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b3    0.233      0.781  0.299    0.765 -1.30  1.764 0.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b4   -0.595      0.647 -0.919    0.358 -1.86  0.674 1.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b5   -0.418      0.647 -0.645    0.519 -1.69  0.851 0.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b6   -5.026      2.195 -2.290    0.022 -9.33 -0.725 5.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">x</span>, type <span class="op">=</span> <span class="st">"response"</span>, newdata <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">hypotheses</span><span class="op">(</span><span class="va">mod</span>, FUN <span class="op">=</span> <span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 % 97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b1  0.25005     0.1342 1.863  0.06243 -0.0130 0.5131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b2  0.25005     0.1342 1.863  0.06243 -0.0130 0.5131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b3  0.55803     0.1926 2.898  0.00376  0.1806 0.9355</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b4  0.35560     0.1483 2.399  0.01646  0.0650 0.6462</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b5  0.39710     0.1550 2.561  0.01043  0.0932 0.7010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    b6  0.00652     0.0142 0.459  0.64635 -0.0213 0.0344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 % 97.5 %   S</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b1  0.25005     0.1342 1.863  0.06243 -0.0130 0.5131 4.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b2  0.25005     0.1342 1.863  0.06243 -0.0130 0.5131 4.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b3  0.55803     0.1926 2.898  0.00376  0.1806 0.9355 8.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b4  0.35560     0.1483 2.399  0.01646  0.0650 0.6462 5.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b5  0.39710     0.1550 2.561  0.01043  0.0932 0.7010 6.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    b6  0.00652     0.0142 0.459  0.64635 -0.0213 0.0344 0.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, s.value </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Equivalence, non-inferiority, and non-superiority tests</span></span></span>
@@ -343,34 +343,34 @@ For the Chi-squared test, the degrees of freedom are Q.</p>
 <span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="predictions.html">predictions</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">p</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">18</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %  hp gear p (NonInf) p (NonSup)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      19.7          1 19.6   &lt;0.001  17.7   21.6 123    3    0.00404      0.951</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  p (Equiv)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      0.951</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Estimate Std. Error    z Pr(&gt;|z|)     S 2.5 % 97.5 %  hp gear p (NonInf)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      19.7          1 19.6   &lt;0.001 281.3  17.7   21.6 123    3    0.00404</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  p (NonSup) p (Equiv)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.951     0.951</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: rowid, estimate, std.error, statistic, p.value, conf.low, conf.high, mpg, hp, gear, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: rowid, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, mpg, hp, gear, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">mfx</span> <span class="op">&lt;-</span> <span class="fu"><a href="slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"hp"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">mfx</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.1</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 % p (NonInf) p (NonSup)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    hp  -0.0669      0.011 -6.05   &lt;0.001 -0.0885 -0.0452    0.00135     &lt;0.001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  p (Equiv)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.00135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Term Estimate Std. Error     z Pr(&gt;|z|)    S   2.5 %  97.5 % p (NonInf)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    hp  -0.0669      0.011 -6.05   &lt;0.001 29.4 -0.0885 -0.0452    0.00135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  p (NonSup) p (Equiv)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;0.001   0.00135</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"gear"</span>, hypothesis <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">hypotheses</span><span class="op">(</span><span class="va">cmp</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               Term Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 % p (NonInf)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (4 - 3) - (5 - 3)    -3.94       2.05 -1.92   0.0543 -7.95 0.0727      0.973</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  p (NonSup) p (Equiv)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      &lt;0.001     0.973</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               Term Estimate Std. Error     z Pr(&gt;|z|)   S 2.5 % 97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (4 - 3) - (5 - 3)    -3.94       2.05 -1.92   0.0543 4.2 -7.95 0.0727</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  p (NonInf) p (NonSup) p (Equiv)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.973     &lt;0.001     0.973</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># joint hypotheses: character vector</span></span></span>

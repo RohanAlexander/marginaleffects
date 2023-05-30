@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,19 +145,19 @@ survival in 3rd and 1st class:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># Step 1: Quantity</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.496     0.0610 -8.13  &lt; 0.001 -0.616 -0.376</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.472     0.1247 -3.79  &lt; 0.001 -0.716 -0.228</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.353     0.0641 -5.51  &lt; 0.001 -0.478 -0.227</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.493     0.0583 -8.45  &lt; 0.001 -0.607 -0.379</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.445     0.1452 -3.07  0.00216 -0.730 -0.161</span></span>
+<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.496     0.0610 -8.13  &lt; 0.001 51.0 -0.616 -0.376</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.472     0.1247 -3.79  &lt; 0.001 12.7 -0.716 -0.228</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.353     0.0641 -5.51  &lt; 0.001 24.7 -0.478 -0.227</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.493     0.0583 -8.45  &lt; 0.001 54.9 -0.607 -0.379</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.445     0.1452 -3.07  0.00216  8.9 -0.730 -0.161</span></span>
 <span><span class="co">#&gt; --- 746 rows omitted. See ?avg_comparisons and ?print.marginaleffects --- </span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.377     0.0703 -5.36  &lt; 0.001 -0.515 -0.239</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.384     0.0726 -5.30  &lt; 0.001 -0.527 -0.242</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.412     0.0821 -5.02  &lt; 0.001 -0.573 -0.251</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.399     0.0773 -5.16  &lt; 0.001 -0.550 -0.247</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.361     0.0661 -5.47  &lt; 0.001 -0.490 -0.232</span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, PClass, SexCode, Age</span></span></code></pre></div>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.377     0.0703 -5.36  &lt; 0.001 23.5 -0.515 -0.239</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.384     0.0726 -5.30  &lt; 0.001 23.0 -0.527 -0.242</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.412     0.0821 -5.02  &lt; 0.001 20.9 -0.573 -0.251</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.399     0.0773 -5.16  &lt; 0.001 22.0 -0.550 -0.247</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.361     0.0661 -5.47  &lt; 0.001 24.4 -0.490 -0.232</span></span>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, PClass, SexCode, Age</span></span></code></pre></div>
 <p>Notice that the contrast between 3rd and 1st is different from row to
 row. This reflects the fact that, in our model, moving from 1st to 3rd
 would have a different effect on the predicted probability of survival
@@ -178,11 +178,11 @@ survival for a 50 year old man and a 50 year old woman.</p>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fl">50</span>, SexCode <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co"># Step 2: Grid</span></span>
 <span><span class="va">cmp</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 % Age SexCode</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.184     0.0535 -3.45   &lt;0.001 -0.289 -0.0796  50       0</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.511     0.1242 -4.12   &lt;0.001 -0.755 -0.2679  50       1</span></span>
+<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)    S  2.5 %  97.5 % Age SexCode</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.184     0.0535 -3.45   &lt;0.001 10.8 -0.289 -0.0796  50       0</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.511     0.1242 -4.12   &lt;0.001 14.7 -0.755 -0.2679  50       1</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, PClass, Age, SexCode</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, PClass, Age, SexCode</span></span></code></pre></div>
 <p>We now know that moving from 1st to 3rd changes by -0.184 the
 probability of survival for 50 year old men (<code>SexCode=0</code>),
 and by -0.511 the probability of survival for 50 year old women
@@ -199,10 +199,10 @@ obtain an “average contrast”:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>,                          <span class="co"># Step 3: Average</span></span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># Step 1: Quantity</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.396     0.0425 -9.3   &lt;0.001 -0.479 -0.312</span></span>
+<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error    z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.396     0.0425 -9.3   &lt;0.001 66.0 -0.479 -0.312</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Alternatively, we could also take the average, but just of the two
 estimates that we computed above for the 50 year old man and 50 year old
 woman.</p>
@@ -211,10 +211,10 @@ woman.</p>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span>,  <span class="co"># Step 1: Quantity</span></span>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fl">50</span>, SexCode <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co"># Step 2: Grid</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.348     0.0676 -5.15   &lt;0.001 -0.48 -0.215</span></span>
+<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.348     0.0676 -5.15   &lt;0.001 21.8 -0.48 -0.215</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Notice that this is exactly the same as the average in the estimates
 from the previous section, which we had stored as <code>cmp</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -240,10 +240,10 @@ women?</p>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fl">50</span>, SexCode <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>, <span class="co"># Step 2: Grid</span></span>
 <span>  hypothesis <span class="op">=</span> <span class="st">"b1 = b2"</span><span class="op">)</span>                      <span class="co"># Step 4: Hypothesis</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Term Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  b1=b2    0.327      0.135 2.42   0.0156 0.0618  0.592</span></span>
+<span><span class="co">#&gt;   Term Estimate Std. Error    z Pr(&gt;|z|)   S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  b1=b2    0.327      0.135 2.42   0.0156 6.0 0.0618  0.592</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>This result maps directly onto the estimates we had above. It is the
 difference in the contrast for 50-men and 50-women:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -262,10 +262,10 @@ the <code>by</code> argument:</p>
 <span>  by <span class="op">=</span> <span class="st">"SexCode"</span>,                              <span class="co"># Step 3: Average</span></span>
 <span>  hypothesis <span class="op">=</span> <span class="st">"b1 = b2"</span><span class="op">)</span>                      <span class="co"># Step 4: Hypothesis</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;  b1=b2   -0.162     0.0845 -1.91   0.0558 -0.327 0.00402</span></span>
+<span><span class="co">#&gt;   Term Estimate Std. Error     z Pr(&gt;|z|)   S  2.5 %  97.5 %</span></span>
+<span><span class="co">#&gt;  b1=b2   -0.162     0.0845 -1.91   0.0558 4.2 -0.327 0.00402</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="manual-computation">Manual computation<a class="anchor" aria-label="anchor" href="#manual-computation"></a>
@@ -288,10 +288,10 @@ may be clarifying for some users.</p>
 <span><span class="co"># prediction on a grid</span></span>
 <span><span class="fu"><a href="../reference/predictions.html">predictions</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fl">50</span>, SexCode <span class="op">=</span> <span class="fl">1</span>, PClass <span class="op">=</span> <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Estimate Pr(&gt;|z|) 2.5 % 97.5 % Age SexCode PClass</span></span>
-<span><span class="co">#&gt;     0.446    0.661 0.235  0.679  50       1    3rd</span></span>
+<span><span class="co">#&gt;  Estimate Pr(&gt;|z|)   S 2.5 % 97.5 % Age SexCode PClass</span></span>
+<span><span class="co">#&gt;     0.446    0.661 0.6 0.235  0.679  50       1    3rd</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, estimate, p.value, conf.low, conf.high, Survived, Age, SexCode, PClass</span></span>
+<span><span class="co">#&gt; Columns: rowid, estimate, p.value, s.value, conf.low, conf.high, Survived, Age, SexCode, PClass</span></span>
 <span><span class="va">yhat_50_1_3</span></span>
 <span><span class="co">#&gt;         1 </span></span>
 <span><span class="co">#&gt; 0.4463379</span></span>
@@ -301,11 +301,11 @@ may be clarifying for some users.</p>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fl">50</span>, SexCode <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 % Age SexCode</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.184     0.0535 -3.45   &lt;0.001 -0.289 -0.0796  50       0</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st   -0.511     0.1242 -4.12   &lt;0.001 -0.755 -0.2679  50       1</span></span>
+<span><span class="co">#&gt;    Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)    S  2.5 %  97.5 % Age SexCode</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.184     0.0535 -3.45   &lt;0.001 10.8 -0.289 -0.0796  50       0</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st   -0.511     0.1242 -4.12   &lt;0.001 14.7 -0.755 -0.2679  50       1</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, PClass, Age, SexCode</span></span>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, PClass, Age, SexCode</span></span>
 <span></span>
 <span><span class="va">yhat_50_0_3</span> <span class="op">-</span> <span class="va">yhat_50_0_1</span></span>
 <span><span class="co">#&gt;          1 </span></span>
@@ -320,10 +320,10 @@ may be clarifying for some users.</p>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>Age <span class="op">=</span> <span class="fl">50</span>, SexCode <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>  hypothesis <span class="op">=</span> <span class="st">"b1 = b2"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Term Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  b1=b2    0.327      0.135 2.42   0.0156 0.0618  0.592</span></span>
+<span><span class="co">#&gt;   Term Estimate Std. Error    z Pr(&gt;|z|)   S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  b1=b2    0.327      0.135 2.42   0.0156 6.0 0.0618  0.592</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="op">(</span><span class="va">yhat_50_0_3</span> <span class="op">-</span> <span class="va">yhat_50_0_1</span><span class="op">)</span> <span class="op">-</span> <span class="op">(</span><span class="va">yhat_50_1_3</span> <span class="op">-</span> <span class="va">yhat_50_1_1</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         1 </span></span>
@@ -332,11 +332,11 @@ may be clarifying for some users.</p>
 <span><span class="co"># average of the empirical distribution of contrasts</span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"SexCode"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term              Contrast SexCode Estimate Std. Error     z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  PClass mean(3rd) - mean(1st)       1   -0.496     0.0623 -7.95   &lt;0.001 -0.618 -0.374</span></span>
-<span><span class="co">#&gt;  PClass mean(3rd) - mean(1st)       0   -0.334     0.0570 -5.86   &lt;0.001 -0.446 -0.222</span></span>
+<span><span class="co">#&gt;    Term              Contrast SexCode Estimate Std. Error     z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  PClass mean(3rd) - mean(1st)       1   -0.496     0.0623 -7.95   &lt;0.001 49.0 -0.618 -0.374</span></span>
+<span><span class="co">#&gt;  PClass mean(3rd) - mean(1st)       0   -0.334     0.0570 -5.86   &lt;0.001 27.7 -0.446 -0.222</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, SexCode, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, SexCode, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span>
 <span></span>
 <span><span class="va">grid_empirical_1_3</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">SexCode</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/transform.html" class="external-link">transform</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="st">"3rd"</span><span class="op">)</span></span>
 <span><span class="va">grid_empirical_1_1</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">SexCode</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/transform.html" class="external-link">transform</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="st">"1st"</span><span class="op">)</span></span>
@@ -375,12 +375,12 @@ marginalizes by taking the average of unit-level estimates:</p>
 <code class="sourceCode R"><span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
 <span><span class="va">cmp</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term     Contrast Estimate Std. Error     z Pr(&gt;|z|)    2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   am  TRUE - FALSE     2.56       1.30  1.97   0.0485   0.0167   5.10</span></span>
-<span><span class="co">#&gt;   cyl 6 - 4           -6.16       1.54 -4.01   &lt;0.001  -9.1661  -3.15</span></span>
-<span><span class="co">#&gt;   cyl 8 - 4          -10.07       1.45 -6.93   &lt;0.001 -12.9136  -7.22</span></span>
+<span><span class="co">#&gt;  Term     Contrast Estimate Std. Error     z Pr(&gt;|z|)    S    2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   am  TRUE - FALSE     2.56       1.30  1.97   0.0485  4.4   0.0167   5.10</span></span>
+<span><span class="co">#&gt;   cyl 6 - 4           -6.16       1.54 -4.01   &lt;0.001 14.0  -9.1661  -3.15</span></span>
+<span><span class="co">#&gt;   cyl 8 - 4          -10.07       1.45 -6.93   &lt;0.001 37.8 -12.9136  -7.22</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>The summary printed above says that moving from the reference
 category <code>4</code> to the level <code>6</code> on the
 <code>cyl</code> factor variable is associated with a change of -6.156
@@ -392,28 +392,28 @@ is equal to 2.560.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="st">"sequential"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   cyl    6 - 4    -6.16       1.54 -4.01  &lt; 0.001 -9.17  -3.15</span></span>
-<span><span class="co">#&gt;   cyl    8 - 6    -3.91       1.47 -2.66  0.00781 -6.79  -1.03</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   cyl    6 - 4    -6.16       1.54 -4.01  &lt; 0.001 14.0 -9.17  -3.15</span></span>
+<span><span class="co">#&gt;   cyl    8 - 6    -3.91       1.47 -2.66  0.00781  7.0 -6.79  -1.03</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   cyl    6 - 4    -6.16       1.54 -4.01  &lt; 0.001  -9.17  -3.15</span></span>
-<span><span class="co">#&gt;   cyl    8 - 4   -10.07       1.45 -6.93  &lt; 0.001 -12.91  -7.22</span></span>
-<span><span class="co">#&gt;   cyl    8 - 6    -3.91       1.47 -2.66  0.00781  -6.79  -1.03</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   cyl    6 - 4    -6.16       1.54 -4.01  &lt; 0.001 14.0  -9.17  -3.15</span></span>
+<span><span class="co">#&gt;   cyl    8 - 4   -10.07       1.45 -6.93  &lt; 0.001 37.8 -12.91  -7.22</span></span>
+<span><span class="co">#&gt;   cyl    8 - 6    -3.91       1.47 -2.66  0.00781  7.0  -6.79  -1.03</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>cyl <span class="op">=</span> <span class="st">"reference"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   cyl    6 - 4    -6.16       1.54 -4.01   &lt;0.001  -9.17  -3.15</span></span>
-<span><span class="co">#&gt;   cyl    8 - 4   -10.07       1.45 -6.93   &lt;0.001 -12.91  -7.22</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   cyl    6 - 4    -6.16       1.54 -4.01   &lt;0.001 14.0  -9.17  -3.15</span></span>
+<span><span class="co">#&gt;   cyl    8 - 4   -10.07       1.45 -6.93   &lt;0.001 37.8 -12.91  -7.22</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>For comparison, this code produces the same results using the
 <code>emmeans</code> package:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -441,19 +441,19 @@ as GLMs, on different scales:</p>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod_logit</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error       z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  gear    4 - 3    0.667   1.36e-01     4.9   &lt;0.001   0.4  0.933</span></span>
-<span><span class="co">#&gt;  gear    5 - 3    1.000   1.07e-05 93380.2   &lt;0.001   1.0  1.000</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error       z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  gear    4 - 3    0.667   1.36e-01     4.9   &lt;0.001 20.0   0.4  0.933</span></span>
+<span><span class="co">#&gt;  gear    5 - 3    1.000   1.07e-05 93380.2   &lt;0.001  Inf   1.0  1.000</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod_logit</span>, type <span class="op">=</span> <span class="st">"link"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error       z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  gear    4 - 3     21.3       4578 0.00464    0.996  -8951   8994</span></span>
-<span><span class="co">#&gt;  gear    5 - 3     41.1       9156 0.00449    0.996 -17904  17986</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error       z Pr(&gt;|z|)   S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  gear    4 - 3     21.3       4578 0.00464    0.996 0.0  -8951   8994</span></span>
+<span><span class="co">#&gt;  gear    5 - 3     41.1       9156 0.00449    0.996 0.0 -17904  17986</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="character-predictors">Character predictors<a class="anchor" aria-label="anchor" href="#character-predictors"></a>
@@ -479,41 +479,41 @@ the regressor between two arbitrary values:</p>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">110</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    hp 110 - 90    -1.36      0.202 -6.74   &lt;0.001 -1.76 -0.968</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    hp 110 - 90    -1.36      0.202 -6.74   &lt;0.001 35.9 -1.76 -0.968</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>We can also easily compare adjusted predictions when the regressor
 changes across its interquartile range, across one or two standard
 deviations about its mean, or from across its full range:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="st">"iqr"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    hp  Q3 - Q1     -5.7      0.845 -6.74   &lt;0.001 -7.35  -4.04</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    hp  Q3 - Q1     -5.7      0.845 -6.74   &lt;0.001 35.9 -7.35  -4.04</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="st">"sd"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term                Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    hp (x + sd/2) - (x - sd/2)    -4.68      0.694 -6.74   &lt;0.001 -6.04  -3.32</span></span>
+<span><span class="co">#&gt;  Term                Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    hp (x + sd/2) - (x - sd/2)    -4.68      0.694 -6.74   &lt;0.001 35.9 -6.04  -3.32</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="st">"2sd"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term            Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    hp (x + sd) - (x - sd)    -9.36       1.39 -6.74   &lt;0.001 -12.1  -6.64</span></span>
+<span><span class="co">#&gt;  Term            Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    hp (x + sd) - (x - sd)    -9.36       1.39 -6.74   &lt;0.001 35.9 -12.1  -6.64</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="st">"minmax"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term  Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    hp Max - Min    -19.3       2.86 -6.74   &lt;0.001 -24.9  -13.7</span></span>
+<span><span class="co">#&gt;  Term  Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    hp Max - Min    -19.3       2.86 -6.74   &lt;0.001 35.9 -24.9  -13.7</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>While we provided two values for the <code>hp</code> variable in each
 the previous numeric predictor examples, we can also specify a single
 value. While passing two values produces a comparison of adjusted
@@ -526,17 +526,17 @@ unit (default) or by 5 units:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;    hp       +1  -0.0682     0.0101 -6.74   &lt;0.001 -0.0881 -0.0484</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S   2.5 %  97.5 %</span></span>
+<span><span class="co">#&gt;    hp       +1  -0.0682     0.0101 -6.74   &lt;0.001 35.9 -0.0881 -0.0484</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    hp       +5   -0.341     0.0506 -6.74   &lt;0.001 -0.44 -0.242</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    hp       +5   -0.341     0.0506 -6.74   &lt;0.001 35.9 -0.44 -0.242</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Because the <code><a href="../reference/comparisons.html">comparisons()</a></code> function computes a “centered”
 difference by default, the above actually computes the effect of
 incrementation from <code>hp - 0.5</code> to <code>hp + 0.5</code> and
@@ -562,24 +562,24 @@ argument shows that the estimated comparisons differ based on
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"am"</span>, by <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term          Contrast cyl Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    am mean(1) - mean(0)   6     1.44       2.32 0.623   0.5336 -3.10   5.98</span></span>
-<span><span class="co">#&gt;    am mean(1) - mean(0)   4     5.18       2.05 2.521   0.0117  1.15   9.20</span></span>
-<span><span class="co">#&gt;    am mean(1) - mean(0)   8     0.35       2.32 0.151   0.8799 -4.19   4.89</span></span>
+<span><span class="co">#&gt;  Term          Contrast cyl Estimate Std. Error     z Pr(&gt;|z|)   S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    am mean(1) - mean(0)   6     1.44       2.32 0.623   0.5336 0.9 -3.10   5.98</span></span>
+<span><span class="co">#&gt;    am mean(1) - mean(0)   4     5.18       2.05 2.521   0.0117 6.4  1.15   9.20</span></span>
+<span><span class="co">#&gt;    am mean(1) - mean(0)   8     0.35       2.32 0.151   0.8799 0.2 -4.19   4.89</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, cyl, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, cyl, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p>However, using the <code>hypothesis</code> argument for pairwise
 contrasts between the above comparisons reveals that the heterogeneity
 is not statistically significant:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"am"</span>, by <span class="op">=</span> <span class="st">"cyl"</span>, hypothesis <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Term Estimate Std. Error      z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  6 - 4    -3.73       3.09 -1.206    0.228 -9.80   2.33</span></span>
-<span><span class="co">#&gt;  6 - 8     1.09       3.28  0.333    0.739 -5.33   7.51</span></span>
-<span><span class="co">#&gt;  4 - 8     4.82       3.09  1.559    0.119 -1.24  10.89</span></span>
+<span><span class="co">#&gt;   Term Estimate Std. Error      z Pr(&gt;|z|)   S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  6 - 4    -3.73       3.09 -1.206    0.228 2.1 -9.80   2.33</span></span>
+<span><span class="co">#&gt;  6 - 8     1.09       3.28  0.333    0.739 0.4 -5.33   7.51</span></span>
+<span><span class="co">#&gt;  4 - 8     4.82       3.09  1.559    0.119 3.1 -1.24  10.89</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>In other contexts, we are interested in a “cross-contrast” or
 “cross-comparisons”; we would like to know what happens when two (or
 more) predictors change at the same time. To assess this, we can specify
@@ -588,11 +588,11 @@ set the <code>cross=TRUE</code>:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cyl"</span>, <span class="st">"am"</span><span class="op">)</span>, cross <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  C: cyl C: am Estimate Std. Error      z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   6 - 4 1 - 0    -2.33       2.48 -0.942  0.34596  -7.19   2.52</span></span>
-<span><span class="co">#&gt;   8 - 4 1 - 0    -7.50       2.77 -2.709  0.00674 -12.93  -2.07</span></span>
+<span><span class="co">#&gt;  C: cyl C: am Estimate Std. Error      z Pr(&gt;|z|)   S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   6 - 4 1 - 0    -2.33       2.48 -0.942  0.34596 1.5  -7.19   2.52</span></span>
+<span><span class="co">#&gt;   8 - 4 1 - 0    -7.50       2.77 -2.709  0.00674 7.2 -12.93  -2.07</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast_cyl, contrast_am, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast_cyl, contrast_am, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quantities-of-interest">Quantities of interest<a class="anchor" aria-label="anchor" href="#quantities-of-interest"></a>
@@ -639,17 +639,17 @@ taking the mean of all the unit-level estimates.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"mpg"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1   0.0608     0.0128 4.74   &lt;0.001 0.0356  0.086</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1   0.0608     0.0128 4.74   &lt;0.001 18.8 0.0356  0.086</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"mpg"</span>, by <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1   0.0608     0.0128 4.74   &lt;0.001 0.0356  0.086</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1   0.0608     0.0128 4.74   &lt;0.001 18.8 0.0356  0.086</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>which are equivalent to:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">cmp</span><span class="op">$</span><span class="va">estimate</span><span class="op">)</span></span>
@@ -683,10 +683,10 @@ means or modes:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"mpg"</span>, newdata <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1    0.166     0.0627 2.65  0.00794 0.0436  0.289</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)   S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1    0.166     0.0627 2.65  0.00794 7.0 0.0436  0.289</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, vs, gear, mpg</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, vs, gear, mpg</span></span></code></pre></div>
 <p>Contrasts at the mean can differ substantially from average
 contrasts.</p>
 <p>The advantage of this approach is that it is very cheap and fast
@@ -754,13 +754,13 @@ a model with an interaction:</p>
 <span>    newdata <span class="op">=</span> <span class="st">"marginalmeans"</span>,</span>
 <span>    variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"species"</span>, <span class="st">"island"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Term           Contrast Estimate Std. Error      z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  species Chinstrap - Adelie  10.2693      0.407 25.252   &lt;0.001  9.472 11.066</span></span>
-<span><span class="co">#&gt;  species Gentoo - Adelie      5.8957      0.677  8.705   &lt;0.001  4.568  7.223</span></span>
-<span><span class="co">#&gt;  island  Dream - Biscoe      -0.4557      0.453 -1.005    0.315 -1.344  0.433</span></span>
-<span><span class="co">#&gt;  island  Torgersen - Biscoe   0.0851      0.470  0.181    0.856 -0.836  1.006</span></span>
+<span><span class="co">#&gt;     Term           Contrast Estimate Std. Error      z Pr(&gt;|z|)     S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  species Chinstrap - Adelie  10.2693      0.407 25.252   &lt;0.001 465.0  9.472 11.066</span></span>
+<span><span class="co">#&gt;  species Gentoo - Adelie      5.8957      0.677  8.705   &lt;0.001  58.1  4.568  7.223</span></span>
+<span><span class="co">#&gt;  island  Dream - Biscoe      -0.4557      0.453 -1.005    0.315   1.7 -1.344  0.433</span></span>
+<span><span class="co">#&gt;  island  Torgersen - Biscoe   0.0851      0.470  0.181    0.856   0.2 -0.836  1.006</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Which is equivalent to this in <code>emmeans</code>:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">emm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html" class="external-link">emmeans</a></span><span class="op">(</span></span>
@@ -904,17 +904,17 @@ we do:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1   0.0554    0.00834 6.64   &lt;0.001 0.0391 0.0717</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1   0.0554    0.00834 6.64   &lt;0.001 34.9 0.0391 0.0717</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>, by <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1   0.0554    0.00834 6.64   &lt;0.001 0.0391 0.0717</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1   0.0554    0.00834 6.64   &lt;0.001 34.9 0.0391 0.0717</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="difference-in-differences-in-differences">Difference-in-Differences(-in-Differences)<a class="anchor" aria-label="anchor" href="#difference-in-differences-in-differences"></a>
@@ -933,11 +933,11 @@ individuals:</p>
 <span>  variables <span class="op">=</span> <span class="st">"SexCode"</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Term Contrast Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %  Age PClass</span></span>
-<span><span class="co">#&gt;  SexCode    1 - 0    0.483     0.0631 7.65   &lt;0.001 0.359  0.606 30.4    1st</span></span>
-<span><span class="co">#&gt;  SexCode    1 - 0    0.335     0.0634 5.29   &lt;0.001 0.211  0.459 30.4    3rd</span></span>
+<span><span class="co">#&gt;     Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S 2.5 % 97.5 %  Age PClass</span></span>
+<span><span class="co">#&gt;  SexCode    1 - 0    0.483     0.0631 7.65   &lt;0.001 45.5 0.359  0.606 30.4    1st</span></span>
+<span><span class="co">#&gt;  SexCode    1 - 0    0.335     0.0634 5.29   &lt;0.001 22.9 0.211  0.459 30.4    3rd</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, SexCode, Age, PClass</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, SexCode, Age, PClass</span></span></code></pre></div>
 <p>One we can notice above, is that the gap in predicted probabilities
 of survival between men and women is larger in 1st class than in 3rd
 class. Being a woman matters more for your chances of survival if you
@@ -956,10 +956,10 @@ between the two quantities is different from 0:</p>
 <span>  variables <span class="op">=</span> <span class="st">"SexCode"</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Term Estimate Std. Error    z Pr(&gt;|z|)   2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  b1-b2=0    0.148     0.0894 1.65   0.0987 -0.0276  0.323</span></span>
+<span><span class="co">#&gt;     Term Estimate Std. Error    z Pr(&gt;|z|)   S   2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  b1-b2=0    0.148     0.0894 1.65   0.0987 3.3 -0.0276  0.323</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Now, let’s say we consider more types of individuals:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span></span>
@@ -967,13 +967,13 @@ between the two quantities is different from 0:</p>
 <span>  variables <span class="op">=</span> <span class="st">"SexCode"</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span>, Age <span class="op">=</span> <span class="va">range</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Term Contrast Estimate Std. Error      z Pr(&gt;|z|)   2.5 % 97.5 % PClass   Age</span></span>
-<span><span class="co">#&gt;  SexCode    1 - 0   0.1081      0.122  0.883   0.3774 -0.1319  0.348    1st  0.17</span></span>
-<span><span class="co">#&gt;  SexCode    1 - 0   0.8795      0.057 15.437   &lt;0.001  0.7679  0.991    1st 71.00</span></span>
-<span><span class="co">#&gt;  SexCode    1 - 0   0.0805      0.157  0.513   0.6081 -0.2272  0.388    3rd  0.17</span></span>
-<span><span class="co">#&gt;  SexCode    1 - 0   0.4265      0.203  2.101   0.0356  0.0287  0.824    3rd 71.00</span></span>
+<span><span class="co">#&gt;     Term Contrast Estimate Std. Error      z Pr(&gt;|z|)     S   2.5 % 97.5 % PClass   Age</span></span>
+<span><span class="co">#&gt;  SexCode    1 - 0   0.1081      0.122  0.883   0.3774   1.4 -0.1319  0.348    1st  0.17</span></span>
+<span><span class="co">#&gt;  SexCode    1 - 0   0.8795      0.057 15.437   &lt;0.001 176.2  0.7679  0.991    1st 71.00</span></span>
+<span><span class="co">#&gt;  SexCode    1 - 0   0.0805      0.157  0.513   0.6081   0.7 -0.2272  0.388    3rd  0.17</span></span>
+<span><span class="co">#&gt;  SexCode    1 - 0   0.4265      0.203  2.101   0.0356   4.8  0.0287  0.824    3rd 71.00</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, SexCode, PClass, Age</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Survived, SexCode, PClass, Age</span></span></code></pre></div>
 <p>With these results, we could compute a triple difference:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">comparisons</a></span><span class="op">(</span></span>
@@ -982,10 +982,10 @@ between the two quantities is different from 0:</p>
 <span>  variables <span class="op">=</span> <span class="st">"SexCode"</span>,</span>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>PClass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"1st"</span>, <span class="st">"3rd"</span><span class="op">)</span>, Age <span class="op">=</span> <span class="va">range</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;               Term Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  (b1-b3)-(b2-b4)=0   -0.425      0.359 -1.19    0.236 -1.13  0.278</span></span>
+<span><span class="co">#&gt;               Term Estimate Std. Error     z Pr(&gt;|z|)   S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  (b1-b3)-(b2-b4)=0   -0.425      0.359 -1.19    0.236 2.1 -1.13  0.278</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="ratios">Ratios<a class="anchor" aria-label="anchor" href="#ratios"></a>
@@ -1000,10 +1000,10 @@ predictions. To do this in <code>R</code>, we use the
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, comparison <span class="op">=</span> <span class="st">"ratio"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error   z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1     1.29      0.133 9.7   &lt;0.001  1.03   1.55</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error   z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1     1.29      0.133 9.7   &lt;0.001 71.4  1.03   1.55</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>This result is the average adjusted risk ratio, that is, the adjusted
 predictions when the <code>mpg</code> are incremented by 1, divided by
 the adjusted predictions when <code>mpg</code> is at its original
@@ -1017,26 +1017,26 @@ yield identical results:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, comparison <span class="op">=</span> <span class="st">"ratio"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error   z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1     1.29      0.133 9.7   &lt;0.001  1.03   1.55</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error   z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1     1.29      0.133 9.7   &lt;0.001 71.4  1.03   1.55</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, comparison <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">hi</span>, <span class="va">lo</span><span class="op">)</span> <span class="va">hi</span> <span class="op">/</span> <span class="va">lo</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error   z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1     1.29      0.133 9.7   &lt;0.001  1.03   1.55</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error   z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1     1.29      0.133 9.7   &lt;0.001 71.4  1.03   1.55</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>This mechanism is powerful, because it lets users create fully
 customized contrasts. Here is a non-sensical example:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, comparison <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">hi</span>, <span class="va">lo</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">hi</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">lo</span> <span class="op">+</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1    0.264     0.0261 10.1   &lt;0.001 0.213  0.315</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1    0.264     0.0261 10.1   &lt;0.001 77.3 0.213  0.315</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>The same arguments work in the plotting function
 <code><a href="../reference/plot_comparisons.html">plot_comparisons()</a></code> as well, which allows us to plot various
 custom contrasts. Here is a comparison of Adjusted Risk Ratio and
@@ -1054,13 +1054,13 @@ aboard the Titanic:</p>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod_titanic</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term      Contrast Estimate Std. Error      z Pr(&gt;|z|)    2.5 %   97.5 %</span></span>
-<span><span class="co">#&gt;  Sex    male - female  -0.4847    0.03004 -16.14   &lt;0.001 -0.54355 -0.42580</span></span>
-<span><span class="co">#&gt;  PClass 2nd - 1st      -0.2058    0.03954  -5.20   &lt;0.001 -0.28328 -0.12828</span></span>
-<span><span class="co">#&gt;  PClass 3rd - 1st      -0.4043    0.03958 -10.21   &lt;0.001 -0.48187 -0.32670</span></span>
-<span><span class="co">#&gt;  Age    +1             -0.0065    0.00108  -6.03   &lt;0.001 -0.00862 -0.00439</span></span>
+<span><span class="co">#&gt;    Term      Contrast Estimate Std. Error      z Pr(&gt;|z|)     S    2.5 %   97.5 %</span></span>
+<span><span class="co">#&gt;  Sex    male - female  -0.4847    0.03004 -16.14   &lt;0.001 192.2 -0.54355 -0.42580</span></span>
+<span><span class="co">#&gt;  PClass 2nd - 1st      -0.2058    0.03954  -5.20   &lt;0.001  22.3 -0.28328 -0.12828</span></span>
+<span><span class="co">#&gt;  PClass 3rd - 1st      -0.4043    0.03958 -10.21   &lt;0.001  78.9 -0.48187 -0.32670</span></span>
+<span><span class="co">#&gt;  Age    +1             -0.0065    0.00108  -6.03   &lt;0.001  29.2 -0.00862 -0.00439</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_comparisons.html">plot_comparisons</a></span><span class="op">(</span></span>
 <span>    <span class="va">mod_titanic</span>,</span>
@@ -1097,10 +1097,10 @@ argument:</p>
 <span>    comparison <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">hi</span>, <span class="va">lo</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">hi</span> <span class="op">/</span> <span class="va">lo</span><span class="op">)</span>,</span>
 <span>    transform <span class="op">=</span> <span class="va">exp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg       +1     1.27  0.00936  1.06   1.53</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Pr(&gt;|z|)   S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg       +1     1.27  0.00936 6.7  1.06   1.53</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Note that equivalent results can be obtained using shortcut strings
 in the <code>comparison</code> argument: “ratio”, “lnratio”,
 “lnratioavg”.</p>
@@ -1110,10 +1110,10 @@ in the <code>comparison</code> argument: “ratio”, “lnratio”,
 <span>    comparison <span class="op">=</span> <span class="st">"lnratioavg"</span>,</span>
 <span>    transform <span class="op">=</span> <span class="va">exp</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;   mpg mean(+1)     1.14   &lt;0.001  1.09   1.18</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;   mpg mean(+1)     1.14   &lt;0.001 31.9  1.09   1.18</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p>All the same arguments apply to the plotting functions of the
 <code>marginaleffects</code> package as well. For example we can plot
 the Adjusted Risk Ratio in a model with a quadratic term:</p>
@@ -1146,10 +1146,10 @@ predicted values with <code>x-5</code> and <code>x+5</code>.</p>
 <span>  <span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>new_hp <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  new_hp      +10    -4.06      0.464 -8.74   &lt;0.001 -4.97  -3.15</span></span>
+<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  new_hp      +10    -4.06      0.464 -8.74   &lt;0.001 58.6 -4.97  -3.15</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Since version 0.7.2 of <code>marginaleffects</code>, we can supply
 arbitrary functions to create custom differences. These functions must
 accept a vector of values for the predictor of interest, and return a
@@ -1164,28 +1164,28 @@ with the values to compare. For example, we can do:</p>
 <span>  <span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>new_hp <span class="op">=</span> <span class="va">forward_diff</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  new_hp   custom     -3.8      0.435 -8.74   &lt;0.001 -4.65  -2.95</span></span>
+<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  new_hp   custom     -3.8      0.435 -8.74   &lt;0.001 58.6 -4.65  -2.95</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span></span>
 <span>  <span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>new_hp <span class="op">=</span> <span class="va">backward_diff</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  new_hp   custom    -6.51      0.744 -8.74   &lt;0.001 -7.97  -5.05</span></span>
+<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  new_hp   custom    -6.51      0.744 -8.74   &lt;0.001 58.6 -7.97  -5.05</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span></span>
 <span>  <span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>new_hp <span class="op">=</span> <span class="va">center_diff</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  new_hp   custom    -4.06      0.464 -8.74   &lt;0.001 -4.97  -3.15</span></span>
+<span><span class="co">#&gt;    Term Contrast Estimate Std. Error     z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  new_hp   custom    -4.06      0.464 -8.74   &lt;0.001 58.6 -4.97  -3.15</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Notice that the last “centered” difference gives the same results as
 the default <code><a href="../reference/comparisons.html">comparisons()</a></code> call.</p>
 </div>

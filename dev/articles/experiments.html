@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -171,10 +171,10 @@ contrast corresponding to this estimate is shown in the plot below.</p>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>am <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
 <span>  variables <span class="op">=</span> <span class="st">"vs"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    vs    1 - 0     5.69       1.65 3.45   &lt;0.001  2.46   8.93</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    vs    1 - 0     5.69       1.65 3.45   &lt;0.001 10.8  2.46   8.93</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p><img src="experiments_files/figure-html/unnamed-chunk-6-1.png" width="100%"></p>
 <p>The next difference is between manual transmissions and automatic
 transmissions when the car has a V-shaped engine. Again, the call to
@@ -185,10 +185,10 @@ contrast is indicated in the plot below using an arrow.</p>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>vs <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
 <span>  variables <span class="op">=</span> <span class="st">"am"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    am    1 - 0      4.7       1.74 2.71  0.00678   1.3    8.1</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)   S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    am    1 - 0      4.7       1.74 2.71  0.00678 7.2   1.3    8.1</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p><img src="experiments_files/figure-html/unnamed-chunk-8-1.png" width="100%"></p>
 <p>The third difference we estimated was between manual transmissions
 and automatic transmissions when the car has a straight engine. The
@@ -198,10 +198,10 @@ model call and contrast are</p>
 <span>  newdata <span class="op">=</span> <span class="fu"><a href="../reference/datagrid.html">datagrid</a></span><span class="op">(</span>vs <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
 <span>  variables <span class="op">=</span> <span class="st">"am"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;    am    1 - 0     7.63       1.86 4.11   &lt;0.001  3.99   11.3</span></span>
+<span><span class="co">#&gt;  Term Contrast Estimate Std. Error    z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;    am    1 - 0     7.63       1.86 4.11   &lt;0.001 14.6  3.99   11.3</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p><img src="experiments_files/figure-html/unnamed-chunk-10-1.png" width="100%"></p>
 <p>And the last difference and contrast between manual transmissions
 with straight engines and automatic transmissions with V-shaped engines
@@ -212,10 +212,10 @@ is</p>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"am"</span>, <span class="st">"vs"</span><span class="op">)</span>,</span>
 <span>  cross <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  C: am C: vs Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  1 - 0 1 - 0     13.3       1.65 8.07   &lt;0.001  10.1   16.6</span></span>
+<span><span class="co">#&gt;  C: am C: vs Estimate Std. Error    z Pr(&gt;|z|)    S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  1 - 0 1 - 0     13.3       1.65 8.07   &lt;0.001 50.3  10.1   16.6</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, contrast_am, contrast_vs, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, contrast_am, contrast_vs, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo</span></span></code></pre></div>
 <p><img src="experiments_files/figure-html/unnamed-chunk-12-1.png" width="100%"></p>
 </div>
 <div class="section level3">
@@ -293,10 +293,10 @@ function:</p>
 <span>    variables <span class="op">=</span> <span class="st">"treat"</span>,</span>
 <span>    vcov <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Term Contrast Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  treat    1 - 0      490        879 0.557    0.577 -1232   2212</span></span>
+<span><span class="co">#&gt;   Term Contrast Estimate Std. Error     z Pr(&gt;|z|)   S 2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  treat    1 - 0      490        879 0.557    0.577 0.8 -1232   2212</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, conf.low, conf.high</span></span></code></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high</span></span></code></pre></div>
 <p>Notice that the <code>treat</code> coefficient and associate standard
 error in the <code>lm_lin</code> regression are exactly the same as the
 estimates produced by the <code><a href="../reference/comparisons.html">comparisons()</a></code> function.</p>

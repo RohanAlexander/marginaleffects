@@ -38,7 +38,7 @@ https://vincentarelbundock.github.io/marginaleffects/
     
     <a class="navbar-brand me-2" href="../index.html">marginaleffects</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -309,6 +309,9 @@ arguments.</p></dd>
 <li><p><code>dydx</code>: slope of the outcome with respect to the term, for a given combination of predictor values</p></li>
 <li><p><code>std.error</code>: standard errors computed by via the delta method.</p></li>
 <li><p><code>p.value</code>: p value associated to the <code>estimate</code> column. The null is determined by the <code>hypothesis</code> argument (0 by default), and p values are computed before applying the <code>transform</code> argument.</p></li>
+<li><p><code>s.value</code>: Shannon information tranforms of p values. How many consecutive "heads" tosses would provide the same amount of evidence (or "suprise") against the null hypothesis that the coin is fair? See Greenland (2019) and Cole et al. (2020).</p></li>
+<li><p><code>conf.low</code>: lower bound of the confidence interval (or equal-tailed interval for bayesian models)</p></li>
+<li><p><code>conf.high</code>: upper bound of the confidence interval (or equal-tailed interval for bayesian models)</p></li>
 </ul><p>See <code><a href="print.marginaleffects.html">?print.marginaleffects</a></code> for printing options.</p>
     </div>
     <div class="section level2">
@@ -392,6 +395,12 @@ posterior using the function supplied to the
 </ul><p>Equivalence: Two One-Sided Tests (TOST)</p><ul><li><p>p: Maximum of the non-inferiority and non-superiority p values.</p></li>
 </ul><p>Thanks to Russell V. Lenth for the excellent <code>emmeans</code> package and documentation which inspired this feature.</p>
     </div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    
+<ul><li><p>Greenland S. 2019. "Valid P-Values Behave Exactly as They Should: Some Misleading Criticisms of P-Values and Their Resolution With S-Values." The American Statistician. 73(S1): 106–114.</p></li>
+<li><p>Cole, Stephen R, Jessie K Edwards, and Sander Greenland. 2020. "Surprise!" American Journal of Epidemiology 190 (2): 191–93. https://doi.org/10.1093/aje/kwaa136.</p></li>
+</ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
