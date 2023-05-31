@@ -267,7 +267,7 @@ arguments.</p></dd>
 <li><p><code>estimate</code>: predicted outcome</p></li>
 <li><p><code>std.error</code>: standard errors computed using the delta method.</p></li>
 <li><p><code>p.value</code>: p value associated to the <code>estimate</code> column. The null is determined by the <code>hypothesis</code> argument (0 by default), and p values are computed before applying the <code>transform</code> argument. For models of class <code>feglm</code>, <code>Gam</code>, <code>glm</code> and <code>negbin</code>, p values are computed on the link scale by default unless the <code>type</code> argument is specified explicitly.</p></li>
-<li><p><code>s.value</code>: Shannon information tranforms of p values. How many consecutive "heads" tosses would provide the same amount of evidence (or "surprise") against the null hypothesis that the coin is fair? See Greenland (2019) and Cole et al. (2020).</p></li>
+<li><p><code>s.value</code>: Shannon information tranforms of p values. How many consecutive "heads" tosses would provide the same amount of evidence (or "surprise") against the null hypothesis that the coin is fair? The purpose of S is to calibrate the analyst's intuition about the strength of evidence encoded in p against a well-known physical phenomenon. See Greenland (2019) and Cole et al. (2020).</p></li>
 <li><p><code>conf.low</code>: lower bound of the confidence interval (or equal-tailed interval for bayesian models)</p></li>
 <li><p><code>conf.high</code>: upper bound of the confidence interval (or equal-tailed interval for bayesian models)</p></li>
 </ul><p>See <code><a href="print.marginaleffects.html">?print.marginaleffects</a></code> for printing options.</p>
