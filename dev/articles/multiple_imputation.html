@@ -208,10 +208,10 @@ imputed datasets: <code>Amelia</code> and <code>missRanger</code>.</p>
 <span><span class="co">#&gt;          Term                        Contrast    Species Estimate Std. Error     S      Df     t Pr(&gt;|t|)    2.5 % 97.5 %</span></span>
 <span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     setosa       0.0583     0.0414   2.7 3386591  1.41  0.15927 -0.02287  0.139</span></span>
 <span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     versicolor   0.0670     0.0392   3.5  772141  1.71  0.08745 -0.00984  0.144</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.0639     0.0368   3.6 1300639  1.74  0.08211 -0.00814  0.136</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.0639     0.0368   3.6 1300640  1.74  0.08211 -0.00814  0.136</span></span>
 <span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     setosa       0.2314     0.0691  10.3 3034569  3.35  &lt; 0.001  0.09600  0.367</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor   0.2188     0.0551  13.8 1270189  3.97  &lt; 0.001  0.11091  0.327</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica    0.2092     0.0687   8.8  625864  3.05  0.00232  0.07457  0.344</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor   0.2188     0.0551  13.8 1270188  3.97  &lt; 0.001  0.11091  0.327</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica    0.2092     0.0687   8.8  625862  3.05  0.00232  0.07457  0.344</span></span>
 <span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) setosa       1.1588     0.0704 199.6 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
 <span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) versicolor   1.1588     0.0704 199.6 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
 <span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) virginica    1.1588     0.0704 199.6 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
@@ -933,9 +933,9 @@ after multiple imputation.</p>
 <span>    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/pool.html" class="external-link">pool</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Class: mipo    m = 5 </span></span>
 <span><span class="co">#&gt;   term m     estimate         ubar            b            t dfcom       df      riv    lambda       fmi</span></span>
-<span><span class="co">#&gt; 1  mpg 5  0.006083006 1.080596e-04 2.722367e-04 4.347437e-04    29 3.458473 3.023184 0.7514407 0.8284122</span></span>
-<span><span class="co">#&gt; 2  cyl 5 -0.134279397 7.095810e-04 2.347149e-03 3.526159e-03    29 2.921517 3.969355 0.7987666 0.8667335</span></span>
-<span><span class="co">#&gt; 3   hp 5  0.001649797 5.709181e-07 1.375524e-06 2.221547e-06    29 3.556952 2.891184 0.7430088 0.8213962</span></span>
+<span><span class="co">#&gt; 1  mpg 5  0.006083006 1.080602e-04 2.722367e-04 4.347443e-04    29 3.458485 3.023167 0.7514396 0.8284113</span></span>
+<span><span class="co">#&gt; 2  cyl 5 -0.134279397 7.095922e-04 2.347149e-03 3.526171e-03    29 2.921546 3.969292 0.7987641 0.8667314</span></span>
+<span><span class="co">#&gt; 3   hp 5  0.001649797 5.709151e-07 1.375524e-06 2.221544e-06    29 3.556941 2.891199 0.7430098 0.8213970</span></span>
 <span></span>
 <span><span class="co"># slopes with weights</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span>, \<span class="op">(</span><span class="va">i</span><span class="op">)</span> </span>
@@ -943,9 +943,9 @@ after multiple imputation.</p>
 <span>    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/pool.html" class="external-link">pool</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Class: mipo    m = 5 </span></span>
 <span><span class="co">#&gt;   term m     estimate         ubar            b            t dfcom       df      riv    lambda       fmi</span></span>
-<span><span class="co">#&gt; 1  mpg 5  0.006251264 1.056051e-04 2.705362e-04 4.302485e-04    29 3.422444 3.074127 0.7545486 0.8309841</span></span>
-<span><span class="co">#&gt; 2  cyl 5 -0.135839559 7.279608e-04 2.480980e-03 3.705137e-03    29 2.868429 4.089748 0.8035266 0.8704861</span></span>
-<span><span class="co">#&gt; 3   hp 5  0.001671181 5.697634e-07 1.424665e-06 2.279361e-06    29 3.474829 3.000540 0.7500337 0.8272454</span></span></code></pre></div>
+<span><span class="co">#&gt; 1  mpg 5  0.006251264 1.056057e-04 2.705362e-04 4.302491e-04    29 3.422457 3.074109 0.7545476 0.8309832</span></span>
+<span><span class="co">#&gt; 2  cyl 5 -0.135839559 7.279726e-04 2.480980e-03 3.705149e-03    29 2.868458 4.089681 0.8035241 0.8704840</span></span>
+<span><span class="co">#&gt; 3   hp 5  0.001671181 5.697608e-07 1.424665e-06 2.279359e-06    29 3.474819 3.000554 0.7500346 0.8272462</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
