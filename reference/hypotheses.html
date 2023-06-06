@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.262">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Vincent Arel-Bundock and contributors.">
+<title>marginaleffects 0.12.0 - hypotheses</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../reference/inferences.html" rel="next">
+<link href="../reference/datagrid.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+</head>
+<body class="nav-sidebar floating nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">marginaleffects 0.12.0</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link active" href="../articles/marginaleffects.html" aria-current="page">
+ <span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../functions.html">
+ <span class="menu-text">Functions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../articles/NEWS.html">
+ <span class="menu-text">News</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/vincentab"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vincentarelbundock/marginaleffects"><i class="bi bi-github" role="img" aria-label="marginaleffects GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">hypotheses</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../index.html" class="sidebar-item-text sidebar-link">marginaleffects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/marginaleffects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Get Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/predictions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Predictions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/comparisons.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Comparisons</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/slopes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Slopes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/marginalmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Marginal Means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/plot.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/hypothesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis Tests</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Case studies</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/brms.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bootstrap &amp; Simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/categorical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Categorical outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/gformula.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Causal Inference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/elasticity.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Elasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/gam.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">GAM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/logit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Logit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/lme4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/multiple_imputation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Missing Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Python</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Misc</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/alternative_software.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Alternative Software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/extensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Extensions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/links.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Links</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Performance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/uncertainty.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Standard Errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/supported_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Supported Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/faq.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/supported_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Supported Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/NEWS.html" class="sidebar-item-text sidebar-link">News</a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../functions.html" class="sidebar-item-text sidebar-link">Functions</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/predictions.html" class="sidebar-item-text sidebar-link">predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/comparisons.html" class="sidebar-item-text sidebar-link">comparisons</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/slopes.html" class="sidebar-item-text sidebar-link">slopes</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/marginal_means.html" class="sidebar-item-text sidebar-link">marginal_means</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/plot_predictions.html" class="sidebar-item-text sidebar-link">plot_predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/plot_comparisons.html" class="sidebar-item-text sidebar-link">plot_comparisons</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/plot_slopes.html" class="sidebar-item-text sidebar-link">plot_slopes</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/datagrid.html" class="sidebar-item-text sidebar-link">datagrid</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/hypotheses.html" class="sidebar-item-text sidebar-link active">hypotheses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/inferences.html" class="sidebar-item-text sidebar-link">inferences</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/posterior_draws.html" class="sidebar-item-text sidebar-link">posterior_draws</a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description">Description</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#joint-hypothesis-tests" id="toc-joint-hypothesis-tests" class="nav-link" data-scroll-target="#joint-hypothesis-tests">Joint hypothesis tests</a></li>
+  <li><a href="#equivalence-inferiority-superiority" id="toc-equivalence-inferiority-superiority" class="nav-link" data-scroll-target="#equivalence-inferiority-superiority">Equivalence, Inferiority, Superiority</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">hypotheses</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><p>(Non-)Linear Tests for Null Hypotheses, Joint Hypotheses, Equivalence, Non Superiority, and Non Inferiority</p>
+<section id="description" class="level2"><h2 class="anchored" data-anchor-id="description">Description</h2>
+<p>
+Uncertainty estimates are calculated as first-order approximate standard errors for linear or non-linear functions of a vector of random variables with known or estimated covariance matrix. In that sense, <code>hypotheses</code> emulates the behavior of the excellent and well-established car::deltaMethod and car::linearHypothesis functions, but it supports more models; requires fewer dependencies; expands the range of tests to equivalence and superiority/inferiority; and offers convenience features like robust standard errors.
+</p>
+<p>
+To learn more, read the hypothesis tests vignette, visit the package website, or scroll down this page for a full list of vignettes:
+</p>
+<ul>
+<li>
+<p>
+<a href="https://vincentarelbundock.github.io/marginaleffects/articles/hypothesis.html">https://vincentarelbundock.github.io/marginaleffects/articles/hypothesis.html</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://vincentarelbundock.github.io/marginaleffects/">https://vincentarelbundock.github.io/marginaleffects/</a>
+</p>
+</li>
+</ul>
+<p>
+Warning #1: Tests are conducted directly on the scale defined by the <code>type</code> argument. For some models, it can make sense to conduct hypothesis or equivalence tests on the <code>“link”</code> scale instead of the <code>“response”</code> scale which is often the default.
+</p>
+<p>
+Warning #2: For hypothesis tests on objects produced by the <code>marginaleffects</code> package, it is safer to use the <code>hypothesis</code> argument of the original function. Using <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses()</a></code> may not work in certain environments, in lists, or when working programmatically with *apply style functions.
+</p>
+</section><section id="usage" class="level2"><h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<pre><code class="language-R">hypotheses(
+  model,
+  hypothesis = NULL,
+  vcov = NULL,
+  conf_level = 0.95,
+  df = Inf,
+  equivalence = NULL,
+  joint = FALSE,
+  joint_test = "f",
+  FUN = NULL,
+  ...
+)
+</code></pre>
+</section><section id="arguments" class="level2"><h2 class="anchored" data-anchor-id="arguments">Arguments</h2>
+
+<table>
+<tbody><tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">model</td>
+<td>
+<p>
+Model object or object generated by the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/comparisons.html">comparisons()</a></code>, <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">slopes()</a></code>, <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions()</a></code>, or <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means()</a></code> functions.
+</p>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">hypothesis</td>
+<td>
+<p>
+specify a hypothesis test or custom contrast using a numeric value, vector, or matrix, a string, or a string formula.
+</p>
+<ul>
+<li>
+<p>
+Numeric:
+</p>
+<ul>
+<li>
+<p>
+Single value: the null hypothesis used in the computation of Z and p (before applying <code>transform</code>).
+</p>
+</li>
+<li>
+<p>
+Vector: Weights to compute a linear combination of (custom contrast between) estimates. Length equal to the number of rows generated by the same function call, but without the <code>hypothesis</code> argument.
+</p>
+</li>
+<li>
+<p>
+Matrix: Each column is a vector of weights, as describe above, used to compute a distinct linear combination of (contrast between) estimates. The column names of the matrix are used as labels in the output.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+String formula to specify linear or non-linear hypothesis tests. If the <code>term</code> column uniquely identifies rows, terms can be used in the formula. Otherwise, use <code>b1</code>, <code>b2</code>, etc. to identify the position of each parameter. Examples:
+</p>
+<ul>
+<li>
+<p>
+<code>hp = drat</code>
+</p>
+</li>
+<li>
+<p>
+<code>hp + drat = 12</code>
+</p>
+</li>
+<li>
+<p>
+<code>b1 + b2 + b3 = 0</code>
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+String:
+</p>
+<ul>
+<li>
+<p>
+"pairwise": pairwise differences between estimates in each row.
+</p>
+</li>
+<li>
+<p>
+"reference": differences between the estimates in each row and the estimate in the first row.
+</p>
+</li>
+<li>
+<p>
+"sequential": difference between an estimate and the estimate in the next row.
+</p>
+</li>
+<li>
+<p>
+"revpairwise", "revreference", "revsequential": inverse of the corresponding hypotheses, as described above.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+See the Examples section below and the vignette: https://vincentarelbundock.github.io/marginaleffects/articles/hypothesis.html
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">vcov</td>
+<td>
+<p>
+Type of uncertainty estimates to report (e.g., for robust standard errors). Acceptable values:
+</p>
+<ul>
+<li>
+<p>
+FALSE: Do not compute standard errors. This can speed up computation considerably.
+</p>
+</li>
+<li>
+<p>
+TRUE: Unit-level standard errors using the default <code>vcov(model)</code> variance-covariance matrix.
+</p>
+</li>
+<li>
+<p>
+String which indicates the kind of uncertainty estimates to return.
+</p>
+<ul>
+<li>
+<p>
+Heteroskedasticity-consistent: <code>“HC”</code>, <code>“HC0”</code>, <code>“HC1”</code>, <code>“HC2”</code>, <code>“HC3”</code>, <code>“HC4”</code>, <code>“HC4m”</code>, <code>“HC5”</code>. See <code><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">?sandwich::vcovHC</a></code>
+</p>
+</li>
+<li>
+<p>
+Heteroskedasticity and autocorrelation consistent: <code>“HAC”</code>
+</p>
+</li>
+<li>
+<p>
+Mixed-Models degrees of freedom: "satterthwaite", "kenward-roger"
+</p>
+</li>
+<li>
+<p>
+Other: <code>“NeweyWest”</code>, <code>“KernHAC”</code>, <code>“OPG”</code>. See the <code>sandwich</code> package documentation.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+One-sided formula which indicates the name of cluster variables (e.g., <code>~unit_id</code>). This formula is passed to the <code>cluster</code> argument of the <code><a href="https://sandwich.R-Forge.R-project.org/reference/vcovCL.html">sandwich::vcovCL</a></code> function.
+</p>
+</li>
+<li>
+<p>
+Square covariance matrix
+</p>
+</li>
+<li>
+<p>
+Function which returns a covariance matrix (e.g., <code>stats::vcov(model)</code>)
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">conf_level</td>
+<td>
+<p>
+numeric value between 0 and 1. Confidence level to use to build a confidence interval.
+</p>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">df</td>
+<td>
+<p>
+Degrees of freedom used to compute p values and confidence intervals. A single numeric value between 1 and <code>Inf</code>. When <code>df</code> is <code>Inf</code>, the normal distribution is used. When <code>df</code> is finite, the <code>t</code> distribution is used. See insight::get_df for a convenient function to extract degrees of freedom. Ex: <code>slopes(model, df = insight::get_df(model))</code>
+</p>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">equivalence</td>
+<td>
+<p>
+Numeric vector of length 2: bounds used for the two-one-sided test (TOST) of equivalence, and for the non-inferiority and non-superiority tests. See Details section below.
+</p>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">joint</td>
+<td>
+<p>
+Joint test of statistical significance. The null hypothesis value can be set using the <code>hypothesis</code> argument.
+</p>
+<ul>
+<li>
+<p>
+FALSE: Hypotheses are not tested jointly.
+</p>
+</li>
+<li>
+<p>
+TRUE: All parameters are tested jointly.
+</p>
+</li>
+<li>
+<p>
+String: A regular expression to match parameters to be tested jointly. <code>grep(joint, perl = TRUE)</code>
+</p>
+</li>
+<li>
+<p>
+Character vector of parameter names to be tested. Characters refer to the names of the vector returned by <code>coef(object)</code>.
+</p>
+</li>
+<li>
+<p>
+Integer vector of indices. Which parameters positions to test jointly.
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">joint_test</td>
+<td>
+<p>
+A character string specifying the type of test, either "f" or "chisq". The null hypothesis is set by the <code>hypothesis</code> argument, with default null equal to 0 for all parameters.
+</p>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">FUN</td>
+<td>
+<p>
+<code>NULL</code> or function.
+</p>
+<ul>
+<li>
+<p>
+<code>NULL</code> (default): hypothesis test on a model’s coefficients, or on the quantities estimated by one of the <code>marginaleffects</code> package functions.
+</p>
+</li>
+<li>
+<p>
+Function which accepts a model object and returns a numeric vector or a data.frame with two columns called <code>term</code> and <code>estimate</code>. This argument can be useful when users want to conduct a hypothesis test on an arbitrary function of quantities held in a model object.
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr style="vertical-align: top;">
+<td style="white-space: nowrap; font-family: monospace;>">...</td>
+<td>
+<p>
+Additional arguments are passed to the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method supplied by the modeling package.These arguments are particularly useful for mixed-effects or bayesian models (see the online vignettes on the <code>marginaleffects</code> website). Available arguments can vary from model to model, depending on the range of supported arguments by each modeling package. See the "Model-Specific Arguments" section of the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginaleffects.html">?marginaleffects</a></code> documentation for a non-exhaustive list of available arguments.
+</p>
+</td>
+</tr>
+</tbody></table></section><section id="joint-hypothesis-tests" class="level2"><h2 class="anchored" data-anchor-id="joint-hypothesis-tests">Joint hypothesis tests</h2>
+<p>
+The test statistic for the joint Wald test is calculated as (R * theta_hat - r)’ * inv(R * V_hat * R’) * (R * theta_hat - r) / Q, where theta_hat is the vector of estimated parameters, V_hat is the estimated covariance matrix, R is a Q x P matrix for testing Q hypotheses on P parameters, r is a Q x 1 vector for the null hypothesis, and Q is the number of rows in R. If the test is a Chi-squared test, the test statistic is not normalized.
+</p>
+<p>
+The p-value is then calculated based on either the F-distribution (for F-test) or the Chi-squared distribution (for Chi-squared test). For the F-test, the degrees of freedom are Q and (n - P), where n is the sample size and P is the number of parameters. For the Chi-squared test, the degrees of freedom are Q.
+</p>
+</section><section id="equivalence-inferiority-superiority" class="level2"><h2 class="anchored" data-anchor-id="equivalence-inferiority-superiority">Equivalence, Inferiority, Superiority</h2>
+<p>
+<code class="reqn"></code> is an estimate, <code class="reqn">_</code> its estimated standard error, and <code class="reqn">[a, b]</code> are the bounds of the interval supplied to the <code>equivalence</code> argument.
+</p>
+<p>
+Non-inferiority:
+</p>
+<ul>
+<li>
+<p>
+<code class="reqn">H_0</code>: <code class="reqn">a</code>
+</p>
+</li>
+<li>
+<p>
+<code class="reqn">H_1</code>: <code class="reqn">&gt; a</code>
+</p>
+</li>
+<li>
+<p>
+<code class="reqn">t=(- a)/_</code>
+</p>
+</li>
+<li>
+<p>
+p: Upper-tail probability
+</p>
+</li>
+</ul>
+<p>
+Non-superiority:
+</p>
+<ul>
+<li>
+<p>
+<code class="reqn">H_0</code>: <code class="reqn">b</code>
+</p>
+</li>
+<li>
+<p>
+<code class="reqn">H_1</code>: <code class="reqn">&lt; b</code>
+</p>
+</li>
+<li>
+<p>
+<code class="reqn">t=(- b)/_</code>
+</p>
+</li>
+<li>
+<p>
+p: Lower-tail probability
+</p>
+</li>
+</ul>
+<p>
+Equivalence: Two One-Sided Tests (TOST)
+</p>
+<ul>
+<li>
+<p>
+p: Maximum of the non-inferiority and non-superiority p values.
+</p>
+</li>
+</ul>
+<p>
+Thanks to Russell V. Lenth for the excellent <code>emmeans</code> package and documentation which inspired this feature.
+</p>
+</section><section id="examples" class="level2"><h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/marginaleffects/">marginaleffects</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/marginaleffects/">marginaleffects</a></span><span class="op">)</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">wt</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># When `FUN` and `hypotheses` are `NULL`, `hypotheses()` returns a data.frame of parameters</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 %    97.5 %
+   b1  35.8460      2.041 17.56   &lt;0.001 31.8457 39.846319
+   b2  -0.0231      0.012 -1.93   0.0531 -0.0465  0.000306
+   b3  -3.1814      0.720 -4.42   &lt;0.001 -4.5918 -1.771012
+   b4  -3.3590      1.402 -2.40   0.0166 -6.1062 -0.611803
+   b5  -3.1859      2.170 -1.47   0.1422 -7.4399  1.068169
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Test of equality between coefficients</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"hp = wt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+ hp = wt     3.16       0.72 4.39   &lt;0.001  1.75   4.57
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Non-linear function</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"exp(hp + wt) = 0.1"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+               Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 %
+ exp(hp + wt) = 0.1  -0.0594     0.0292 -2.04   0.0418 -0.117 -0.0022
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Robust standard errors</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"hp = wt"</span>, vcov <span class="op">=</span> <span class="st">"HC3"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+ hp = wt     3.16      0.805 3.92   &lt;0.001  1.58   4.74
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># b1, b2, ... shortcuts can be used to identify the position of the</span></span>
+<span><span class="co"># parameters of interest in the output of FUN</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"b2 = b3"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+ b2 = b3     3.16       0.72 4.39   &lt;0.001  1.75   4.57
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># term names with special characters have to be enclosed in backticks</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, hypothesis <span class="op">=</span> <span class="st">"`factor(cyl)6` = `factor(cyl)8`"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                            Term Estimate Std. Error      z Pr(&gt;|z|) 2.5 %
+ `factor(cyl)6` = `factor(cyl)8`   -0.173       1.65 -0.105    0.917 -3.41
+ 97.5 %
+   3.07
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">*</span> <span class="va">drat</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod2</span>, hypothesis <span class="op">=</span> <span class="st">"`hp:drat` = drat"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+             Term Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
+ `hp:drat` = drat    -6.08       2.89 -2.1   0.0357 -11.8 -0.405
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># predictions(), comparisons(), and slopes()</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">mpg</span>, data <span class="op">=</span> <span class="va">mtcars</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">cmp</span>, hypothesis <span class="op">=</span> <span class="st">"b1 = b2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 %  97.5 %
+ b1=b2   -0.288      0.125 -2.31   0.0209 -0.532 -0.0435
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mfx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">slopes</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">cmp</span>, hypothesis <span class="op">=</span> <span class="st">"b2 = 0.2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Term Estimate Std. Error     z Pr(&gt;|z|)  2.5 % 97.5 %
+ b2=0.2    0.101      0.131 0.774    0.439 -0.155  0.358
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pre</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/datagrid.html">datagrid</a></span><span class="op">(</span>hp <span class="op">=</span> <span class="fl">110</span>, mpg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">35</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">pre</span>, hypothesis <span class="op">=</span> <span class="st">"b1 = b2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  Term  Estimate Std. Error      z Pr(&gt;|z|)     2.5 %   97.5 %
+ b1=b2 -3.57e-05   0.000172 -0.207    0.836 -0.000373 0.000302
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># The `FUN` argument can be used to compute standard errors for fitted values</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">mpg</span>, data <span class="op">=</span> <span class="va">mtcars</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">x</span>, type <span class="op">=</span> <span class="st">"link"</span>, newdata <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, FUN <span class="op">=</span> <span class="va">f</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Estimate Std. Error      z Pr(&gt;|z|) 2.5 % 97.5 %
+   b1   -1.098      0.716 -1.534    0.125 -2.50  0.305
+   b2   -1.098      0.716 -1.534    0.125 -2.50  0.305
+   b3    0.233      0.781  0.299    0.765 -1.30  1.764
+   b4   -0.595      0.647 -0.919    0.358 -1.86  0.674
+   b5   -0.418      0.647 -0.645    0.519 -1.69  0.851
+   b6   -5.026      2.195 -2.290    0.022 -9.33 -0.725
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">x</span>, type <span class="op">=</span> <span class="st">"response"</span>, newdata <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mod</span>, FUN <span class="op">=</span> <span class="va">f</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 % 97.5 %
+   b1  0.25005     0.1342 1.863  0.06243 -0.0130 0.5131
+   b2  0.25005     0.1342 1.863  0.06243 -0.0130 0.5131
+   b3  0.55803     0.1926 2.898  0.00376  0.1806 0.9355
+   b4  0.35560     0.1483 2.399  0.01646  0.0650 0.6462
+   b5  0.39710     0.1550 2.561  0.01043  0.0932 0.7010
+   b6  0.00652     0.0142 0.459  0.64635 -0.0213 0.0344
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+</div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Equivalence, non-inferiority, and non-superiority tests</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions</a></span><span class="op">(</span><span class="va">mod</span>, newdata <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">p</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">18</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %  hp gear p (NonInf) p (NonSup)
+     19.7          1 19.6   &lt;0.001  17.7   21.6 123    3    0.00404      0.951
+ p (Equiv)
+     0.951
+
+Columns: rowid, estimate, std.error, statistic, p.value, conf.low, conf.high, mpg, hp, gear, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </code></pre>
+</div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mfx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"hp"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">mfx</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.1</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Term Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 % p (NonInf) p (NonSup)
+   hp  -0.0669      0.011 -6.05   &lt;0.001 -0.0885 -0.0452    0.00135     &lt;0.001
+ p (Equiv)
+   0.00135
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </code></pre>
+</div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"gear"</span>, hypothesis <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `gear` variable is treated as a categorical (factor) variable, but
+  the original data is of class numeric. It is safer and faster to convert
+  such variables to factor before fitting the model and calling `slopes`
+  functions.
+  
+  This warning appears once per session.</code></pre>
+</div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">cmp</span>, equivalence <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+              Term Estimate Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 % p (NonInf)
+ (4 - 3) - (5 - 3)    -3.94       2.05 -1.92   0.0543 -7.95 0.0727      0.973
+ p (NonSup) p (Equiv)
+     &lt;0.001     0.973
+
+Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high, statistic.noninf, statistic.nonsup, p.value.noninf, p.value.nonsup, p.value.equiv </code></pre>
+</div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># joint hypotheses: character vector</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">*</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"as.factor(cyl)6:hp"</span>, <span class="st">"as.factor(cyl)8:hp"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Joint hypothesis test:
+as.factor(cyl)6:hp = 0
+as.factor(cyl)8:hp = 0
+ 
+    F Pr(&gt;|F|) Df 1 Df 2
+ 2.11    0.142    2   26
+
+Columns: statistic, p.value, df1, df2 </code></pre>
+</div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># joint hypotheses: regular expression</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Joint hypothesis test:
+ as.factor(cyl)6 = 0
+ as.factor(cyl)8 = 0
+ as.factor(cyl)6:hp = 0
+ as.factor(cyl)8:hp = 0
+ 
+   F Pr(&gt;|F|) Df 1 Df 2
+ 5.7  0.00197    4   26
+
+Columns: statistic, p.value, df1, df2 </code></pre>
+</div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># joint hypotheses: integer indices</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Joint hypothesis test:
+ as.factor(cyl)6 = 0
+ as.factor(cyl)8 = 0
+ 
+    F Pr(&gt;|F|) Df 1 Df 2
+ 6.12  0.00665    2   26
+
+Columns: statistic, p.value, df1, df2 </code></pre>
+</div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># joint hypotheses: different null hypotheses</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, hypothesis <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Joint hypothesis test:
+ as.factor(cyl)6 = 1
+ as.factor(cyl)8 = 1
+ 
+    F Pr(&gt;|F|) Df 1 Df 2
+ 6.84  0.00411    2   26
+
+Columns: statistic, p.value, df1, df2 </code></pre>
+</div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">model</span>, joint <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">3</span>, hypothesis <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Joint hypothesis test:
+ as.factor(cyl)6 = 1
+ as.factor(cyl)8 = 2
+ 
+    F Pr(&gt;|F|) Df 1 Df 2
+ 7.47  0.00273    2   26
+
+Columns: statistic, p.value, df1, df2 </code></pre>
+</div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># joint hypotheses: marginaleffects object</span></span>
+<span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/comparisons.html">avg_comparisons</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/hypotheses.html">hypotheses</a></span><span class="op">(</span><span class="va">cmp</span>, joint <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+Joint hypothesis test:
+ cyl 6 - 4 = 0
+ cyl 8 - 4 = 0
+ 
+   F Pr(&gt;|F|) Df 1 Df 2
+ 1.6    0.219    2   29
+
+Columns: statistic, p.value, df1, df2 </code></pre>
+</div>
+</div>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../reference/datagrid.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">datagrid</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../reference/inferences.html" class="pagination-link">
+        <span class="nav-page-text">inferences</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

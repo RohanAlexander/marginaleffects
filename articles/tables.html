@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.262">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Vincent Arel-Bundock and contributors.">
+<title>marginaleffects 0.12.0 - 25&nbsp; Tables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../articles/faq.html" rel="next">
+<link href="../articles/supported_models.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script src="../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+</head>
+<body class="nav-sidebar floating nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">marginaleffects 0.12.0</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link active" href="../articles/marginaleffects.html" aria-current="page">
+ <span class="menu-text">Get Started</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../functions.html">
+ <span class="menu-text">Functions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../articles/NEWS.html">
+ <span class="menu-text">News</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/vincentab"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vincentarelbundock/marginaleffects"><i class="bi bi-github" role="img" aria-label="marginaleffects GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">
+<span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Tables</span>
+</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../index.html" class="sidebar-item-text sidebar-link">marginaleffects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/marginaleffects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Get Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/predictions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Predictions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/comparisons.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Comparisons</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/slopes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Slopes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/marginalmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Marginal Means</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/plot.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/hypothesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis Tests</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Case studies</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/brms.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bayes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Bootstrap &amp; Simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/categorical.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Categorical outcomes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/gformula.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Causal Inference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/elasticity.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Elasticity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Experiments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/gam.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">GAM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/logit.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Logit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/lme4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mixed Effects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/multiple_imputation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Missing Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/python.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Python</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Misc</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/alternative_software.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Alternative Software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/extensions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Extensions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/links.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Links</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Performance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/uncertainty.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Standard Errors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/supported_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Supported Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/tables.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/faq.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/supported_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Supported Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../articles/NEWS.html" class="sidebar-item-text sidebar-link">News</a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../functions.html" class="sidebar-item-text sidebar-link">Functions</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/predictions.html" class="sidebar-item-text sidebar-link">predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/comparisons.html" class="sidebar-item-text sidebar-link">comparisons</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/slopes.html" class="sidebar-item-text sidebar-link">slopes</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/marginal_means.html" class="sidebar-item-text sidebar-link">marginal_means</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/plot_predictions.html" class="sidebar-item-text sidebar-link">plot_predictions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/plot_comparisons.html" class="sidebar-item-text sidebar-link">plot_comparisons</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/plot_slopes.html" class="sidebar-item-text sidebar-link">plot_slopes</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/datagrid.html" class="sidebar-item-text sidebar-link">datagrid</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/hypotheses.html" class="sidebar-item-text sidebar-link">hypotheses</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/inferences.html" class="sidebar-item-text sidebar-link">inferences</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/posterior_draws.html" class="sidebar-item-text sidebar-link">posterior_draws</a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#marginal-effects" id="toc-marginal-effects" class="nav-link active" data-scroll-target="#marginal-effects"><span class="toc-section-number">25.1</span>  Marginal effects</a></li>
+  <li><a href="#contrasts" id="toc-contrasts" class="nav-link" data-scroll-target="#contrasts"><span class="toc-section-number">25.2</span>  Contrasts</a></li>
+  <li><a href="#marginal-means" id="toc-marginal-means" class="nav-link" data-scroll-target="#marginal-means"><span class="toc-section-number">25.3</span>  Marginal means</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title d-none d-lg-block">
+<span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Tables</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><section id="marginal-effects" class="level2" data-number="25.1"><h2 data-number="25.1" class="anchored" data-anchor-id="marginal-effects">
+<span class="header-section-number">25.1</span> Marginal effects</h2>
+<p>We can summarize the results of the <a href="comparisons.html"><code>comparisons()</code></a> or <a href="slopes.html"><code>slopes()</code></a> functions using <a href="https://github.com/vincentarelbundock/modelsummary">the <code>modelsummary</code> package.</a></p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/modelsummary/">modelsummary</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/marginaleffects/">marginaleffects</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">wt</span> <span class="op">+</span> <span class="va">drat</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">mfx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">slopes</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelsummary.html">modelsummary</a></span><span class="op">(</span><span class="va">mfx</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">   </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> wt </td>
+   <td style="text-align:center;"> −0.217 </td>
+  </tr>
+<tr>
+<td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.080) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> drat </td>
+   <td style="text-align:center;"> 0.278 </td>
+  </tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (0.168) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:center;"> 32 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> AIC </td>
+   <td style="text-align:center;"> 22.0 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> BIC </td>
+   <td style="text-align:center;"> 26.4 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Log.Lik. </td>
+   <td style="text-align:center;"> −8.011 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> F </td>
+   <td style="text-align:center;"> 3.430 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> RMSE </td>
+   <td style="text-align:center;"> 0.28 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The same results can be visualized with <code><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelplot.html">modelplot()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelplot.html">modelplot</a></span><span class="op">(</span><span class="va">mfx</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="tables_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section><section id="contrasts" class="level2" data-number="25.2"><h2 data-number="25.2" class="anchored" data-anchor-id="contrasts">
+<span class="header-section-number">25.2</span> Contrasts</h2>
+<p>When using the <a href="comparisons.html"><code>comparisons()</code></a> function (or the <a href="slopes.html"><code>slopes()</code></a> function with categorical variables), the output will include two columns to uniquely identify the quantities of interest: <code>term</code> and <code>contrast</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
+<span><span class="va">dat</span><span class="op">$</span><span class="va">gear</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">gear</span><span class="op">)</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">gear</span> <span class="op">+</span> <span class="va">mpg</span>, data <span class="op">=</span> <span class="va">dat</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/comparisons.html">comparisons</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/modelsummary/reference/get_estimates.html">get_estimates</a></span><span class="op">(</span><span class="va">cmp</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 8</span></span>
+<span><span class="co">#&gt;   term  contrast          estimate std.error statistic    p.value conf.low conf.high</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 gear  mean(4) - mean(3)   0.0372    0.137      0.272 0.785       -0.230     0.305 </span></span>
+<span><span class="co">#&gt; 2 gear  mean(5) - mean(3)  -0.340     0.0988    -3.44  0.000588    -0.533    -0.146 </span></span>
+<span><span class="co">#&gt; 3 mpg   mean(+1)            0.0608    0.0128     4.74  0.00000218   0.0356    0.0860</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can use the <code>shape</code> argument of the <code>modelsummary</code> function to structure the table properly:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelsummary.html">modelsummary</a></span><span class="op">(</span><span class="va">cmp</span>, shape <span class="op">=</span> <span class="va">term</span> <span class="op">+</span> <span class="va">contrast</span> <span class="op">~</span> <span class="va">model</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">   </th>
+   <th style="text-align:left;">    </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> gear </td>
+   <td style="text-align:left;"> mean(4) - mean(3) </td>
+   <td style="text-align:center;"> 0.037 </td>
+  </tr>
+<tr>
+<td style="text-align:left;">  </td>
+   <td style="text-align:left;"> mean(4) - mean(3) </td>
+   <td style="text-align:center;"> (0.137) </td>
+  </tr>
+<tr>
+<td style="text-align:left;">  </td>
+   <td style="text-align:left;"> mean(5) - mean(3) </td>
+   <td style="text-align:center;"> −0.340 </td>
+  </tr>
+<tr>
+<td style="text-align:left;">  </td>
+   <td style="text-align:left;"> mean(5) - mean(3) </td>
+   <td style="text-align:center;"> (0.099) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> mpg </td>
+   <td style="text-align:left;"> mean(+1) </td>
+   <td style="text-align:center;"> 0.061 </td>
+  </tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">  </td>
+   <td style="text-align:left;box-shadow: 0px 1.5px"> mean(+1) </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (0.013) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 32 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> AIC </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 26.2 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> BIC </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 32.1 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Log.Lik. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> −9.101 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> F </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 2.389 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> RMSE </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 0.31 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Cross-contrasts can be a bit trickier, since there are multiple simultaneous groups. Consider this example:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gear</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">cmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/comparisons.html">comparisons</a></span><span class="op">(</span></span>
+<span>  <span class="va">mod</span>,</span>
+<span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gear"</span>, <span class="st">"cyl"</span><span class="op">)</span>,</span>
+<span>  cross <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/modelsummary/reference/get_estimates.html">get_estimates</a></span><span class="op">(</span><span class="va">cmp</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 4 × 9</span></span>
+<span><span class="co">#&gt;   term  contrast_gear     contrast_cyl      estimate std.error statistic p.value conf.low conf.high</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 cross mean(4) - mean(3) mean(6) - mean(4)    -5.33      2.77     -1.93 0.0542     -10.8  0.0953  </span></span>
+<span><span class="co">#&gt; 2 cross mean(4) - mean(3) mean(8) - mean(4)    -9.22      3.62     -2.55 0.0108     -16.3 -2.13    </span></span>
+<span><span class="co">#&gt; 3 cross mean(5) - mean(3) mean(6) - mean(4)    -5.16      2.63     -1.96 0.0500     -10.3  0.000166</span></span>
+<span><span class="co">#&gt; 4 cross mean(5) - mean(3) mean(8) - mean(4)    -9.04      3.19     -2.84 0.00453    -15.3 -2.80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As we can see above, there are two relevant grouping columns: <code>contrast_gear</code> and <code>contrast_cyl</code>. We can simply plug those names in the <code>shape</code> argument:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelsummary.html">modelsummary</a></span><span class="op">(</span></span>
+<span>  <span class="va">cmp</span>,</span>
+<span>  shape <span class="op">=</span> <span class="va">contrast_gear</span> <span class="op">+</span> <span class="va">contrast_cyl</span> <span class="op">~</span> <span class="va">model</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;"> gear </th>
+   <th style="text-align:left;"> cyl </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> mean(4) - mean(3) </td>
+   <td style="text-align:left;"> mean(6) - mean(4) </td>
+   <td style="text-align:center;"> −5.332 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> mean(4) - mean(3) </td>
+   <td style="text-align:left;"> mean(6) - mean(4) </td>
+   <td style="text-align:center;"> (2.769) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> mean(4) - mean(3) </td>
+   <td style="text-align:left;"> mean(8) - mean(4) </td>
+   <td style="text-align:center;"> −9.218 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> mean(4) - mean(3) </td>
+   <td style="text-align:left;"> mean(8) - mean(4) </td>
+   <td style="text-align:center;"> (3.618) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> mean(5) - mean(3) </td>
+   <td style="text-align:left;"> mean(6) - mean(4) </td>
+   <td style="text-align:center;"> −5.156 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> mean(5) - mean(3) </td>
+   <td style="text-align:left;"> mean(6) - mean(4) </td>
+   <td style="text-align:center;"> (2.631) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> mean(5) - mean(3) </td>
+   <td style="text-align:left;"> mean(8) - mean(4) </td>
+   <td style="text-align:center;"> −9.042 </td>
+  </tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px"> mean(5) - mean(3) </td>
+   <td style="text-align:left;box-shadow: 0px 1.5px"> mean(8) - mean(4) </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> (3.185) </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 32 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> R2 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 0.740 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 0.701 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> AIC </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 173.7 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> BIC </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 182.5 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Log.Lik. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> −80.838 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> F </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 19.190 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> RMSE </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 3.03 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="marginal-means" class="level2" data-number="25.3"><h2 data-number="25.3" class="anchored" data-anchor-id="marginal-means">
+<span class="header-section-number">25.3</span> Marginal means</h2>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://vincentarelbundock.github.io/marginaleffects/">"marginaleffects"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://vincentarelbundock.github.io/modelsummary/">"modelsummary"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">mtcars</span></span>
+<span><span class="va">dat</span><span class="op">$</span><span class="va">cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span></span>
+<span><span class="va">dat</span><span class="op">$</span><span class="va">am</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">am</span><span class="op">)</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">am</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></span>
+<span><span class="va">mm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/modelsummary/reference/modelsummary.html">modelsummary</a></span><span class="op">(</span><span class="va">mm</span>,</span>
+<span>             title <span class="op">=</span> <span class="st">"Estimated Marginal Means"</span>,</span>
+<span>             estimate <span class="op">=</span> <span class="st">"{estimate} ({std.error}){stars}"</span>,</span>
+<span>             statistic <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>             group <span class="op">=</span> <span class="va">term</span> <span class="op">+</span> <span class="va">value</span> <span class="op">~</span> <span class="va">model</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Estimated Marginal Means</caption>
+ <thead><tr>
+<th style="text-align:left;">   </th>
+   <th style="text-align:left;">    </th>
+   <th style="text-align:center;"> &nbsp;(1) </th>
+  </tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> cyl </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:center;"> 18.960 (1.073)*** </td>
+  </tr>
+<tr>
+<td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:center;"> 22.885 (1.357)*** </td>
+  </tr>
+<tr>
+<td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:center;"> 19.351 (1.377)*** </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> am </td>
+   <td style="text-align:left;"> TRUE </td>
+   <td style="text-align:center;"> 22.478 (0.834)*** </td>
+  </tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">  </td>
+   <td style="text-align:left;box-shadow: 0px 1.5px"> FALSE </td>
+   <td style="text-align:center;box-shadow: 0px 1.5px"> 18.320 (0.785)*** </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Num.Obs. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 32 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> R2 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 0.825 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> R2 Adj. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 0.799 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> AIC </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 161.0 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> BIC </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 169.8 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> Log.Lik. </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> −74.502 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> F </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 31.794 </td>
+  </tr>
+<tr>
+<td style="text-align:left;"> RMSE </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> 2.48 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../articles/supported_models.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Supported Models</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../articles/faq.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">FAQ</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
