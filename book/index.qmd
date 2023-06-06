@@ -67,7 +67,7 @@ The `marginaleffects` package allows `R` users to compute and plot three princip
 
 [Hypothesis and Equivalence Tests:](articles/hypothesis.html)
 
-> Hypothesis and equivalence tests can be conducted on linear or non-linear functions of model coefficients, or on any of the quantities computed by the `marginaleffects` packages (predictions, slopes, comparisons, marginal means, etc.). Uncertainy estimates can be obtained via the delta method (with or without robust standard errors), bootstrap, or simulation.
+> Hypothesis and equivalence tests can be conducted on linear or non-linear functions of model coefficients, or on any of the quantities computed by the `marginaleffects` packages (predictions, slopes, comparisons, marginal means, etc.). Uncertainty estimates can be obtained via the delta method (with or without robust standard errors), bootstrap, or simulation.
 
 ```{r, echo = FALSE}
 library(tibble)
