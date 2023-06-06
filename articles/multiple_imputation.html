@@ -483,24 +483,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Finally, we feed the <code>mira</code> object to a <code>marginaleffects</code> function:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mfx_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_mice</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mfx_mice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_mice</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
 <span><span class="va">mfx_mice</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;          Term                        Contrast    Species Estimate Std. Error    Df      t Pr(&gt;|t|)   2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     setosa       0.0684     0.0560 120.0  1.222  0.22413 -0.0424  0.179</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     versicolor   0.0540     0.0557  91.1  0.969  0.33507 -0.0567  0.165</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.0582     0.0513 104.6  1.136  0.25869 -0.0434  0.160</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     setosa       0.1890     0.0836 400.4  2.260  0.02434  0.0246  0.353</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor   0.2093     0.0792  89.2  2.643  0.00971  0.0519  0.367</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica    0.2241     0.1026  61.2  2.185  0.03272  0.0190  0.429</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) setosa       1.1399     0.0977 114.8 11.668  &lt; 0.001  0.9464  1.333</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) versicolor   1.1399     0.0977 114.8 11.668  &lt; 0.001  0.9464  1.333</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) virginica    1.1399     0.0977 114.8 11.668  &lt; 0.001  0.9464  1.333</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  setosa       1.7408     0.1108 121.6 15.709  &lt; 0.001  1.5214  1.960</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  versicolor   1.7408     0.1108 121.6 15.709  &lt; 0.001  1.5214  1.960</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  virginica    1.7408     0.1108 121.6 15.709  &lt; 0.001  1.5214  1.960</span></span>
+<span><span class="co">#&gt;          Term                        Contrast    Species Estimate Std. Error     S    Df      t Pr(&gt;|t|)   2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     setosa       0.0684     0.0560   2.2 120.0  1.222  0.22413 -0.0424  0.179</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     versicolor   0.0540     0.0557   1.6  91.1  0.969  0.33507 -0.0567  0.165</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.0582     0.0513   2.0 104.6  1.136  0.25869 -0.0434  0.160</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     setosa       0.1890     0.0836   5.4 400.4  2.260  0.02434  0.0246  0.353</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor   0.2093     0.0792   6.7  89.2  2.643  0.00971  0.0519  0.367</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica    0.2241     0.1026   4.9  61.2  2.185  0.03272  0.0190  0.429</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) setosa       1.1399     0.0977  68.1 114.8 11.668  &lt; 0.001  0.9464  1.333</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) versicolor   1.1399     0.0977  68.1 114.8 11.668  &lt; 0.001  0.9464  1.333</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) virginica    1.1399     0.0977  68.1 114.8 11.668  &lt; 0.001  0.9464  1.333</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  setosa       1.7408     0.1108 100.7 121.6 15.709  &lt; 0.001  1.5214  1.960</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  versicolor   1.7408     0.1108 100.7 121.6 15.709  &lt; 0.001  1.5214  1.960</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  virginica    1.7408     0.1108 100.7 121.6 15.709  &lt; 0.001  1.5214  1.960</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, Species, estimate, std.error, predicted, predicted_hi, predicted_lo, df, statistic, p.value, conf.low, conf.high</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, Species, estimate, std.error, s.value, predicted, predicted_hi, predicted_lo, df, statistic, p.value, conf.low, conf.high</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="other-imputation-packages-amelia-missranger-or-lists-of-imputed-data-frames." class="level2" data-number="17.2"><h2 data-number="17.2" class="anchored" data-anchor-id="other-imputation-packages-amelia-missranger-or-lists-of-imputed-data-frames.">
 <span class="header-section-number">17.2</span> Other imputation packages: <code>Amelia</code>, <code>missRanger</code>, or lists of imputed data frames.</h2>
@@ -530,44 +530,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span><span class="va">mod_missRanger</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">mids_missRanger</span>, <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Petal.Width</span> <span class="op">~</span> <span class="va">Sepal.Length</span> <span class="op">*</span> <span class="va">Sepal.Width</span> <span class="op">+</span> <span class="va">Species</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## `Amelia` slopes</span></span>
-<span><span class="va">mfx_amelia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_amelia</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
+<span><span class="va">mfx_amelia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_amelia</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
 <span><span class="va">mfx_amelia</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;          Term                        Contrast    Species Estimate Std. Error   Df      t Pr(&gt;|t|)   2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     setosa       0.3456     0.0935 7.92  3.696  0.00618  0.1296  0.562</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.3058     0.1020 6.52  2.998  0.02177  0.0609  0.551</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     versicolor   0.3008     0.0972 6.75  3.095  0.01829  0.0692  0.532</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     setosa      -0.1690     0.1693 7.30 -0.998  0.35009 -0.5659  0.228</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica   -0.0621     0.1692 6.65 -0.367  0.72495 -0.4665  0.342</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor  -0.0596     0.1510 7.77 -0.395  0.70348 -0.4097  0.290</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) setosa       0.6696     0.2063 5.88  3.246  0.01805  0.1624  1.177</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) virginica    0.6696     0.2063 5.88  3.246  0.01805  0.1624  1.177</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) versicolor   0.6696     0.2063 5.88  3.246  0.01805  0.1624  1.177</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  setosa       1.1303     0.2169 6.22  5.211  0.00178  0.6041  1.656</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  virginica    1.1303     0.2169 6.22  5.211  0.00178  0.6041  1.656</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  versicolor   1.1303     0.2169 6.22  5.211  0.00178  0.6041  1.656</span></span>
+<span><span class="co">#&gt;          Term                        Contrast    Species Estimate Std. Error   S   Df      t Pr(&gt;|t|)   2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     setosa       0.3456     0.0935 7.3 7.92  3.696  0.00618  0.1296  0.562</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.3058     0.1020 5.5 6.52  2.998  0.02177  0.0609  0.551</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     versicolor   0.3008     0.0972 5.8 6.75  3.095  0.01829  0.0692  0.532</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     setosa      -0.1690     0.1693 1.5 7.30 -0.998  0.35009 -0.5659  0.228</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica   -0.0621     0.1692 0.5 6.65 -0.367  0.72495 -0.4665  0.342</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor  -0.0596     0.1510 0.5 7.77 -0.395  0.70348 -0.4097  0.290</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) setosa       0.6696     0.2063 5.8 5.88  3.246  0.01805  0.1624  1.177</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) virginica    0.6696     0.2063 5.8 5.88  3.246  0.01805  0.1624  1.177</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) versicolor   0.6696     0.2063 5.8 5.88  3.246  0.01805  0.1624  1.177</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  setosa       1.1303     0.2169 9.1 6.22  5.211  0.00178  0.6041  1.656</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  virginica    1.1303     0.2169 9.1 6.22  5.211  0.00178  0.6041  1.656</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  versicolor   1.1303     0.2169 9.1 6.22  5.211  0.00178  0.6041  1.656</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, Species, estimate, std.error, predicted, predicted_hi, predicted_lo, df, statistic, p.value, conf.low, conf.high</span></span>
+<span><span class="co">#&gt; Columns: term, contrast, Species, estimate, std.error, s.value, predicted, predicted_hi, predicted_lo, df, statistic, p.value, conf.low, conf.high</span></span>
 <span></span>
 <span><span class="co">## `missRanger` slopes</span></span>
-<span><span class="va">mfx_missRanger</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_missRanger</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
+<span><span class="va">mfx_missRanger</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_missRanger</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
 <span><span class="va">mfx_missRanger</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;          Term                        Contrast    Species Estimate Std. Error      Df     t Pr(&gt;|t|)    2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     setosa       0.0583     0.0414 3386591  1.41  0.15927 -0.02287  0.139</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     versicolor   0.0670     0.0392  772140  1.71  0.08745 -0.00984  0.144</span></span>
-<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.0639     0.0368 1300640  1.74  0.08211 -0.00814  0.136</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     setosa       0.2314     0.0691 3034568  3.35  &lt; 0.001  0.09600  0.367</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor   0.2188     0.0551 1270188  3.97  &lt; 0.001  0.11091  0.327</span></span>
-<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica    0.2092     0.0687  625863  3.05  0.00232  0.07457  0.344</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) setosa       1.1588     0.0704 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) versicolor   1.1588     0.0704 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
-<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) virginica    1.1588     0.0704 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  setosa       1.7784     0.0823 4276524 21.61  &lt; 0.001  1.61710  1.940</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  versicolor   1.7784     0.0823 4276524 21.61  &lt; 0.001  1.61710  1.940</span></span>
-<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  virginica    1.7784     0.0823 4276524 21.61  &lt; 0.001  1.61710  1.940</span></span>
+<span><span class="co">#&gt;          Term                        Contrast    Species Estimate Std. Error     S      Df     t Pr(&gt;|t|)    2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     setosa       0.0583     0.0414   2.7 3386591  1.41  0.15927 -0.02287  0.139</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     versicolor   0.0670     0.0392   3.5  772140  1.71  0.08745 -0.00984  0.144</span></span>
+<span><span class="co">#&gt;  Sepal.Length mean(dY/dX)                     virginica    0.0639     0.0368   3.6 1300640  1.74  0.08211 -0.00814  0.136</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     setosa       0.2314     0.0691  10.3 3034568  3.35  &lt; 0.001  0.09600  0.367</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     versicolor   0.2188     0.0551  13.8 1270188  3.97  &lt; 0.001  0.11091  0.327</span></span>
+<span><span class="co">#&gt;  Sepal.Width  mean(dY/dX)                     virginica    0.2092     0.0687   8.8  625863  3.05  0.00232  0.07457  0.344</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) setosa       1.1588     0.0704 199.6 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) versicolor   1.1588     0.0704 199.6 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
+<span><span class="co">#&gt;  Species      mean(versicolor) - mean(setosa) virginica    1.1588     0.0704 199.6 4239295 16.45  &lt; 0.001  1.02078  1.297</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  setosa       1.7784     0.0823 341.6 4276524 21.61  &lt; 0.001  1.61710  1.940</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  versicolor   1.7784     0.0823 341.6 4276524 21.61  &lt; 0.001  1.61710  1.940</span></span>
+<span><span class="co">#&gt;  Species      mean(virginica) - mean(setosa)  virginica    1.7784     0.0823 341.6 4276524 21.61  &lt; 0.001  1.61710  1.940</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: term, contrast, Species, estimate, std.error, predicted, predicted_hi, predicted_lo, df, statistic, p.value, conf.low, conf.high</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Columns: term, contrast, Species, estimate, std.error, s.value, predicted, predicted_hi, predicted_lo, df, statistic, p.value, conf.low, conf.high</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="comparing-results-with-different-imputation-software" class="level2" data-number="17.3"><h2 data-number="17.3" class="anchored" data-anchor-id="comparing-results-with-different-imputation-software">
 <span class="header-section-number">17.3</span> Comparing results with different imputation software</h2>
@@ -577,7 +577,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span></span>
 <span><span class="co">## listwise deletion slopes</span></span>
 <span><span class="va">mod_lwd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Petal.Width</span> <span class="op">~</span> <span class="va">Sepal.Length</span> <span class="op">*</span> <span class="va">Sepal.Width</span> <span class="op">+</span> <span class="va">Species</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></span>
-<span><span class="va">mfx_lwd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_lwd</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
+<span><span class="va">mfx_lwd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod_lwd</span>, by <span class="op">=</span> <span class="st">"Species"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## regression table</span></span>
 <span><span class="va">models</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
@@ -896,7 +896,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span></span>
 <span><span class="co">## slopes without weights</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span>, \<span class="op">(</span><span class="va">i</span><span class="op">)</span> </span>
-<span>    <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, newdata <span class="op">=</span> <span class="va">dat</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, newdata <span class="op">=</span> <span class="va">dat</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/pool.html">pool</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Class: mipo    m = 5 </span></span>
 <span><span class="co">#&gt;   term m     estimate         ubar            b            t dfcom       df      riv    lambda       fmi</span></span>
@@ -906,7 +906,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span></span>
 <span><span class="co">## slopes with weights</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span>, \<span class="op">(</span><span class="va">i</span><span class="op">)</span> </span>
-<span>    <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, newdata <span class="op">=</span> <span class="va">dat</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, wts <span class="op">=</span> <span class="st">"gear"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/slopes.html">avg_slopes</a></span><span class="op">(</span><span class="va">mod</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, newdata <span class="op">=</span> <span class="va">dat</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, wts <span class="op">=</span> <span class="st">"gear"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mice</span><span class="fu">::</span><span class="fu"><a href="https://amices.org/mice/reference/pool.html">pool</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Class: mipo    m = 5 </span></span>
 <span><span class="co">#&gt;   term m     estimate         ubar            b            t dfcom       df      riv    lambda       fmi</span></span>

@@ -538,7 +538,7 @@ Character vector: subset of categorical variables to use when building the balan
 </li>
 <li>
 <p>
-Data frame: A data frame which includes all the predictors in the original model. The full dataset is replicated once for every combination of the focal variables in the <code>variables</code> argument, using the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/datagrid.html">datagridcf()</a></code> function.
+Data frame: A data frame which includes all the predictors in the original model. The full dataset is replicated once for every combination of the focal variables in the <code>variables</code> argument, using the <code><a href="https://rdrr.io/pkg/marginaleffects/man/datagrid.html">datagridcf()</a></code> function.
 </p>
 </li>
 </ul>
@@ -797,7 +797,7 @@ Collapse marginal means into categories. Data frame with a <code>by</code> colum
 <td style="white-space: nowrap; font-family: monospace;>">...</td>
 <td>
 <p>
-Additional arguments are passed to the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method supplied by the modeling package.These arguments are particularly useful for mixed-effects or bayesian models (see the online vignettes on the <code>marginaleffects</code> website). Available arguments can vary from model to model, depending on the range of supported arguments by each modeling package. See the "Model-Specific Arguments" section of the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginaleffects.html">?marginaleffects</a></code> documentation for a non-exhaustive list of available arguments.
+Additional arguments are passed to the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method supplied by the modeling package.These arguments are particularly useful for mixed-effects or bayesian models (see the online vignettes on the <code>marginaleffects</code> website). Available arguments can vary from model to model, depending on the range of supported arguments by each modeling package. See the "Model-Specific Arguments" section of the <code><a href="https://rdrr.io/pkg/marginaleffects/man/marginaleffects.html">?marginaleffects</a></code> documentation for a non-exhaustive list of available arguments.
 </p>
 </td>
 </tr>
@@ -849,7 +849,7 @@ See the "Standard Errors and Confidence Intervals" vignette on the <code>margina
 https://vincentarelbundock.github.io/marginaleffects/articles/uncertainty.html
 </p>
 <p>
-Note that the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/inferences.html">inferences()</a></code> function can be used to compute uncertainty estimates using a bootstrap or simulation-based inference. See the vignette:
+Note that the <code><a href="https://rdrr.io/pkg/marginaleffects/man/inferences.html">inferences()</a></code> function can be used to compute uncertainty estimates using a bootstrap or simulation-based inference. See the vignette:
 </p>
 <p>
 https://vincentarelbundock.github.io/marginaleffects/articles/bootstrap.html
@@ -1126,76 +1126,76 @@ Thanks to Russell V. Lenth for the excellent <code>emmeans</code> package and do
 <span><span class="va">dat</span><span class="op">$</span><span class="va">am</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">am</span><span class="op">)</span></span>
 <span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">carb</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">am</span>, <span class="va">dat</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span></span>
 <span>  <span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="st">"cyl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
- Term Value Mean Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
-  cyl     6 20.4       1.34 15.2   &lt;0.001  17.8   23.0
-  cyl     4 23.1       1.66 13.9   &lt;0.001  19.9   26.4
-  cyl     8 16.2       1.07 15.1   &lt;0.001  14.1   18.3
+ Term Value Mean Std. Error    z Pr(&gt;|z|)     S 2.5 % 97.5 %
+  cyl     6 20.4       1.34 15.2   &lt;0.001 171.9  17.8   23.0
+  cyl     4 23.1       1.66 13.9   &lt;0.001 144.3  19.9   26.4
+  cyl     8 16.2       1.07 15.1   &lt;0.001 169.0  14.1   18.3
 
 Results averaged over levels of: carb, am, cyl 
-Columns: term, value, cyl, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: term, value, cyl, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># collapse levels of cyl by averaging</span></span>
 <span><span class="va">by</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  cyl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">8</span><span class="op">)</span>,</span>
 <span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"4 &amp;amp; 6"</span>, <span class="st">"4 &amp;amp; 6"</span>, <span class="st">"8"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="st">"cyl"</span>,</span>
 <span>  by <span class="op">=</span> <span class="va">by</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-        By Mean Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
- 4 &amp;amp; 6 21.7       1.13 19.2   &lt;0.001  19.5   24.0
- 8         16.2       1.07 15.1   &lt;0.001  14.1   18.3
+        By Mean Std. Error    z Pr(&gt;|z|)     S 2.5 % 97.5 %
+ 4 &amp;amp; 6 21.7       1.13 19.2   &lt;0.001 270.8  19.5   24.0
+ 8         16.2       1.07 15.1   &lt;0.001 169.0  14.1   18.3
 
 Results averaged over levels of: carb, am, cyl 
-Columns: by, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: by, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># pairwise differences between collapsed levels</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="st">"cyl"</span>,</span>
 <span>  by <span class="op">=</span> <span class="va">by</span>,</span>
 <span>  hypothesis <span class="op">=</span> <span class="st">"pairwise"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-          Term Mean Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %
- 4 &amp;amp; 6 - 8 5.54       1.51 3.66   &lt;0.001  2.57    8.5
+          Term Mean Std. Error    z Pr(&gt;|z|)    S 2.5 % 97.5 %
+ 4 &amp;amp; 6 - 8 5.54       1.51 3.66   &lt;0.001 12.0  2.57    8.5
 
 Results averaged over levels of: carb, am, cyl 
-Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># cross</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cyl"</span>, <span class="st">"carb"</span><span class="op">)</span>,</span>
 <span>  cross <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
- Mean Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %
- 19.1       1.34 14.31   &lt;0.001 16.53   21.8
- 23.1       1.77 13.08   &lt;0.001 19.63   26.5
- 22.9       1.87 12.24   &lt;0.001 19.20   26.5
- 22.6       2.37  9.56   &lt;0.001 17.98   27.2
- 17.6       3.00  5.85   &lt;0.001 11.68   23.5
- 17.0       3.48  4.89   &lt;0.001 10.21   23.9
- 21.9       1.90 11.51   &lt;0.001 18.15   25.6
- 25.8       1.26 20.43   &lt;0.001 23.34   28.3
- 25.6       1.17 21.93   &lt;0.001 23.30   27.9
- 25.3       2.37 10.71   &lt;0.001 20.70   30.0
- 20.3       3.77  5.39   &lt;0.001 12.91   27.7
- 19.8       3.81  5.18   &lt;0.001 12.29   27.2
- 15.0       1.20 12.53   &lt;0.001 12.63   17.3
- 18.9       1.94  9.74   &lt;0.001 15.11   22.7
- 18.7       1.57 11.90   &lt;0.001 15.61   21.8
- 18.4       1.83 10.07   &lt;0.001 14.85   22.0
- 13.4       3.36  3.99   &lt;0.001  6.81   20.0
- 12.9       3.00  4.28   &lt;0.001  6.98   18.8
+ Mean Std. Error     z Pr(&gt;|z|)     S 2.5 % 97.5 %
+ 19.1       1.34 14.31   &lt;0.001 151.8 16.53   21.8
+ 23.1       1.77 13.08   &lt;0.001 127.4 19.63   26.5
+ 22.9       1.87 12.24   &lt;0.001 112.0 19.20   26.5
+ 22.6       2.37  9.56   &lt;0.001  69.5 17.98   27.2
+ 17.6       3.00  5.85   &lt;0.001  27.6 11.68   23.5
+ 17.0       3.48  4.89   &lt;0.001  19.9 10.21   23.9
+ 21.9       1.90 11.51   &lt;0.001  99.4 18.15   25.6
+ 25.8       1.26 20.43   &lt;0.001 305.7 23.34   28.3
+ 25.6       1.17 21.93   &lt;0.001 351.8 23.30   27.9
+ 25.3       2.37 10.71   &lt;0.001  86.6 20.70   30.0
+ 20.3       3.77  5.39   &lt;0.001  23.7 12.91   27.7
+ 19.8       3.81  5.18   &lt;0.001  22.1 12.29   27.2
+ 15.0       1.20 12.53   &lt;0.001 117.2 12.63   17.3
+ 18.9       1.94  9.74   &lt;0.001  72.1 15.11   22.7
+ 18.7       1.57 11.90   &lt;0.001 106.0 15.61   21.8
+ 18.4       1.83 10.07   &lt;0.001  76.8 14.85   22.0
+ 13.4       3.36  3.99   &lt;0.001  13.9  6.81   20.0
+ 12.9       3.00  4.28   &lt;0.001  15.7  6.98   18.8
 
 Results averaged over levels of: am 
-Columns: cyl, carb, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: cyl, carb, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># collapsed cross</span></span>
 <span><span class="va">by</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span></span>
@@ -1214,42 +1214,42 @@ Columns: cyl, carb, estimate, std.error, statistic, p.value, conf.low, conf.high
 <span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">am</span> <span class="op">+</span> <span class="va">carb</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Compute and summarize marginal means</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
- Term Value Mean Std. Error     z Pr(&gt;|z|) 2.5 % 97.5 %
- am   TRUE  23.1      0.974 23.72   &lt;0.001  21.2   25.0
- am   FALSE 17.9      1.244 14.37   &lt;0.001  15.4   20.3
- carb 4     18.8      1.042 18.06   &lt;0.001  16.8   20.9
- carb 1     22.0      1.345 16.35   &lt;0.001  19.4   24.6
- carb 2     21.5      1.025 20.95   &lt;0.001  19.5   23.5
- carb 3     20.6      1.780 11.55   &lt;0.001  17.1   24.0
- carb 6     18.5      3.019  6.12   &lt;0.001  12.6   24.4
- carb 8     21.6      4.055  5.33   &lt;0.001  13.7   29.6
+ Term Value Mean Std. Error     z Pr(&gt;|z|)     S 2.5 % 97.5 %
+ am   TRUE  23.1      0.974 23.72   &lt;0.001 410.9  21.2   25.0
+ am   FALSE 17.9      1.244 14.37   &lt;0.001 153.0  15.4   20.3
+ carb 4     18.8      1.042 18.06   &lt;0.001 239.9  16.8   20.9
+ carb 1     22.0      1.345 16.35   &lt;0.001 197.2  19.4   24.6
+ carb 2     21.5      1.025 20.95   &lt;0.001 321.5  19.5   23.5
+ carb 3     20.6      1.780 11.55   &lt;0.001 100.1  17.1   24.0
+ carb 6     18.5      3.019  6.12   &lt;0.001  30.0  12.6   24.4
+ carb 8     21.6      4.055  5.33   &lt;0.001  23.3  13.7   29.6
 
 Results averaged over levels of: hp, am, carb 
-Columns: term, value, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: term, value, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Contrast between marginal means (carb2 - carb1), or "is the 1st marginal means equal to the 2nd?"</span></span>
 <span><span class="co"># see the vignette on "Hypothesis Tests and Custom Contrasts" on the `marginaleffects` website.</span></span>
 <span><span class="va">lc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"carb"</span>, hypothesis <span class="op">=</span> <span class="st">"b2 = b1"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"carb"</span>, hypothesis <span class="op">=</span> <span class="st">"b2 = b1"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-  Term Mean Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %
- b2=b1 3.18        1.9 1.67   0.0949 -0.552    6.9
+  Term Mean Std. Error    z Pr(&gt;|z|)   S  2.5 % 97.5 %
+ b2=b1 3.18        1.9 1.67   0.0949 3.4 -0.552    6.9
 
 Results averaged over levels of: am, carb 
-Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"carb"</span>, hypothesis <span class="op">=</span> <span class="va">lc</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"carb"</span>, hypothesis <span class="op">=</span> <span class="va">lc</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-   Term Mean Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %
- custom 3.18        1.9 1.67   0.0949 -0.552    6.9
+   Term Mean Std. Error    z Pr(&gt;|z|)   S  2.5 % 97.5 %
+ custom 3.18        1.9 1.67   0.0949 3.4 -0.552    6.9
 
 Results averaged over levels of: am, carb 
-Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Multiple custom contrasts</span></span>
 <span><span class="va">lc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
@@ -1258,15 +1258,15 @@ Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </co
 <span>    <span class="op">)</span>,</span>
 <span>  ncol <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"carb"</span>, hypothesis <span class="op">=</span> <span class="va">lc</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/marginal_means.html">marginal_means</a></span><span class="op">(</span><span class="va">mod</span>, variables <span class="op">=</span> <span class="st">"carb"</span>, hypothesis <span class="op">=</span> <span class="va">lc</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
- Term Mean Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %
-    A 8.99       4.73 1.90   0.0572 -0.273   18.2
-    B 3.18       1.90 1.67   0.0949 -0.552    6.9
+ Term Mean Std. Error    z Pr(&gt;|z|)   S  2.5 % 97.5 %
+    A 8.99       4.73 1.90   0.0572 4.1 -0.273   18.2
+    B 3.18       1.90 1.67   0.0949 3.4 -0.552    6.9
 
 Results averaged over levels of: am, carb 
-Columns: term, estimate, std.error, statistic, p.value, conf.low, conf.high </code></pre>
+Columns: term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high </code></pre>
 </div>
 </div>
 

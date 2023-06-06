@@ -455,10 +455,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Plot predictions on the y-axis against values of one or more predictors (x-axis, colors/shapes, and facets).
 </p>
 <p>
-The <code>by</code> argument is used to plot marginal predictions, that is, predictions made on the original data, but averaged by subgroups. This is analogous to using the <code>by</code> argument in the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions()</a></code> function.
+The <code>by</code> argument is used to plot marginal predictions, that is, predictions made on the original data, but averaged by subgroups. This is analogous to using the <code>by</code> argument in the <code><a href="https://rdrr.io/pkg/marginaleffects/man/predictions.html">predictions()</a></code> function.
 </p>
 <p>
-The <code>condition</code> argument is used to plot conditional predictions, that is, predictions made on a user-specified grid. This is analogous to using the <code>newdata</code> argument and <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/datagrid.html">datagrid()</a></code> function in a <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions()</a></code> call.
+The <code>condition</code> argument is used to plot conditional predictions, that is, predictions made on a user-specified grid. This is analogous to using the <code>newdata</code> argument and <code><a href="https://rdrr.io/pkg/marginaleffects/man/datagrid.html">datagrid()</a></code> function in a <code><a href="https://rdrr.io/pkg/marginaleffects/man/predictions.html">predictions()</a></code> call.
 </p>
 <p>
 All unspecified variables are held at their mean or mode. This includes grouping variables in mixed-effects models, so analysts who fit such models may want to specify the groups of interest using the <code>variables</code> argument, or supply model-specific arguments to compute population-level estimates. See details below.
@@ -577,7 +577,7 @@ Character vector (max length 3): Names of the categorical predictors to marginal
 <td style="white-space: nowrap; font-family: monospace;>">newdata</td>
 <td>
 <p>
-When <code>newdata</code> is <code>NULL</code>, the grid is determined by the <code>condition</code> argument. When <code>newdata</code> is not <code>NULL</code>, the argument behaves in the same way as in the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions()</a></code> function.
+When <code>newdata</code> is <code>NULL</code>, the grid is determined by the <code>condition</code> argument. When <code>newdata</code> is not <code>NULL</code>, the argument behaves in the same way as in the <code><a href="https://rdrr.io/pkg/marginaleffects/man/predictions.html">predictions()</a></code> function.
 </p>
 </td>
 </tr>
@@ -723,7 +723,7 @@ FALSE grayscale or color plot
 <td style="white-space: nowrap; font-family: monospace;>">...</td>
 <td>
 <p>
-Additional arguments are passed to the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method supplied by the modeling package.These arguments are particularly useful for mixed-effects or bayesian models (see the online vignettes on the <code>marginaleffects</code> website). Available arguments can vary from model to model, depending on the range of supported arguments by each modeling package. See the "Model-Specific Arguments" section of the <code><a href="https://vincentarelbundock.github.io/marginaleffects/reference/marginaleffects.html">?marginaleffects</a></code> documentation for a non-exhaustive list of available arguments.
+Additional arguments are passed to the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method supplied by the modeling package.These arguments are particularly useful for mixed-effects or bayesian models (see the online vignettes on the <code>marginaleffects</code> website). Available arguments can vary from model to model, depending on the range of supported arguments by each modeling package. See the "Model-Specific Arguments" section of the <code><a href="https://rdrr.io/pkg/marginaleffects/man/marginaleffects.html">?marginaleffects</a></code> documentation for a non-exhaustive list of available arguments.
 </p>
 </td>
 </tr>
@@ -906,20 +906,20 @@ robustlmm::predict.rlmerMod
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/marginaleffects/">marginaleffects</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">wt</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="st">"wt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="st">"wt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="plot_predictions_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span> <span class="op">*</span> <span class="va">wt</span> <span class="op">*</span> <span class="va">am</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"hp"</span>, <span class="st">"wt"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"hp"</span>, <span class="st">"wt"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="plot_predictions_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"hp"</span>, wt <span class="op">=</span> <span class="st">"threenum"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"hp"</span>, wt <span class="op">=</span> <span class="st">"threenum"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="plot_predictions_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"hp"</span>, wt <span class="op">=</span> <span class="va">range</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">mod</span>, condition <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"hp"</span>, wt <span class="op">=</span> <span class="va">range</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="plot_predictions_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid" width="672"></p>
 </div>

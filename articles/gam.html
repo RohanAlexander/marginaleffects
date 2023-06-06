@@ -508,24 +508,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </h2>
 <p>Compute adjusted predictions for each observed combination of regressor in the dataset used to fit the model. This gives us a dataset with the same number of rows as the original data, but new columns with predicted values and uncertainty estimates:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/predictions.html">predictions</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">pred</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 75600    11</span></span>
+<span><span class="co">#&gt; [1] 75600    12</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pred</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Estimate Std. Error     z Pr(&gt;|z|)   2.5 %  97.5 %</span></span>
-<span><span class="co">#&gt;    -1.874      0.199 -9.41   &lt;0.001 -2.2643 -1.4834</span></span>
-<span><span class="co">#&gt;    -1.346      0.182 -7.41   &lt;0.001 -1.7025 -0.9901</span></span>
-<span><span class="co">#&gt;    -0.819      0.167 -4.90   &lt;0.001 -1.1467 -0.4916</span></span>
-<span><span class="co">#&gt;    -0.293      0.156 -1.88   0.0605 -0.5988  0.0129</span></span>
-<span><span class="co">#&gt;     0.231      0.149  1.55   0.1204 -0.0606  0.5232</span></span>
-<span><span class="co">#&gt;     0.753      0.146  5.17   &lt;0.001  0.4675  1.0379</span></span>
+<span><span class="co">#&gt;  Estimate Std. Error     z Pr(&gt;|z|)    S   2.5 %  97.5 %</span></span>
+<span><span class="co">#&gt;    -1.874      0.199 -9.41   &lt;0.001 67.4 -2.2643 -1.4834</span></span>
+<span><span class="co">#&gt;    -1.346      0.182 -7.41   &lt;0.001 42.8 -1.7025 -0.9901</span></span>
+<span><span class="co">#&gt;    -0.819      0.167 -4.90   &lt;0.001 20.0 -1.1467 -0.4916</span></span>
+<span><span class="co">#&gt;    -0.293      0.156 -1.88   0.0605  4.0 -0.5988  0.0129</span></span>
+<span><span class="co">#&gt;     0.231      0.149  1.55   0.1204  3.1 -0.0606  0.5232</span></span>
+<span><span class="co">#&gt;     0.753      0.146  5.17   &lt;0.001 22.0  0.4675  1.0379</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, estimate, std.error, statistic, p.value, conf.low, conf.high, Y, Group, Time, Subject</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Columns: rowid, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, Y, Group, Time, Subject</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can easily plot adjusted predictions for different values of a regressor using the <a href="plot_predictions.html"><code>plot_predictions()</code></a> function:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">model</span>, condition <span class="op">=</span> <span class="st">"Time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/plot_predictions.html">plot_predictions</a></span><span class="op">(</span><span class="va">model</span>, condition <span class="op">=</span> <span class="st">"Time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="gam_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
@@ -535,22 +535,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </h2>
 <p>Marginal effects are slopes of the prediction equation. They are an observation-level quantity. The <a href="slopes.html"><code>slopes()</code></a> function produces a dataset with the same number of rows as the original data, but with new columns for the slop and uncertainty estimates:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mfx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/slopes.html">slopes</a></span><span class="op">(</span><span class="va">model</span>, variables <span class="op">=</span> <span class="st">"Time"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mfx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/slopes.html">slopes</a></span><span class="op">(</span><span class="va">model</span>, variables <span class="op">=</span> <span class="st">"Time"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mfx</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Term Estimate Std. Error    z Pr(&gt;|z|)  2.5 % 97.5 %</span></span>
-<span><span class="co">#&gt;  Time   0.0261    0.00137 19.1   &lt;0.001 0.0234 0.0288</span></span>
-<span><span class="co">#&gt;  Time   0.0261    0.00136 19.2   &lt;0.001 0.0234 0.0288</span></span>
-<span><span class="co">#&gt;  Time   0.0261    0.00133 19.5   &lt;0.001 0.0235 0.0287</span></span>
-<span><span class="co">#&gt;  Time   0.0260    0.00128 20.3   &lt;0.001 0.0235 0.0285</span></span>
-<span><span class="co">#&gt;  Time   0.0259    0.00120 21.6   &lt;0.001 0.0235 0.0282</span></span>
-<span><span class="co">#&gt;  Time   0.0257    0.00109 23.5   &lt;0.001 0.0236 0.0279</span></span>
+<span><span class="co">#&gt;  Term Estimate Std. Error    z Pr(&gt;|z|)     S  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt;  Time   0.0261    0.00137 19.1   &lt;0.001 267.8 0.0234 0.0288</span></span>
+<span><span class="co">#&gt;  Time   0.0261    0.00136 19.2   &lt;0.001 270.3 0.0234 0.0288</span></span>
+<span><span class="co">#&gt;  Time   0.0261    0.00133 19.5   &lt;0.001 280.0 0.0235 0.0287</span></span>
+<span><span class="co">#&gt;  Time   0.0260    0.00128 20.3   &lt;0.001 301.3 0.0235 0.0285</span></span>
+<span><span class="co">#&gt;  Time   0.0259    0.00120 21.6   &lt;0.001 339.8 0.0235 0.0282</span></span>
+<span><span class="co">#&gt;  Time   0.0257    0.00109 23.5   &lt;0.001 404.7 0.0236 0.0279</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, term, estimate, std.error, statistic, p.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Y, Group, Time, Subject</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Columns: rowid, term, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, predicted, predicted_hi, predicted_lo, Y, Group, Time, Subject</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can plot marginal effects for different values of a regressor using the <a href="plot_slopes.html"><code>plot_slopes()</code></a> function. This next plot shows the slope of the prediction equation, that is, the slope of the previous plot, at every value of the <code>Time</code> variable.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/plot_slopes.html">plot_slopes</a></span><span class="op">(</span><span class="va">model</span>, variables <span class="op">=</span> <span class="st">"Time"</span>, condition <span class="op">=</span> <span class="st">"Time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/plot_slopes.html">plot_slopes</a></span><span class="op">(</span><span class="va">model</span>, variables <span class="op">=</span> <span class="st">"Time"</span>, condition <span class="op">=</span> <span class="st">"Time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="gam_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
@@ -560,12 +560,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="header-section-number">14.4</span> Excluding terms</h2>
 <p>The <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method of the <code>mgcv</code> package allows users to “exclude” some smoothing terms, using the <code>exclude</code> argument. You can pass the same argument to any function in the <code>marginaleffects</code> package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions</a></span><span class="op">(</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="st">"mean"</span>, exclude <span class="op">=</span> <span class="st">"s(Subject)"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/marginaleffects/man/predictions.html">predictions</a></span><span class="op">(</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="st">"mean"</span>, exclude <span class="op">=</span> <span class="st">"s(Subject)"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Estimate Std. Error    z Pr(&gt;|z|) 2.5 % 97.5 %  Group Time Subject</span></span>
-<span><span class="co">#&gt;      11.7      0.695 16.9   &lt;0.001  10.4   13.1 Adults 1000     a01</span></span>
+<span><span class="co">#&gt;  Estimate Std. Error    z Pr(&gt;|z|)     S 2.5 % 97.5 %  Group Time Subject</span></span>
+<span><span class="co">#&gt;      11.7      0.695 16.9   &lt;0.001 210.8  10.4   13.1 Adults 1000     a01</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Columns: rowid, estimate, std.error, statistic, p.value, conf.low, conf.high, Y, Group, Time, Subject</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Columns: rowid, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high, Y, Group, Time, Subject</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>See the documentation in <code>?mgcv:::predict.bam</code> for details.</p>
 
